@@ -41,7 +41,7 @@
   .mini-axis svg{display:block;width:100%;height:100%;overflow:visible;}
   .mini-score{font-family:var(--mono);font-size:12px;width:28px;text-align:right;flex-shrink:0;}
 
-  .ind-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;margin-bottom:12px;}
+  .ind-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 18px;margin-bottom:12px;}
   .ind-col-title{font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:8px 0 4px;}
   .ind-row{display:flex;justify-content:space-between;align-items:center;gap:6px;padding:3px 0;border-bottom:1px solid var(--hair);}
   .ind-row:last-child{border-bottom:none;}
@@ -230,7 +230,7 @@ function indPill(status, arrow){
   else if(["warning","mixed"].includes(key)){bg="rgba(201,162,39,.18)";fg="var(--yellow)";}
   else if(["stable","strong","holding"].includes(key)){bg="rgba(76,154,106,.18)";fg="var(--green)";}
   else if(["very strong"].includes(key)){bg="rgba(47,107,69,.25)";fg="var(--darkgreen)";}
-  return `<span class="ind-pill" style="background:${bg};color:${fg}">${esc(status)} ${esc(arrow||"")}</span>`;
+  return `<span class="ind-pill" style="background:${bg};color:${fg}">${esc(status)}&nbsp;${esc(arrow||"")}</span>`;
 }
 
 const PAIR_KIND_CONFIG = {
