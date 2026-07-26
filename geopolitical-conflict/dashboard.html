@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Global Conflict &amp; Coverage Tracker</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12151b;
+    --panel:#1a1e26;
+    --panel-alt:#20242e;
+    --paper:#eae7df;
+    --ink:#e9e7df;
+    --muted:#8b8f99;
+    --hair:#2c3038;
+    --green:#4c9a6a;
+    --darkgreen:#2f6b45;
+    --yellow:#c9a227;
+    --amber:#d98a2b;
+    --orange:#d9622b;
+    --red:#c9403b;
+    --blue:#5b8fd9;
+    --serif:"Source Serif 4", Georgia, serif;
+    --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+    --sans:"Inter", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);}
+  .wrap{max-width:1080px;margin:0 auto;padding:36px 24px 80px;}
+
+  .back{display:inline-block;margin-bottom:16px;font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--muted);}
+  .back:hover{color:var(--ink);}
+  header{border-bottom:1px solid var(--hair);padding-bottom:20px;margin-bottom:28px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+  h1{font-family:var(--serif);font-weight:600;font-size:26px;margin:4px 0 0;}
+  .period{font-family:var(--mono);font-size:13px;color:var(--muted);}
+
+  .empty{border:1px dashed var(--hair);border-radius:4px;padding:40px 24px;text-align:center;color:var(--muted);font-family:var(--mono);font-size:13px;}
+
+  .summary-bar{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--hair);border-radius:4px;overflow:hidden;margin-bottom:20px;}
+  .summary-cell{padding:18px 16px;background:var(--panel);text-align:center;}
+  .summary-cell + .summary-cell{border-left:1px solid var(--hair);}
+  .summary-num{font-family:var(--mono);font-size:30px;font-weight:600;}
+  .summary-lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:4px;}
+
+  .aggregate-note{border:1px dashed var(--hair);border-radius:4px;padding:12px 16px;font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:32px;}
+
+  .section{margin-bottom:32px;}
+  .section-title{font-family:var(--serif);font-size:16px;font-weight:600;margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid var(--hair);}
+
+  .conflict-row{padding:12px 0;border-bottom:1px solid var(--hair);}
+  .conflict-row:last-child{border-bottom:none;}
+  .conflict-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
+  .conflict-name{font-size:14px;font-weight:600;}
+  .conflict-region{font-family:var(--mono);font-size:11px;color:var(--muted);margin-left:8px;font-weight:400;}
+  .conflict-score{font-family:var(--mono);font-size:20px;font-weight:600;min-width:44px;text-align:right;}
+  .pill{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;padding:2px 8px;border-radius:10px;white-space:nowrap;display:inline-flex;align-items:center;gap:5px;}
+  .conflict-note{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.45;max-width:760px;}
+
+  .dotplot-row{display:flex;align-items:center;gap:16px;padding:11px 0;border-bottom:1px solid var(--hair);}
+  .dotplot-row:last-child{border-bottom:none;}
+  .dotplot-label{width:220px;flex-shrink:0;}
+  .dotplot-label .conflict-name{display:block;}
+  .dotplot-axis{flex:1;min-width:120px;height:30px;position:relative;}
+  .dotplot-axis svg{display:block;width:100%;height:100%;overflow:visible;}
+  .dotplot-readout{width:130px;flex-shrink:0;text-align:right;font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.5;}
+  .dotplot-readout b{color:var(--ink);font-size:14px;}
+  .dotplot-legend{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:14px;align-items:center;}
+  .dotplot-legend .swatch{display:inline-flex;align-items:center;gap:5px;}
+  .legend-dot{width:9px;height:9px;border-radius:50%;display:inline-block;}
+  .legend-ghost{width:9px;height:9px;border-radius:50%;display:inline-block;border:1.5px solid var(--muted);}
+  .legend-diamond{width:8px;height:8px;display:inline-block;background:var(--blue);transform:rotate(45deg);}
+
+  .compact-list{border:1px solid var(--hair);border-radius:4px;overflow:hidden;margin-bottom:8px;}
+  .compact-row{display:flex;align-items:center;gap:12px;padding:7px 14px;border-bottom:1px solid var(--hair);background:var(--panel);}
+  .compact-row:last-child{border-bottom:none;}
+  .compact-rank{font-family:var(--mono);font-size:11px;color:var(--muted);width:16px;flex-shrink:0;}
+  .compact-name{font-size:12.5px;width:220px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .compact-axis{flex:1;min-width:100px;height:18px;}
+  .compact-axis svg{display:block;width:100%;height:100%;overflow:visible;}
+  .compact-score{font-family:var(--mono);font-size:12.5px;width:34px;text-align:right;flex-shrink:0;font-weight:600;}
+  .compact-cov{font-family:var(--mono);font-size:11px;width:56px;text-align:right;flex-shrink:0;color:var(--blue);}
+  .compact-status{width:88px;flex-shrink:0;text-align:right;}
+  .compact-caption{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:20px;}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media (max-width:760px){.cols{grid-template-columns:1fr;}.summary-bar{grid-template-columns:repeat(2,1fr);}}
+  .gap-item{padding:10px 0;border-bottom:1px solid var(--hair);font-size:13px;}
+  .gap-item:last-child{border-bottom:none;}
+  .gap-item b{font-weight:600;}
+  .gap-value{font-family:var(--mono);font-weight:600;}
+  .gap-value.up{color:var(--red);}
+  .gap-value.down{color:var(--green);}
+  .gap-meta{color:var(--muted);font-size:12px;margin-top:3px;}
+
+  .event-item{padding:10px 0;border-bottom:1px solid var(--hair);font-size:13px;}
+  .event-item:last-child{border-bottom:none;}
+  .event-date{font-family:var(--mono);font-size:11px;color:var(--muted);}
+  .event-meta{color:var(--muted);font-size:12px;margin-top:3px;}
+
+  .trajectory{font-size:14px;line-height:1.7;color:var(--paper);}
+
+  .history{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12px;}
+  .history th,.history td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--hair);}
+  .history th{color:var(--muted);font-weight:500;text-transform:uppercase;font-size:10.5px;letter-spacing:.06em;}
+  .history tr:hover td{background:var(--panel-alt);}
+
+  footer{margin-top:36px;padding-top:20px;border-top:1px solid var(--hair);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-family:var(--mono);font-size:12px;color:var(--muted);}
+  footer a{color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--muted);}
+  footer a:hover{color:var(--ink);}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script>
+/* ------------------------------------------------------------------
+   EMBEDDED DATA
+   Replace TRACKER_DATA below with the full contents of data.json on
+   every run (keep everything else in this file unchanged). Keeps the
+   dashboard a single portable file with no fetch/CORS issues.
+------------------------------------------------------------------- */
+const TRACKER_DATA = {
+  "tracker_id": "geopolitical-conflict",
+  "tracker_name": "Global Conflict & Coverage Tracker",
+  "schema_version": 1,
+  "_schema_note": "registry holds permanent conflict identity; weeks[] holds weekly snapshots referencing conflict_id. Never edit a past week's original scores — add a retrospective_revision instead. See protocol.md Section 12.",
+
+  "registry": {
+    "sudan-civil-war": { "name": "Sudan civil war (SAF vs RSF)", "region": "East Africa", "category": "civil war", "first_tracked": "2026-07-26", "status": "active" },
+    "russia-ukraine-war": { "name": "Russia-Ukraine war", "region": "Eastern Europe", "category": "interstate war", "first_tracked": "2026-07-26", "status": "active" },
+    "sahel-jihadist-insurgency": { "name": "Sahel jihadist insurgency (Mali, Burkina Faso, Niger)", "region": "West Africa / Sahel", "category": "insurgency", "first_tracked": "2026-07-26", "status": "active" },
+    "myanmar-civil-war": { "name": "Myanmar civil war", "region": "Southeast Asia", "category": "civil war", "first_tracked": "2026-07-26", "status": "active" },
+    "drc-m23-conflict": { "name": "DRC / M23 conflict (eastern Congo)", "region": "Central Africa", "category": "civil war / proxy conflict", "first_tracked": "2026-07-26", "status": "active" },
+    "haiti-gang-crisis": { "name": "Haiti gang violence crisis", "region": "Caribbean", "category": "mass civil unrest / state collapse", "first_tracked": "2026-07-26", "status": "active" },
+    "gaza-israel-conflict": { "name": "Gaza-Israel conflict (post-ceasefire violations)", "region": "Middle East", "category": "interstate/asymmetric conflict", "first_tracked": "2026-07-26", "status": "active" },
+    "yemen-red-sea-conflict": { "name": "Yemen civil war / Houthi Red Sea attacks", "region": "Middle East", "category": "civil war / maritime conflict", "first_tracked": "2026-07-26", "status": "active" },
+    "syria-sectarian-violence": { "name": "Syria post-Assad sectarian violence", "region": "Middle East", "category": "post-conflict instability", "first_tracked": "2026-07-26", "status": "active" },
+    "taiwan-strait-tension": { "name": "Taiwan Strait / China-Taiwan-Japan tension", "region": "East Asia", "category": "interstate crisis (non-kinetic)", "first_tracked": "2026-07-26", "status": "emerging" }
+  },
+
+  "weeks": [
+    {
+      "week": 29,
+      "year": 2026,
+      "start_date": "2026-07-13",
+      "end_date": "2026-07-19",
+
+      "summary": {
+        "active": 9,
+        "emerging": 1,
+        "de_escalating": 0,
+        "dormant": 0,
+        "escalating_ids": ["drc-m23-conflict", "haiti-gang-crisis", "sahel-jihadist-insurgency"],
+        "de_escalating_ids": [],
+        "newly_added_ids": ["sudan-civil-war", "russia-ukraine-war", "sahel-jihadist-insurgency", "myanmar-civil-war", "drc-m23-conflict", "haiti-gang-crisis", "gaza-israel-conflict", "yemen-red-sea-conflict", "syria-sectarian-violence", "taiwan-strait-tension"],
+        "retired_ids": [],
+        "secondary_aggregate_note": "First tracked week — all conflicts are 'new' by definition. Rough directional gauge (unweighted average of severity scores): 68.6 — not authoritative, see protocol.md Section 9."
+      },
+
+      "conflicts": [
+        {
+          "conflict_id": "sudan-civil-war",
+          "severity": { "score": 90, "status": "Escalating", "arrow": "→", "change": 0, "note": "8.8M internally displaced, 4.5M refugees, cumulative deaths estimated 150,000-400,000; drone sieges around El Obeid put roughly half a million civilians at risk of large-scale atrocities, echoing the earlier El Fasher massacre." },
+          "coverage": {
+            "coverage_score": 34,
+            "global_english_note": "Covered mainly by humanitarian/policy outlets (IRC, CSIS, Georgetown, migrationpolicy.org) rather than sustained mainstream front-page coverage; one source explicitly describes it as 'forgotten and neglected.'",
+            "regional_note": null,
+            "severity_rank": 1,
+            "coverage_rank": 7,
+            "gap": 6,
+            "gap_direction": "underreported",
+            "plausible_reason": "Limited journalist access, compassion fatigue after three-plus years, and competition from higher-profile conflicts (Ukraine, Gaza) for finite global news attention."
+          },
+          "novelty": "new",
+          "evidence_quality": "medium",
+          "source_1": "https://www.migrationpolicy.org/article/sudan-civil-war-displacement",
+          "source_2": "https://news.un.org/en/story/2026/07/1167856",
+          "notes": "Widely regarded by conflict monitors as the world's largest displacement and humanitarian crisis; casualty range is wide and contested given restricted access."
+        },
+        {
+          "conflict_id": "russia-ukraine-war",
+          "severity": { "score": 82, "status": "Stable", "arrow": "→", "change": 0, "note": "High-tempo attritional war continues; Russian losses estimated over 30,000/month, exceeding recruitment; casualty ratio has widened to near 8:1 in Russia's disfavor; no major territorial shift confirmed this week." },
+          "coverage": {
+            "coverage_score": 88,
+            "global_english_note": "Extensive, continuous mainstream and wire coverage, including dedicated weekly tracking (e.g. Russia Matters 'War Report Card').",
+            "regional_note": null,
+            "severity_rank": 2,
+            "coverage_rank": 1,
+            "gap": -1,
+            "gap_direction": "roughly proportionate",
+            "plausible_reason": "Coverage broadly matches severity given the war's scale and direct stakes for NATO/Europe; slightly ahead of strict rank order due to sustained Western strategic interest."
+          },
+          "novelty": "new",
+          "evidence_quality": "high",
+          "source_1": "https://www.russiamatters.org/news/russia-ukraine-war-report-card/russia-ukraine-war-report-card-july-15-2026",
+          "source_2": "https://www.pravda.com.ua/eng/news/2026/07/23/8045444/",
+          "notes": "One of the best-documented conflicts in the tracked set; casualty estimates still vary by source and side."
+        },
+        {
+          "conflict_id": "sahel-jihadist-insurgency",
+          "severity": { "score": 80, "status": "Escalating", "arrow": "→", "change": 0, "note": "JNIM and ISSP-affiliated groups sustain sieges, IEDs, drone and landmine attacks across Mali, Burkina Faso and Niger; UN recorded 2,640 conflict-related civilian deaths in a single quarter earlier in 2026." },
+          "coverage": {
+            "coverage_score": 12,
+            "global_english_note": "Almost no sustained mainstream global coverage; visibility limited to specialist security/policy outlets (Security Council Report, CFR Global Conflict Tracker) and Wikipedia incident stubs.",
+            "regional_note": null,
+            "severity_rank": 3,
+            "coverage_rank": 10,
+            "gap": 7,
+            "gap_direction": "underreported",
+            "plausible_reason": "Difficult and dangerous reporting access, no single dramatic flashpoint event to anchor a story, and the AES states' withdrawal from ECOWAS/Western security partnerships has reduced Western outlets' on-the-ground presence."
+          },
+          "novelty": "new",
+          "evidence_quality": "medium",
+          "source_1": "https://www.securitycouncilreport.org/monthly-forecast/2026-07/west-africa-and-the-sahel-17.php",
+          "source_2": "https://www.cfr.org/global-conflict-tracker/conflict/violent-extremism-sahel",
+          "notes": "Most underreported conflict in this week's tracked set relative to its casualty toll; no single dated in-window flashpoint identified, evidence reflects ongoing high-tempo pattern."
+        },
+        {
+          "conflict_id": "myanmar-civil-war",
+          "severity": { "score": 77, "status": "Stable", "arrow": "→", "change": 0, "note": "Cumulative post-coup death toll passed 100,000 per ACLED, called Asia's deadliest active conflict; 2.7M displaced since 2021; no single major in-window battle identified." },
+          "coverage": {
+            "coverage_score": 20,
+            "global_english_note": "Milestone death-toll figure covered mainly by regional/specialist outlets (Irrawaddy, SBS, Manila Times) rather than sustained global front-page attention.",
+            "regional_note": "Somewhat more visible in Southeast Asian press than in Western outlets.",
+            "severity_rank": 4,
+            "coverage_rank": 8,
+            "gap": 4,
+            "gap_direction": "underreported",
+            "plausible_reason": "Severely restricted media access inside Myanmar and a long-running, diffuse multi-front conflict without a single clear narrative arc for global outlets to follow."
+          },
+          "novelty": "new",
+          "evidence_quality": "medium",
+          "source_1": "https://www.irrawaddy.com/news/burma/myanmar-mourns-as-post-coup-conflict-death-toll-hits-100000.html",
+          "source_2": "https://thedefensepost.com/2026/07/01/myanmar-post-coup-casualties/amp/",
+          "notes": "The 100,000 milestone was reported just before this reporting window (~July 1-2); treated here as established background context rather than an in-window event."
+        },
+        {
+          "conflict_id": "drc-m23-conflict",
+          "severity": { "score": 74, "status": "Escalating", "arrow": "→", "change": 0, "note": "UN High Commissioner for Human Rights condemned rising hostilities between FARDC and Rwanda-backed M23 in South Kivu, with both sides using drones and heavy artillery in populated areas; December 2025 ceasefire deal now at risk." },
+          "coverage": {
+            "coverage_score": 15,
+            "global_english_note": "Coverage largely confined to UN News, OHCHR, and HRW; little sustained mainstream global attention despite scale and duration.",
+            "regional_note": null,
+            "severity_rank": 5,
+            "coverage_rank": 9,
+            "gap": 4,
+            "gap_direction": "underreported",
+            "plausible_reason": "Decades-long conflict fatigue and complex multi-actor dynamics (Rwanda's role, multiple militias) make for a harder story to package than a clean two-sided war."
+          },
+          "novelty": "new",
+          "evidence_quality": "medium",
+          "source_1": "https://news.un.org/en/story/2026/07/1167906",
+          "source_2": "https://www.ohchr.org/en/press-releases/2026/07/m23s-reign-terror-torture-eastern-dr-congo-must-end-un-experts",
+          "notes": "M23 drone strike on a Wazalendo position near Nyabiondo reported July 14, within this window; ceasefire signed December 2025 is fraying."
+        },
+        {
+          "conflict_id": "haiti-gang-crisis",
+          "severity": { "score": 66, "status": "Escalating", "arrow": "→", "change": 0, "note": "2,310 killed in first six months of 2026; gangs control up to 90% of Port-au-Prince; drone attacks up 120%; 1.47M displaced, a record. Partially offset by new international security force deployment and progress toward elections." },
+          "coverage": {
+            "coverage_score": 40,
+            "global_english_note": "Moderate mainstream US coverage (Washington Post, UN News) given geographic proximity, though volume is not proportionate to the scale of displacement and violence.",
+            "regional_note": null,
+            "severity_rank": 6,
+            "coverage_rank": 6,
+            "gap": 0,
+            "gap_direction": "roughly proportionate",
+            "plausible_reason": "N/A this week — coverage and severity rank align."
+          },
+          "novelty": "new",
+          "evidence_quality": "medium",
+          "source_1": "https://news.un.org/en/story/2026/07/1167963",
+          "source_2": "https://www.washingtonpost.com/world/2026/07/20/haiti-un-gangs-waltz-us-violence/2bca7472-8465-11f1-9cec-0fb26676f07e_story.html",
+          "notes": "UN News (July 19) frames this as 'signs of hope despite gang violence' — one of the few tracked situations with a concrete, named de-escalation mechanism (new security force, election planning) alongside worsening violence metrics."
+        },
+        {
+          "conflict_id": "gaza-israel-conflict",
+          "severity": { "score": 65, "status": "Stable", "arrow": "→", "change": 0, "note": "Nominal ceasefire (since October 2025) continues with persistent violations; roughly 1,180 Palestinians killed since the ceasefire took effect; Israeli forces reported controlling about 70% of Gaza versus the 53% envisioned under the deal." },
+          "coverage": {
+            "coverage_score": 82,
+            "global_english_note": "Very high, sustained global coverage, including near-daily wire and major-outlet reporting on ceasefire violations.",
+            "regional_note": "Extensively covered in Middle East-based outlets (e.g. Al Jazeera) with a generally more critical framing of Israeli conduct than much of the Western press.",
+            "severity_rank": 7,
+            "coverage_rank": 2,
+            "gap": -5,
+            "gap_direction": "overreported relative to rank",
+            "plausible_reason": "Sustained global political salience and strategic stakes keep attention high even as its relative severity rank (within this specific tracked set) sits mid-table; this is not a claim the conflict is over-covered in absolute terms."
+          },
+          "novelty": "new",
+          "evidence_quality": "high",
+          "source_1": "https://www.aljazeera.com/news/2026/7/13/three-palestinians-killed-15-wounded-in-israeli-attacks-across-gaza?traffic_source=rss",
+          "source_2": "https://news.antiwar.com/2026/07/22/israel-has-killed-1180-palestinians-in-gaza-since-the-so-called-ceasefire-deal-was-signed/",
+          "notes": "Ceasefire violation figures come from advocacy-adjacent outlets and should be read alongside official Israeli and mediator statements, which this pass did not separately verify in detail."
+        },
+        {
+          "conflict_id": "yemen-red-sea-conflict",
+          "severity": { "score": 55, "status": "Escalating", "arrow": "→", "change": 0, "note": "Houthi forces reportedly killed 16 government-aligned troops in some of the most violent fighting in years and attacked a cargo ship in the Red Sea; UN warns of risk of wider regional escalation." },
+          "coverage": {
+            "coverage_score": 60,
+            "global_english_note": "Gets substantial mainstream coverage specifically around shipping/economic angles (Red Sea trade disruption); the underlying Yemeni civil-war humanitarian toll gets comparatively less attention.",
+            "regional_note": null,
+            "severity_rank": 8,
+            "coverage_rank": 4,
+            "gap": -4,
+            "gap_direction": "overreported relative to rank",
+            "plausible_reason": "Commercial/shipping stakes (Red Sea trade routes) drive coverage more than the humanitarian toll of the underlying civil war does."
+          },
+          "novelty": "new",
+          "evidence_quality": "low",
+          "source_1": "https://www.cbsnews.com/news/yemen-houthi-rebels-red-sea-attack-cargo-ship/",
+          "source_2": "https://www.securitycouncilreport.org/monthly-forecast/2026-07/the-red-sea.php",
+          "notes": "Exact date of the 16-troops/cargo-ship incident is unclear from available sourcing; a further, more clearly dated Saudi-Houthi escalation (tanker strikes, retaliatory strikes) appears to fall just after this window (~July 24-25) and will be assessed in next week's pass if confirmed."
+        },
+        {
+          "conflict_id": "syria-sectarian-violence",
+          "severity": { "score": 52, "status": "Stable", "arrow": "→", "change": 0, "note": "Sectarian violence in Suweida/southern Syria (Bedouin-Druze clashes, earlier Alawite-targeted killings) remains a live fault line in the post-Assad transition; cumulative tolls from 2025-2026 clashes exceed 1,000 dead and roughly 200,000 displaced, though this week had no single confirmed fresh flashpoint." },
+          "coverage": {
+            "coverage_score": 45,
+            "global_english_note": "Substantial coverage from HRW, ICG, and ACLED given the post-Assad transition's high policy interest, though mainstream daily coverage has thinned since the acute phase of the clashes.",
+            "regional_note": null,
+            "severity_rank": 9,
+            "coverage_rank": 5,
+            "gap": -4,
+            "gap_direction": "overreported relative to rank",
+            "plausible_reason": "Post-Assad Syria remains a high policy-interest story independent of this week's specific severity level."
+          },
+          "novelty": "new",
+          "evidence_quality": "low",
+          "source_1": "https://www.hrw.org/world-report/2026/country-chapters/syria",
+          "source_2": "https://www.crisisgroup.org/rpt/middle-east-north-africa/syria/253-restoring-security-post-assad-syria-lessons-coast-and-suweida",
+          "notes": "Source reporting conflates distinct incidents across 2025 and 2026; casualty/displacement figures should be treated as cumulative context rather than this week's specific toll."
+        },
+        {
+          "conflict_id": "taiwan-strait-tension",
+          "severity": { "score": 35, "status": "Emerging", "arrow": "→", "change": 0, "note": "No kinetic conflict; China continues an information and economic pressure campaign against Japan and a military buildup around Taiwan, including a July 6 SLBM test, but no direct engagement or casualties this week." },
+          "coverage": {
+            "coverage_score": 58,
+            "global_english_note": "Substantial policy and mainstream coverage (dedicated weekly AEI tracking, major-outlet strategic-affairs pieces) despite zero current casualties.",
+            "regional_note": null,
+            "severity_rank": 10,
+            "coverage_rank": 3,
+            "gap": -7,
+            "gap_direction": "most overreported relative to rank",
+            "plausible_reason": "Coverage here tracks strategic/nuclear-stakes significance rather than current on-the-ground damage — a useful illustration that severity and newsworthiness are legitimately different things, not evidence of media distortion."
+          },
+          "novelty": "new",
+          "evidence_quality": "medium",
+          "source_1": "https://www.aei.org/commentary/china-taiwan-update-july-17-2026/",
+          "source_2": "https://www.aei.org/commentary/china-taiwan-update-july-24-2026/",
+          "notes": "Included as a non-kinetic interstate crisis per protocol.md Section 3; will be retired from the watchlist if it stays inactive with no new developments for 4+ weeks."
+        }
+      ],
+
+      "notable_events": [
+        {
+          "event_id": "2026W29-C001",
+          "event_date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "conflict_id": "drc-m23-conflict",
+          "actor": "M23 (Rwanda-backed)",
+          "target": "Wazalendo militia position near Nyabiondo, South Kivu",
+          "action": "Drone strike on a Wazalendo position, part of a broader increase in FARDC-M23 hostilities in South Kivu's Fizi and Mwenga territories using drones and heavy artillery in populated areas",
+          "effect": "escalation",
+          "severity_delta": "positive",
+          "confidence": "Medium",
+          "source_1": "https://www.criticalthreats.org/briefs/congo-war-security-review",
+          "source_2": "https://news.un.org/en/story/2026/07/1167906",
+          "notes": "UN High Commissioner for Human Rights publicly condemned the increase in hostilities and use of explosive weapons in civilian areas."
+        },
+        {
+          "event_id": "2026W29-C002",
+          "event_date": "2026-07-13",
+          "report_date": "2026-07-13",
+          "conflict_id": "gaza-israel-conflict",
+          "actor": "Israeli forces",
+          "target": "Civilians in Gaza",
+          "action": "Israeli attacks across Gaza killed three Palestinians and wounded 15, part of a sustained pattern of strikes despite the nominal ceasefire",
+          "effect": "escalation",
+          "severity_delta": "positive",
+          "confidence": "High",
+          "source_1": "https://www.aljazeera.com/news/2026/7/13/three-palestinians-killed-15-wounded-in-israeli-attacks-across-gaza?traffic_source=rss",
+          "source_2": "",
+          "notes": "One of many similar strikes reported through July; ceasefire violations described as continuing for 284+ consecutive days as of late July."
+        },
+        {
+          "event_id": "2026W29-C003",
+          "event_date": "2026-07-15",
+          "report_date": "2026-07-15",
+          "conflict_id": "russia-ukraine-war",
+          "actor": "Russian and Ukrainian forces",
+          "target": "Frontline positions, Ukraine",
+          "action": "Weekly tracking (Russia Matters War Report Card) documented continued high-tempo attritional fighting with Russian monthly losses estimated above 30,000, exceeding Russian recruitment rates",
+          "effect": "escalation",
+          "severity_delta": "neutral",
+          "confidence": "Medium",
+          "source_1": "https://www.russiamatters.org/news/russia-ukraine-war-report-card/russia-ukraine-war-report-card-july-15-2026",
+          "source_2": "",
+          "notes": "No major territorial shift identified this week; casualty rate itself is the notable trend, consistent with recent months rather than a sharp in-week escalation."
+        },
+        {
+          "event_id": "2026W29-C004",
+          "event_date": "2026-07-19",
+          "report_date": "2026-07-19",
+          "conflict_id": "haiti-gang-crisis",
+          "actor": "Haitian authorities, international partners",
+          "target": "Gang-controlled areas of Port-au-Prince and surrounding departments",
+          "action": "UN News reported 'signs of hope despite gang violence and political uncertainty' as a new international security force deploys and election planning continues, even as drone-attack frequency and displacement keep rising",
+          "effect": "diplomatic",
+          "severity_delta": "neutral",
+          "confidence": "Medium",
+          "source_1": "https://news.un.org/en/story/2026/07/1167963",
+          "source_2": "",
+          "notes": "Mixed-signal event: genuine institutional response underway alongside continued deterioration in ground-level violence metrics."
+        },
+        {
+          "event_id": "2026W29-C005",
+          "event_date": "2026-07-17",
+          "report_date": "2026-07-17",
+          "conflict_id": "taiwan-strait-tension",
+          "actor": "People's Republic of China",
+          "target": "Taiwan, Japan",
+          "action": "Continued information and economic pressure campaign against Japan over its military modernization stance, alongside criticism of Taiwan's drone-procurement and asymmetric-defense plans",
+          "effect": "escalation",
+          "severity_delta": "neutral",
+          "confidence": "Medium",
+          "source_1": "https://www.aei.org/commentary/china-taiwan-update-july-17-2026/",
+          "source_2": "",
+          "notes": "Non-kinetic; tracked as a strategic pressure campaign rather than a casualty-producing event."
+        }
+      ],
+
+      "underreported": [
+        { "conflict_id": "sahel-jihadist-insurgency", "severity_rank": 3, "coverage_rank": 10, "gap": 7, "reason": "Dangerous reporting access, no single anchor event, reduced Western outlet presence after AES states' break with ECOWAS." },
+        { "conflict_id": "sudan-civil-war", "severity_rank": 1, "coverage_rank": 7, "gap": 6, "reason": "Limited access, compassion fatigue, competition from higher-profile conflicts for attention." },
+        { "conflict_id": "myanmar-civil-war", "severity_rank": 4, "coverage_rank": 8, "gap": 4, "reason": "Restricted media access, diffuse multi-front conflict without a clean narrative arc." },
+        { "conflict_id": "drc-m23-conflict", "severity_rank": 5, "coverage_rank": 9, "gap": 4, "reason": "Decades-long conflict fatigue and complex multi-actor dynamics." }
+      ],
+      "overreported": [
+        { "conflict_id": "taiwan-strait-tension", "severity_rank": 10, "coverage_rank": 3, "gap": -7, "reason": "Coverage tracks strategic/nuclear stakes rather than current on-the-ground damage, of which there is currently none." },
+        { "conflict_id": "gaza-israel-conflict", "severity_rank": 7, "coverage_rank": 2, "gap": -5, "reason": "Sustained global political salience keeps attention high relative to this week's rank; not a claim the conflict is over-covered in absolute terms." },
+        { "conflict_id": "yemen-red-sea-conflict", "severity_rank": 8, "coverage_rank": 4, "gap": -4, "reason": "Commercial shipping stakes drive coverage more than the underlying humanitarian toll does." },
+        { "conflict_id": "syria-sectarian-violence", "severity_rank": 9, "coverage_rank": 5, "gap": -4, "reason": "Post-Assad Syria remains high policy-interest independent of this week's specific severity level." }
+      ],
+
+      "trajectory_note": "This is the first tracked week, so there is no prior baseline for week-over-week movement; all ten situations are 'new' by definition and all changes/arrows are set to zero/steady accordingly. The starkest pattern in this baseline is the split between conflicts with the highest casualty tolls (Sudan, the Sahel insurgency, Myanmar, DRC) and their comparatively minimal presence in global/English-language media, versus conflicts with strong strategic or political salience (Taiwan, Gaza, Yemen's Red Sea dimension) that draw attention somewhat independent of current casualty counts. Russia-Ukraine and Haiti are the closest to proportionate coverage given their severity. None of this should be read as a claim that heavily-covered conflicts don't deserve their coverage — the point is that severity and newsworthiness are measured on different bases, and the biggest blind spots (the Sahel and Sudan in particular) are worth watching for whether coverage improves or the gap widens as these wars continue.",
+      "confidence": "Medium",
+
+      "retrospective_revision": null
+    }
+  ]
+};
+
+function esc(s){ return (s ?? "").toString().replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+function severityColor(score){
+  if(score >= 80) return "var(--red)";
+  if(score >= 60) return "var(--orange)";
+  if(score >= 40) return "var(--amber)";
+  if(score >= 20) return "var(--yellow)";
+  return "var(--green)";
+}
+
+function priorSeverity(weeks, latestIdx, conflictId){
+  for(let i = latestIdx - 1; i >= 0; i--){
+    const match = (weeks[i].conflicts || []).find(c => c.conflict_id === conflictId);
+    if(match) return match.severity.score;
+  }
+  return null;
+}
+
+function dotPlotRowSVG(prior, current, coverage){
+  const y = 15;
+  const hasPrior = (prior !== null && prior !== undefined && prior !== current);
+  const trendColor = !hasPrior ? "var(--hair)" : (current > prior ? "var(--red)" : (current < prior ? "var(--green)" : "var(--hair)"));
+  const grid = [0,25,50,75,100].map(x => `<line x1="${x}" y1="4" x2="${x}" y2="26" stroke="var(--hair)" stroke-width="0.5"/>`).join("");
+  const baseline = `<line x1="0" y1="${y}" x2="100" y2="${y}" stroke="var(--hair)" stroke-width="0.6"/>`;
+  const trendLine = hasPrior ? `<line x1="${prior}" y1="${y}" x2="${current}" y2="${y}" stroke="${trendColor}" stroke-width="1.6"/>` : "";
+  const ghost = hasPrior ? `<circle cx="${prior}" cy="${y}" r="3" fill="var(--panel)" stroke="var(--muted)" stroke-width="1.2"/>` : "";
+  const currentDot = `<circle cx="${current}" cy="${y}" r="4.2" fill="${severityColor(current)}" stroke="var(--bg)" stroke-width="1"/>`;
+  const covDiamond = `<rect x="${coverage-2.6}" y="${y-2.6}" width="5.2" height="5.2" fill="var(--blue)" stroke="var(--bg)" stroke-width="0.8" transform="rotate(45 ${coverage} ${y})"/>`;
+  return `<svg viewBox="0 0 100 30" preserveAspectRatio="none">${grid}${baseline}${trendLine}${ghost}${currentDot}${covDiamond}</svg>`;
+}
+
+function compactDotSVG(prior, current, coverage){
+  const y = 9;
+  const hasPrior = (prior !== null && prior !== undefined && prior !== current);
+  const trendColor = !hasPrior ? "var(--hair)" : (current > prior ? "var(--red)" : (current < prior ? "var(--green)" : "var(--hair)"));
+  const baseline = `<line x1="0" y1="${y}" x2="100" y2="${y}" stroke="var(--hair)" stroke-width="0.6"/>`;
+  const trendLine = hasPrior ? `<line x1="${prior}" y1="${y}" x2="${current}" y2="${y}" stroke="${trendColor}" stroke-width="1.4"/>` : "";
+  const ghost = hasPrior ? `<circle cx="${prior}" cy="${y}" r="2.4" fill="var(--panel)" stroke="var(--muted)" stroke-width="1"/>` : "";
+  const currentDot = `<circle cx="${current}" cy="${y}" r="3.6" fill="${severityColor(current)}" stroke="var(--bg)" stroke-width="0.8"/>`;
+  const covDiamond = `<rect x="${coverage-2.2}" y="${y-2.2}" width="4.4" height="4.4" fill="var(--blue)" stroke="var(--bg)" stroke-width="0.6" transform="rotate(45 ${coverage} ${y})"/>`;
+  return `<svg viewBox="0 0 100 18" preserveAspectRatio="none">${baseline}${trendLine}${ghost}${currentDot}${covDiamond}</svg>`;
+}
+
+function statusPill(status){
+  const key = (status||"").toLowerCase();
+  let bg = "var(--hair)", fg = "var(--muted)";
+  if(["escalating"].includes(key)){bg="rgba(201,64,59,.18)";fg="var(--red)";}
+  else if(["emerging"].includes(key)){bg="rgba(217,98,43,.18)";fg="var(--orange)";}
+  else if(["stable"].includes(key)){bg="rgba(201,162,39,.18)";fg="var(--yellow)";}
+  else if(["de-escalating"].includes(key)){bg="rgba(76,154,106,.18)";fg="var(--green)";}
+  else if(["dormant","resolved"].includes(key)){bg="rgba(47,107,69,.25)";fg="var(--darkgreen)";}
+  return `<span class="pill" style="background:${bg};color:${fg}">${esc(status)}</span>`;
+}
+
+function render(){
+  const app = document.getElementById("app");
+  const weeks = TRACKER_DATA.weeks || [];
+  const registry = TRACKER_DATA.registry || {};
+  if(weeks.length === 0){
+    app.innerHTML = `
+      <a class="back" href="../index.html">&larr; World dashboard</a>
+      <header>
+        <div><div class="eyebrow">Global Conflict &amp; Coverage Tracker</div>
+        <h1>No data yet</h1></div>
+      </header>
+      <div class="empty">This dashboard renders from <code>data.json</code>.<br>
+      Run the weekly scheduled task once to populate the first week's entry.</div>`;
+    return;
+  }
+
+  const latest = weeks[weeks.length - 1];
+  const s = latest.summary || {};
+  const nameOf = id => (registry[id] && registry[id].name) || id;
+
+  const sortedConflicts = (latest.conflicts || []).slice().sort((a,b) => b.severity.score - a.severity.score);
+
+  app.innerHTML = `
+    <a class="back" href="../index.html">&larr; World dashboard</a>
+    <header>
+      <div>
+        <div class="eyebrow">Global Conflict &amp; Coverage Tracker</div>
+        <h1>Week ${latest.week}, ${latest.year}</h1>
+      </div>
+      <div class="period">Reporting period: ${esc(latest.start_date)} – ${esc(latest.end_date)}</div>
+    </header>
+
+    <div class="summary-bar">
+      <div class="summary-cell"><div class="summary-num">${s.active ?? 0}</div><div class="summary-lbl">Active</div></div>
+      <div class="summary-cell"><div class="summary-num">${s.emerging ?? 0}</div><div class="summary-lbl">Emerging</div></div>
+      <div class="summary-cell"><div class="summary-num" style="color:var(--red)">${(s.escalating_ids||[]).length}</div><div class="summary-lbl">Escalating</div></div>
+      <div class="summary-cell"><div class="summary-num" style="color:var(--green)">${(s.de_escalating_ids||[]).length}</div><div class="summary-lbl">De-escalating</div></div>
+    </div>
+
+    ${s.secondary_aggregate_note ? `<div class="aggregate-note">${esc(s.secondary_aggregate_note)}</div>` : ""}
+
+    <div class="section">
+      <div class="section-title">At a glance — all ${sortedConflicts.length} tracked conflicts</div>
+      <div class="compact-list">
+        ${sortedConflicts.map((c,i) => {
+          const latestIdx = weeks.length - 1;
+          const prior = priorSeverity(weeks, latestIdx, c.conflict_id);
+          const current = c.severity.score;
+          const coverage = c.coverage.coverage_score;
+          return `
+          <div class="compact-row">
+            <span class="compact-rank">${i+1}</span>
+            <span class="compact-name">${esc(nameOf(c.conflict_id))}</span>
+            <span class="compact-axis">${compactDotSVG(prior, current, coverage)}</span>
+            <span class="compact-score" style="color:${severityColor(current)}">${current}</span>
+            <span class="compact-cov">${coverage} cov</span>
+            <span class="compact-status">${statusPill(c.severity.status)}</span>
+          </div>`;
+        }).join("")}
+      </div>
+      <div class="compact-caption">● severity this week · ○ severity last week · ◆ coverage score — sorted by severity, most severe first</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Severity ranking — detail</div>
+      <div class="dotplot-legend">
+        <span class="swatch"><span class="legend-dot" style="background:var(--red)"></span> Severity this week</span>
+        <span class="swatch"><span class="legend-ghost"></span> Severity last week</span>
+        <span class="swatch"><span class="legend-diamond"></span> Coverage score</span>
+      </div>
+      ${sortedConflicts.map((c,i) => {
+        const latestIdx = weeks.length - 1;
+        const prior = priorSeverity(weeks, latestIdx, c.conflict_id);
+        const current = c.severity.score;
+        const coverage = c.coverage.coverage_score;
+        const deltaTxt = (prior !== null && prior !== current) ? ` (${current > prior ? "+" : ""}${current - prior} vs last wk)` : "";
+        return `
+        <div class="dotplot-row">
+          <div class="dotplot-label">
+            <span class="conflict-name">${i+1}. ${esc(nameOf(c.conflict_id))}</span>
+            <span class="conflict-region">${esc((registry[c.conflict_id]||{}).region || "")}</span>
+            <div style="margin-top:3px;">${statusPill(c.severity.status)}</div>
+          </div>
+          <div class="dotplot-axis">${dotPlotRowSVG(prior, current, coverage)}</div>
+          <div class="dotplot-readout">
+            <div><b style="color:${severityColor(current)}">${current}</b> sev${esc(deltaTxt)}</div>
+            <div style="color:var(--blue)">${coverage} cov</div>
+          </div>
+        </div>
+        <div class="conflict-note" style="margin:2px 0 8px 0;">${esc(c.severity.note)}</div>`;
+      }).join("")}
+    </div>
+
+    <div class="cols">
+      <div class="section">
+        <div class="section-title">Most underreported</div>
+        ${(latest.underreported && latest.underreported.length) ? latest.underreported.map(u => `
+          <div class="gap-item">
+            <b>${esc(nameOf(u.conflict_id))}</b> — severity rank ${u.severity_rank}, coverage rank ${u.coverage_rank}, gap <span class="gap-value up">+${u.gap}</span>
+            <div class="gap-meta">${esc(u.reason)}</div>
+          </div>`).join("") : `<div class="gap-meta">No notable underreported gaps this week.</div>`}
+      </div>
+      <div class="section">
+        <div class="section-title">Most overreported relative to severity</div>
+        ${(latest.overreported && latest.overreported.length) ? latest.overreported.map(o => `
+          <div class="gap-item">
+            <b>${esc(nameOf(o.conflict_id))}</b> — severity rank ${o.severity_rank}, coverage rank ${o.coverage_rank}, gap <span class="gap-value down">${o.gap}</span>
+            <div class="gap-meta">${esc(o.reason)}</div>
+          </div>`).join("") : `<div class="gap-meta">No notable overreported gaps this week.</div>`}
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Notable events this week</div>
+      ${(latest.notable_events && latest.notable_events.length) ? latest.notable_events.map(e => `
+        <div class="event-item">
+          <span class="event-date">${esc(e.event_date)}</span> — <b>${esc(nameOf(e.conflict_id))}</b>: ${esc(e.action)}
+          <div class="event-meta">${esc(e.actor)} → ${esc(e.target)} · effect: ${esc(e.effect)} · confidence: ${esc(e.confidence)}</div>
+        </div>`).join("") : `<div class="gap-meta">No notable events logged this week.</div>`}
+    </div>
+
+    <div class="section">
+      <div class="section-title">90-day trajectory</div>
+      <div class="trajectory">${esc(latest.trajectory_note).split("\\n\\n").map(p=>`<p>${p}</p>`).join("")}</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">History</div>
+      <table class="history">
+        <thead><tr><th>Week</th><th>Active</th><th>Emerging</th><th>Escalating</th><th>De-escalating</th><th>Confidence</th></tr></thead>
+        <tbody>
+          ${weeks.slice().reverse().map(w => `
+            <tr>
+              <td>${w.week}/${w.year}</td>
+              <td>${(w.summary||{}).active ?? 0}</td>
+              <td>${(w.summary||{}).emerging ?? 0}</td>
+              <td>${((w.summary||{}).escalating_ids||[]).length}</td>
+              <td>${((w.summary||{}).de_escalating_ids||[]).length}</td>
+              <td>${esc(w.confidence)}</td>
+            </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>
+
+    <footer>
+      <span>${sortedConflicts.length} conflicts tracked this week.</span>
+      <span><a href="methodology.html">Methodology &amp; scoring protocol &rarr;</a></span>
+      <span>Updated ${esc(latest.end_date)}</span>
+    </footer>
+  `;
+}
+
+render();
+</script>
+</body>
+</html>

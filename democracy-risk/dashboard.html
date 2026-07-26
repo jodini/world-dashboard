@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Democracy Risk &amp; Institutional Resilience Tracker</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12151b;
+    --panel:#1a1e26;
+    --panel-alt:#20242e;
+    --paper:#eae7df;
+    --ink:#e9e7df;
+    --muted:#8b8f99;
+    --hair:#2c3038;
+    --green:#4c9a6a;
+    --darkgreen:#2f6b45;
+    --yellow:#c9a227;
+    --amber:#d98a2b;
+    --orange:#d9622b;
+    --red:#c9403b;
+    --serif:"Source Serif 4", Georgia, serif;
+    --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+    --sans:"Inter", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);}
+  .wrap{max-width:1080px;margin:0 auto;padding:36px 24px 80px;}
+
+  .back{display:inline-block;margin-bottom:16px;font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--muted);}
+  .back:hover{color:var(--ink);}
+  header{border-bottom:1px solid var(--hair);padding-bottom:20px;margin-bottom:28px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+  h1{font-family:var(--serif);font-weight:600;font-size:26px;margin:4px 0 0;}
+  .period{font-family:var(--mono);font-size:13px;color:var(--muted);}
+
+  .empty{border:1px dashed var(--hair);border-radius:4px;padding:40px 24px;text-align:center;color:var(--muted);font-family:var(--mono);font-size:13px;}
+
+  .gauges{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--hair);border-radius:4px;overflow:hidden;margin-bottom:4px;}
+  .gauge-panel{padding:28px 24px;background:var(--panel);position:relative;}
+  .gauge-panel + .gauge-panel{border-left:1px solid var(--hair);}
+  .gauge-label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+  .gauge-score{font-family:var(--mono);font-size:56px;font-weight:600;line-height:1;}
+  .gauge-band{font-family:var(--sans);font-size:14px;margin-top:6px;font-weight:500;}
+  .gauge-trend{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:10px;}
+  .arc-wrap{position:absolute;top:24px;right:24px;width:96px;height:96px;}
+
+  .gap-bar{border:1px solid var(--hair);border-top:none;background:var(--panel-alt);padding:16px 24px 20px;text-align:center;margin-bottom:32px;border-radius:0 0 4px 4px;}
+  .gap-track{position:relative;height:8px;background:var(--hair);border-radius:4px;margin:14px 0 10px;overflow:hidden;}
+  .gap-fill{position:absolute;top:0;height:100%;background:var(--muted);}
+  .gap-mid{position:absolute;top:-4px;left:50%;width:1px;height:16px;background:var(--muted);opacity:.5;}
+  .gap-label{font-family:var(--mono);font-size:12px;color:var(--muted);}
+  .gap-value{font-family:var(--mono);font-weight:600;color:var(--ink);}
+  .relationship-note{font-family:var(--serif);font-size:14px;color:var(--paper);margin-top:10px;max-width:640px;margin-left:auto;margin-right:auto;}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:32px;}
+  @media (max-width:760px){.cols,.gauges{grid-template-columns:1fr;}}
+  .col-title{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--hair);}
+  .indicator{padding:11px 0;border-bottom:1px solid var(--hair);}
+  .indicator:last-child{border-bottom:none;}
+  .ind-top{display:flex;justify-content:space-between;align-items:center;gap:10px;}
+  .ind-name{font-size:13px;font-weight:500;}
+  .pill{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;padding:2px 8px;border-radius:10px;white-space:nowrap;display:inline-flex;align-items:center;gap:5px;}
+  .ind-note{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.45;}
+
+  .section{margin-bottom:32px;}
+  .section-title{font-family:var(--serif);font-size:16px;font-weight:600;margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid var(--hair);}
+  .gate-list{list-style:none;margin:0;padding:0;}
+  .gate-item{padding:10px 0;border-bottom:1px solid var(--hair);font-size:13px;}
+  .gate-item:last-child{border-bottom:none;}
+  .gate-item b{font-weight:600;}
+  .gate-item .meta{color:var(--muted);font-size:12px;margin-top:3px;}
+  .none-note{color:var(--muted);font-size:13px;font-family:var(--mono);}
+
+  .trajectory{font-size:14px;line-height:1.7;color:var(--paper);}
+
+  .history{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12px;}
+  .history th,.history td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--hair);}
+  .history th{color:var(--muted);font-weight:500;text-transform:uppercase;font-size:10.5px;letter-spacing:.06em;}
+  .history tr:hover td{background:var(--panel-alt);}
+
+  footer{margin-top:36px;padding-top:20px;border-top:1px solid var(--hair);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-family:var(--mono);font-size:12px;color:var(--muted);}
+  footer a{color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--muted);}
+  footer a:hover{color:var(--ink);}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script>
+/* ------------------------------------------------------------------
+   EMBEDDED DATA
+   The scheduled task should replace TRACKER_DATA below with the full
+   contents of data.json on every run (keep everything else in this
+   file unchanged). This keeps the dashboard a single portable file
+   with no fetch/CORS issues when opened directly from disk.
+------------------------------------------------------------------- */
+const TRACKER_DATA = {
+  "tracker_id": "democracy-risk",
+  "tracker_name": "Democracy Risk and Institutional Resilience Tracker",
+  "schema_version": 1,
+  "_schema_note": "Append one object to `weeks` per run. Never edit or delete a past entry's original scores — see protocol.md Section 21. To correct a past week, add a `retrospective_revision` object to that week's entry instead.",
+  "weeks": [
+    {
+      "week": 29,
+      "year": 2026,
+      "start_date": "2026-07-13",
+      "end_date": "2026-07-19",
+
+      "dri": {
+        "score": 61,
+        "band": "High",
+        "color": "orange",
+        "change": 0,
+        "trend_arrow": "→",
+        "indicators": [
+          { "name": "Media retaliation", "status": "Severe", "arrow": "→", "note": "DOJ subpoenas to at least four NYT reporters and their relatives, some served at home by federal agents, in a leak probe over Air Force One safety reporting; press-freedom groups call it an unprecedented escalation." },
+          { "name": "Agency weaponization", "status": "Severe", "arrow": "→", "note": "OPM finalized a rule centralizing and expanding grounds to fire career civil servants, alongside a continuing pattern of DOJ action against perceived opponents." },
+          { "name": "Narrative warfare", "status": "Escalating", "arrow": "→", "note": "President revived unsubstantiated election-fraud claims in a White House speech, including an uncorroborated claim that China compromised 220 million voter files." },
+          { "name": "Corruption/impunity", "status": "Severe", "arrow": "→", "note": "A federal judge voided a Trump/IRS settlement as bad-faith self-dealing with 'no basis in law,' surfacing the underlying attempt even as the court blocked it." },
+          { "name": "State-level conflict", "status": "Escalating", "arrow": "→", "note": "National Guard deployments in Washington, D.C. remain a flashpoint with Democratic governors, continuing tension from prior weeks." },
+          { "name": "Election manipulation", "status": "Escalating", "arrow": "→", "note": "New Hampshire's secretary of state confirmed federal election monitors will be deployed to some primary polling places; deployment not yet implemented." },
+          { "name": "Judiciary attacks", "status": "Warning", "arrow": "→", "note": "No new intimidation event this week; baseline risk continues from earlier threats against judges who ruled against the administration." }
+        ]
+      },
+
+      "iri": {
+        "score": 56,
+        "band": "Mixed resilience",
+        "color": "yellow",
+        "change": 0,
+        "trend_arrow": "→",
+        "indicators": [
+          { "name": "Judicial independence", "status": "Strong", "arrow": "→", "note": "Courts issued multiple substantive rulings against the administration this week (IRS settlement voided, grant terminations blocked) with no evidence of defiance." },
+          { "name": "State-level resistance", "status": "Strong", "arrow": "→", "note": "A 24-state coalition won final summary judgment over illegal grant terminations; Connecticut won dismissal of a DOJ demand for its voter rolls; secretaries of state met to prepare for anticipated federal interference." },
+          { "name": "Election-administration integrity", "status": "Mixed", "arrow": "→", "note": "Officials preserved control of voter data in Connecticut, but confirmed federal monitor deployment to New Hampshire polling places raises independence concerns." },
+          { "name": "Media and watchdog capacity", "status": "Strong", "arrow": "→", "note": "Outlets continued reporting on self-dealing and pardons despite subpoena pressure; press-freedom organizations and lawmakers spoke out, though a chilling effect is evident." },
+          { "name": "Civil-service independence", "status": "Weak", "arrow": "→", "note": "New OPM rule expands grounds and centralizes authority to fire career employees, continuing erosion of merit-system protections." },
+          { "name": "Legislative oversight", "status": "Weak", "arrow": "→", "note": "A Senate resolution condemning DOJ subpoenas of journalists was filed, but it is symbolic and non-binding with no enforcement mechanism." },
+          { "name": "Accountability enforcement", "status": "Strong", "arrow": "→", "note": "Courts delivered real consequences this week: a voided settlement, blocked grant cuts, and a dismissed federal lawsuit against a state." }
+        ]
+      },
+
+      "resilience_gap": -5,
+      "resilience_gap_interpretation": "Manageable strain",
+      "relationship_note": "Pressure remains elevated across media, agency, and narrative fronts, but courts and states delivered a string of enforced, favorable-to-democracy outcomes this week that kept the gap from widening.",
+
+      "dri_gates_crossed": [],
+      "iri_gates_crossed": [],
+      "dri_gates_reinforced": [],
+      "iri_gates_reinforced": [],
+
+      "dri_gates_crossed_count": 0,
+      "iri_gates_crossed_count": 0,
+
+      "event_log": [
+        {
+          "event_id": "2026W29-001",
+          "event_date": "2026-07-13",
+          "report_date": "2026-07-13",
+          "actor": "U.S. District Judge Kathleen Williams (S.D. Fla.)",
+          "target": "Trump/IRS settlement agreement",
+          "action": "Voided an IRS settlement purporting to immunize Trump and family/business interests from audits over past filings, calling it a bad-faith attempt to manipulate the judicial process with 'no basis in law,' and barred the administration from citing it in future proceedings.",
+          "implementation_status": "blocked",
+          "dri_indicator": "Corruption/impunity",
+          "iri_indicator": "Judicial independence",
+          "dri_effect": "neutral",
+          "iri_effect": "positive",
+          "severity": "high",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.bloomberg.com/news/articles/2026-07-13/trump-irs-audit-immunity-deal-has-no-basis-in-law-judge-says",
+          "source_2": "https://www.aljazeera.com/news/2026/7/13/us-judge-voids-trumps-irs-settlement-alleges-self-dealing",
+          "notes": "Underlying settlement attempt reveals self-dealing motive, but the court's intervention is a strong, enforced check rather than a mere statement of concern."
+        },
+        {
+          "event_id": "2026W29-002",
+          "event_date": "2026-07-14",
+          "report_date": "2026-07-14",
+          "actor": "Department of Justice / federal prosecutors",
+          "target": "At least four New York Times reporters and their family members",
+          "action": "Issued third-party subpoenas for reporters' and relatives' phone/text records, some served by federal agents at reporters' homes, compelling grand jury testimony in Manhattan as part of a leak investigation into Air Force One safety reporting.",
+          "implementation_status": "implemented",
+          "dri_indicator": "Media retaliation",
+          "iri_indicator": null,
+          "dri_effect": "negative",
+          "iri_effect": "neutral",
+          "severity": "high",
+          "novelty": "continuation",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.pbs.org/newshour/nation/subpoenas-issued-to-ny-times-reporters-seen-as-dangerous-and-uncharted-threat-to-press-freedom",
+          "source_2": "https://www.aljazeera.com/news/2026/7/11/trump-administration-subpoenas-new-york-times-reporters-over-coverage",
+          "notes": "Committee to Protect Journalists calls it an 'extraordinary escalation'; part of a pattern of at least three prior journalist-subpoena episodes in recent months."
+        },
+        {
+          "event_id": "2026W29-003",
+          "event_date": "2026-07-13",
+          "report_date": "2026-07-13",
+          "actor": "Office of Personnel Management",
+          "target": "Career federal civil servants (est. tens of thousands)",
+          "action": "Finalized a rule centralizing and expanding grounds to fire federal employees (e.g., late tax filing, NDA violations, 'unsuitability'), reducing appeal rights as part of the Schedule Policy/Career rollout.",
+          "implementation_status": "implemented",
+          "dri_indicator": "Agency weaponization",
+          "iri_indicator": "Civil-service independence",
+          "dri_effect": "negative",
+          "iri_effect": "negative",
+          "severity": "high",
+          "novelty": "continuation",
+          "gate_status": "none",
+          "evidence_quality": "medium",
+          "source_1": "https://www.govexec.com/workforce/2026/07/opm-finalizes-nixonian-rule-centralizing-enabling-some-firings/414575/",
+          "source_2": "https://federalnewsnetwork.com/management/2026/07/trump-admin-reshaping-federal-employee-discipline-firing-rules/",
+          "notes": "AFGE and other unions call this a further erosion of merit-based protections, following June's Schedule F expansion to roughly 8,000 positions."
+        },
+        {
+          "event_id": "2026W29-004",
+          "event_date": "2026-07-17",
+          "report_date": "2026-07-17",
+          "actor": "U.S. District Judge Indira Talwani (D. Mass.)",
+          "target": "Trump administration OMB; 24-state coalition of plaintiffs",
+          "action": "Granted summary judgment to a 24-state coalition, ruling the administration illegally used a budget-office regulation to terminate congressionally-approved federal grants.",
+          "implementation_status": "enforced",
+          "dri_indicator": null,
+          "iri_indicator": "Judicial independence",
+          "dri_effect": "neutral",
+          "iri_effect": "positive",
+          "severity": "high",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.bloomberg.com/news/articles/2026-07-17/states-win-suit-over-trump-administration-termination-of-grants",
+          "source_2": "https://www.ag.state.mn.us/Office/Communications/2026/07/20_GovFunding.asp",
+          "notes": "Final judgment, not a preliminary injunction — a strong demonstration that spending-power constraints on the executive are being enforced."
+        },
+        {
+          "event_id": "2026W29-005",
+          "event_date": "2026-07-17",
+          "report_date": "2026-07-17",
+          "actor": "U.S. District Judge Kari A. Dooley",
+          "target": "State of Connecticut / DOJ",
+          "action": "Dismissed a DOJ lawsuit seeking Connecticut's full statewide voter registration list, ruling DOJ has no authority under the Civil Rights Act of 1960 to compel its production.",
+          "implementation_status": "enforced",
+          "dri_indicator": "Election manipulation",
+          "iri_indicator": "Election-administration integrity",
+          "dri_effect": "neutral",
+          "iri_effect": "positive",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://ctnewsjunkie.com/2026/07/20/judge-doj-has-no-authority-to-demand-ct-voter-lists/",
+          "source_2": "https://www.acluct.org/press-releases/us-v-thomas-victory/",
+          "notes": "One of several state wins this week rebuffing DOJ voter-data demands; preserves state control over election records."
+        },
+        {
+          "event_id": "2026W29-006",
+          "event_date": "2026-07-16",
+          "report_date": "2026-07-16",
+          "actor": "President Trump",
+          "target": "Public confidence in election legitimacy",
+          "action": "In a White House speech, revived unsubstantiated election-fraud claims, including an unsupported allegation that China compromised 220 million U.S. voter files, without presenting new evidence.",
+          "implementation_status": "announced",
+          "dri_indicator": "Narrative warfare",
+          "iri_indicator": null,
+          "dri_effect": "negative",
+          "iri_effect": "neutral",
+          "severity": "high",
+          "novelty": "continuation",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.washingtonpost.com/politics/2026/07/17/trump-revives-election-fraud-claims-white-house-speech/",
+          "source_2": "https://www.npr.org/2026/07/16/nx-s1-5896448/trump-election-address",
+          "notes": "A Senate Intelligence Committee vice chair publicly disputed the claims; continues a pattern dating to 2020 of unsubstantiated fraud allegations."
+        },
+        {
+          "event_id": "2026W29-007",
+          "event_date": "2026-07-15",
+          "report_date": "2026-07-15",
+          "actor": "State secretaries of state (NASS summer conference)",
+          "target": "Anticipated federal interference with election administration",
+          "action": "States including Minnesota discussed proactively 'gaming out' scenarios for federal interference and began backfilling election-administration services previously provided by the federal government.",
+          "implementation_status": "implemented",
+          "dri_indicator": null,
+          "iri_indicator": "State-level resistance",
+          "dri_effect": "neutral",
+          "iri_effect": "positive",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "medium",
+          "source_1": "https://abcnews.com/Politics/state-officials-preparing-federal-government-interfering-run-elections/story?id=134920258",
+          "source_2": "",
+          "notes": "Proactive rather than reactive resilience — states positioning ahead of anticipated pressure rather than responding to an implemented action."
+        },
+        {
+          "event_id": "2026W29-008",
+          "event_date": "2026-07-15",
+          "report_date": "2026-07-15",
+          "actor": "Federal government (unspecified election-monitoring program)",
+          "target": "New Hampshire primary elections",
+          "action": "New Hampshire's Republican secretary of state confirmed the state had been told federal election monitors will be deployed to some polling places during upcoming primaries.",
+          "implementation_status": "announced",
+          "dri_indicator": "Election manipulation",
+          "iri_indicator": null,
+          "dri_effect": "negative",
+          "iri_effect": "neutral",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "medium",
+          "source_1": "https://abcnews.com/Politics/state-officials-preparing-federal-government-interfering-run-elections/story?id=134920258",
+          "source_2": "",
+          "notes": "Confirmed by a Republican official, not disputed; monitors not yet deployed as of report, so operational effect is unconfirmed."
+        },
+        {
+          "event_id": "2026W29-009",
+          "event_date": "2026-07-14",
+          "report_date": "2026-07-14",
+          "actor": "Sen. Alex Padilla and Senate Democrats",
+          "target": "DOJ subpoena practices against journalists",
+          "action": "Sounded alarm on DOJ threats to journalists and joined a resolution condemning administration attacks on the free press.",
+          "implementation_status": "filed",
+          "dri_indicator": null,
+          "iri_indicator": "Legislative oversight",
+          "dri_effect": "neutral",
+          "iri_effect": "positive",
+          "severity": "low",
+          "novelty": "continuation",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.padilla.senate.gov/newsroom/press-releases/padilla-sounds-alarm-on-doj-threats-to-journalists-joins-resolution-condemning-trump-attacks-on-free-press/",
+          "source_2": "",
+          "notes": "Per protocol Section 4.4, a non-binding resolution is weak evidence of resilience — noted but not treated as a strong constraint."
+        }
+      ],
+
+      "trajectory_note": "This is the first tracked week, so no 90-day trend line yet exists. The baseline picture combines severe, sustained pressure — DOJ subpoenas reaching journalists' families, an OPM rule further stripping civil-service job protections, and a presidential speech reviving unsubstantiated election-fraud claims — with an unusually active run of enforced judicial and state pushback: a self-dealing IRS settlement voided, a 24-state grant-termination case won on final judgment, and a DOJ demand for Connecticut's voter rolls dismissed outright. None of this week's court losses for the administration were met with defiance or delay, which is the most important thing to watch in subsequent weeks. The clearest emerging risk driver is election administration: federal monitors are set to appear at New Hampshire polling places, and secretaries of state are treating federal cooperation as something to hedge against rather than rely on. Coming weeks will show whether judicial and state resistance keeps translating into enforced outcomes, or whether compliance with adverse rulings starts to erode.",
+      "confidence": "Medium",
+
+      "retrospective_revision": null
+    }
+  ]
+};
+
+const COLOR_MAP = {
+  green: "var(--green)", darkgreen: "var(--darkgreen)", yellow: "var(--yellow)",
+  amber: "var(--amber)", orange: "var(--orange)", red: "var(--red)"
+};
+
+function esc(s){ return (s ?? "").toString().replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+function arcSVG(score, color){
+  const r = 40, cx = 48, cy = 48, circumference = Math.PI * r;
+  const pct = Math.max(0, Math.min(100, score)) / 100;
+  const dash = circumference * pct;
+  return `<svg width="96" height="96" viewBox="0 0 96 96">
+    <path d="M 8 48 A 40 40 0 0 1 88 48" fill="none" stroke="var(--hair)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M 8 48 A 40 40 0 0 1 88 48" fill="none" stroke="${color}" stroke-width="8" stroke-linecap="round"
+      stroke-dasharray="${dash.toFixed(1)} ${circumference.toFixed(1)}"/>
+  </svg>`;
+}
+
+function statusPill(status, arrow){
+  const key = (status||"").toLowerCase();
+  let bg = "var(--hair)", fg = "var(--muted)";
+  if(["severe","failed"].includes(key)){bg="rgba(201,64,59,.18)";fg="var(--red)";}
+  else if(["escalating","weak"].includes(key)){bg="rgba(217,98,43,.18)";fg="var(--orange)";}
+  else if(["warning","mixed"].includes(key)){bg="rgba(201,162,39,.18)";fg="var(--yellow)";}
+  else if(["stable","strong"].includes(key)){bg="rgba(76,154,106,.18)";fg="var(--green)";}
+  else if(["very strong"].includes(key)){bg="rgba(47,107,69,.25)";fg="var(--darkgreen)";}
+  return `<span class="pill" style="background:${bg};color:${fg}">${esc(status)} ${esc(arrow||"")}</span>`;
+}
+
+function gapInterpretation(gap){
+  if(gap > 10) return "Resilience exceeds pressure";
+  if(gap >= 0) return "Favorable balance";
+  if(gap >= -10) return "Manageable strain";
+  if(gap >= -20) return "Dangerous imbalance";
+  return "Acute breakdown risk";
+}
+
+function render(){
+  const app = document.getElementById("app");
+  const weeks = TRACKER_DATA.weeks || [];
+  if(weeks.length === 0){
+    app.innerHTML = `
+      <a class="back" href="../index.html">&larr; World dashboard</a>
+      <header>
+        <div><div class="eyebrow">Democracy Risk &amp; Institutional Resilience Tracker</div>
+        <h1>No data yet</h1></div>
+      </header>
+      <div class="empty">This dashboard renders from <code>data.json</code>.<br>
+      Run the weekly scheduled task once to populate the first week's entry.</div>`;
+    return;
+  }
+
+  const latest = weeks[weeks.length - 1];
+  const prior = weeks.length > 1 ? weeks[weeks.length - 2] : null;
+
+  const dri = latest.dri, iri = latest.iri;
+  const gap = latest.resilience_gap;
+  const gapPct = Math.max(-50, Math.min(50, gap)); // -100..100 scaled to bar half-width
+  const gapLeft = 50 + (gapPct < 0 ? gapPct : 0);
+  const gapWidth = Math.abs(gapPct);
+
+  app.innerHTML = `
+    <a class="back" href="../index.html">&larr; World dashboard</a>
+    <header>
+      <div>
+        <div class="eyebrow">Democracy Risk &amp; Institutional Resilience Tracker</div>
+        <h1>Week ${latest.week}, ${latest.year}</h1>
+      </div>
+      <div class="period">Reporting period: ${esc(latest.start_date)} – ${esc(latest.end_date)}</div>
+    </header>
+
+    <div class="gauges">
+      <div class="gauge-panel">
+        <div class="gauge-label">Democracy Risk Index</div>
+        <div class="gauge-score" style="color:${COLOR_MAP[dri.color]||'var(--ink)'}">${dri.score}</div>
+        <div class="gauge-band" style="color:${COLOR_MAP[dri.color]||'var(--ink)'}">${esc(dri.band)}</div>
+        <div class="gauge-trend">${esc(dri.trend_arrow)} ${dri.change > 0 ? "+"+dri.change : dri.change} vs last week</div>
+        <div class="arc-wrap">${arcSVG(dri.score, COLOR_MAP[dri.color]||'#888')}</div>
+      </div>
+      <div class="gauge-panel">
+        <div class="gauge-label">Institutional Resilience Index</div>
+        <div class="gauge-score" style="color:${COLOR_MAP[iri.color]||'var(--ink)'}">${iri.score}</div>
+        <div class="gauge-band" style="color:${COLOR_MAP[iri.color]||'var(--ink)'}">${esc(iri.band)}</div>
+        <div class="gauge-trend">${esc(iri.trend_arrow)} ${iri.change > 0 ? "+"+iri.change : iri.change} vs last week</div>
+        <div class="arc-wrap">${arcSVG(iri.score, COLOR_MAP[iri.color]||'#888')}</div>
+      </div>
+    </div>
+
+    <div class="gap-bar">
+      <div class="gap-label">RESILIENCE GAP &nbsp;<span class="gap-value">${gap > 0 ? "+"+gap : gap}</span> — ${esc(latest.resilience_gap_interpretation || gapInterpretation(gap))}</div>
+      <div class="gap-track">
+        <div class="gap-mid"></div>
+        <div class="gap-fill" style="left:${gapLeft}%;width:${gapWidth}%;background:${gap < 0 ? 'var(--red)' : 'var(--green)'}"></div>
+      </div>
+      <div class="relationship-note">${esc(latest.relationship_note)}</div>
+    </div>
+
+    <div class="cols">
+      <div>
+        <div class="col-title">DRI Indicators</div>
+        ${dri.indicators.map(i => `
+          <div class="indicator">
+            <div class="ind-top"><span class="ind-name">${esc(i.name)}</span>${statusPill(i.status, i.arrow)}</div>
+            <div class="ind-note">${esc(i.note)}</div>
+          </div>`).join("")}
+      </div>
+      <div>
+        <div class="col-title">IRI Indicators</div>
+        ${iri.indicators.map(i => `
+          <div class="indicator">
+            <div class="ind-top"><span class="ind-name">${esc(i.name)}</span>${statusPill(i.status, i.arrow)}</div>
+            <div class="ind-note">${esc(i.note)}</div>
+          </div>`).join("")}
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">DRI trigger events crossed</div>
+      ${(latest.dri_gates_crossed && latest.dri_gates_crossed.length) ? `<ul class="gate-list">${latest.dri_gates_crossed.map(g => `
+        <li class="gate-item"><b>${esc(g.indicator)}</b> — ${esc(g.event)}<div class="meta">${esc(g.why)}</div></li>`).join("")}</ul>`
+        : `<div class="none-note">No new DRI gates crossed this week.</div>`}
+    </div>
+
+    <div class="section">
+      <div class="section-title">IRI trigger events crossed</div>
+      ${(latest.iri_gates_crossed && latest.iri_gates_crossed.length) ? `<ul class="gate-list">${latest.iri_gates_crossed.map(g => `
+        <li class="gate-item"><b>${esc(g.indicator)}</b> — ${esc(g.response)}<div class="meta">${esc(g.outcome)}</div></li>`).join("")}</ul>`
+        : `<div class="none-note">No new IRI gates crossed this week.</div>`}
+    </div>
+
+    <div class="section">
+      <div class="section-title">90-day trajectory</div>
+      <div class="trajectory">${esc(latest.trajectory_note).split("\\n\\n").map(p=>`<p>${p}</p>`).join("")}</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">History</div>
+      <table class="history">
+        <thead><tr><th>Week</th><th>DRI</th><th>IRI</th><th>Gap</th><th>DRI gates</th><th>IRI gates</th><th>Confidence</th></tr></thead>
+        <tbody>
+          ${weeks.slice().reverse().map(w => `
+            <tr>
+              <td>${w.week}/${w.year}</td>
+              <td style="color:${COLOR_MAP[w.dri.color]||'var(--ink)'}">${w.dri.score}</td>
+              <td style="color:${COLOR_MAP[w.iri.color]||'var(--ink)'}">${w.iri.score}</td>
+              <td>${w.resilience_gap > 0 ? "+"+w.resilience_gap : w.resilience_gap}</td>
+              <td>${(w.dri_gates_crossed||[]).length}/7</td>
+              <td>${(w.iri_gates_crossed||[]).length}/7</td>
+              <td>${esc(w.confidence)}</td>
+            </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>
+
+    <footer>
+      <span>DRI gates crossed this week: ${(latest.dri_gates_crossed||[]).length}/7. IRI gates crossed this week: ${(latest.iri_gates_crossed||[]).length}/7.</span>
+      <span><a href="methodology.html">Methodology &amp; scoring protocol &rarr;</a></span>
+      <span>Updated ${esc(latest.end_date)}</span>
+    </footer>
+  `;
+}
+
+render();
+</script>
+</body>
+</html>

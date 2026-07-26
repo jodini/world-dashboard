@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Political Violence &amp; Social Cohesion Tracker</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12151b;
+    --panel:#1a1e26;
+    --panel-alt:#20242e;
+    --paper:#eae7df;
+    --ink:#e9e7df;
+    --muted:#8b8f99;
+    --hair:#2c3038;
+    --green:#4c9a6a;
+    --darkgreen:#2f6b45;
+    --yellow:#c9a227;
+    --amber:#d98a2b;
+    --orange:#d9622b;
+    --red:#c9403b;
+    --serif:"Source Serif 4", Georgia, serif;
+    --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+    --sans:"Inter", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);}
+  .wrap{max-width:1080px;margin:0 auto;padding:36px 24px 80px;}
+
+  .back{display:inline-block;margin-bottom:16px;font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--muted);}
+  .back:hover{color:var(--ink);}
+  header{border-bottom:1px solid var(--hair);padding-bottom:20px;margin-bottom:28px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+  h1{font-family:var(--serif);font-weight:600;font-size:26px;margin:4px 0 0;}
+  .period{font-family:var(--mono);font-size:13px;color:var(--muted);}
+
+  .empty{border:1px dashed var(--hair);border-radius:4px;padding:40px 24px;text-align:center;color:var(--muted);font-family:var(--mono);font-size:13px;}
+
+  .gauges{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--hair);border-radius:4px;overflow:hidden;margin-bottom:4px;}
+  .gauge-panel{padding:28px 24px;background:var(--panel);position:relative;}
+  .gauge-panel + .gauge-panel{border-left:1px solid var(--hair);}
+  .gauge-label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+  .gauge-score{font-family:var(--mono);font-size:56px;font-weight:600;line-height:1;}
+  .gauge-band{font-family:var(--sans);font-size:14px;margin-top:6px;font-weight:500;}
+  .gauge-trend{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:10px;}
+  .arc-wrap{position:absolute;top:24px;right:24px;width:96px;height:96px;}
+
+  .gap-bar{border:1px solid var(--hair);border-top:none;background:var(--panel-alt);padding:16px 24px 20px;text-align:center;margin-bottom:32px;border-radius:0 0 4px 4px;}
+  .gap-track{position:relative;height:8px;background:var(--hair);border-radius:4px;margin:14px 0 10px;overflow:hidden;}
+  .gap-fill{position:absolute;top:0;height:100%;background:var(--muted);}
+  .gap-mid{position:absolute;top:-4px;left:50%;width:1px;height:16px;background:var(--muted);opacity:.5;}
+  .gap-label{font-family:var(--mono);font-size:12px;color:var(--muted);}
+  .gap-value{font-family:var(--mono);font-weight:600;color:var(--ink);}
+  .relationship-note{font-family:var(--serif);font-size:14px;color:var(--paper);margin-top:10px;max-width:640px;margin-left:auto;margin-right:auto;}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:32px;}
+  @media (max-width:760px){.cols,.gauges{grid-template-columns:1fr;}}
+  .col-title{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--hair);}
+  .indicator{padding:11px 0;border-bottom:1px solid var(--hair);}
+  .indicator:last-child{border-bottom:none;}
+  .ind-top{display:flex;justify-content:space-between;align-items:center;gap:10px;}
+  .ind-name{font-size:13px;font-weight:500;}
+  .pill{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;padding:2px 8px;border-radius:10px;white-space:nowrap;display:inline-flex;align-items:center;gap:5px;}
+  .ind-note{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.45;}
+
+  .section{margin-bottom:32px;}
+  .section-title{font-family:var(--serif);font-size:16px;font-weight:600;margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid var(--hair);}
+  .gate-list{list-style:none;margin:0;padding:0;}
+  .gate-item{padding:10px 0;border-bottom:1px solid var(--hair);font-size:13px;}
+  .gate-item:last-child{border-bottom:none;}
+  .gate-item b{font-weight:600;}
+  .gate-item .meta{color:var(--muted);font-size:12px;margin-top:3px;}
+  .none-note{color:var(--muted);font-size:13px;font-family:var(--mono);}
+
+  .trajectory{font-size:14px;line-height:1.7;color:var(--paper);}
+
+  .event-item{padding:10px 0;border-bottom:1px solid var(--hair);font-size:13px;}
+  .event-item:last-child{border-bottom:none;}
+  .event-date{font-family:var(--mono);font-size:11px;color:var(--muted);}
+  .event-meta{color:var(--muted);font-size:12px;margin-top:3px;}
+
+  .history{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12px;}
+  .history th,.history td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--hair);}
+  .history th{color:var(--muted);font-weight:500;text-transform:uppercase;font-size:10.5px;letter-spacing:.06em;}
+  .history tr:hover td{background:var(--panel-alt);}
+
+  footer{margin-top:36px;padding-top:20px;border-top:1px solid var(--hair);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-family:var(--mono);font-size:12px;color:var(--muted);}
+  footer a{color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--muted);}
+  footer a:hover{color:var(--ink);}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script>
+/* ------------------------------------------------------------------
+   EMBEDDED DATA
+   Replace TRACKER_DATA below with the full contents of data.json on
+   every run (keep everything else in this file unchanged). This keeps
+   the dashboard a single portable file with no fetch/CORS issues.
+------------------------------------------------------------------- */
+const TRACKER_DATA = {
+  "tracker_id": "political-violence",
+  "tracker_name": "Political Violence and Social Cohesion Tracker",
+  "schema_version": 1,
+  "_schema_note": "Append one object to weeks[] per run. Never edit a past week's original scores — add a retrospective_revision instead. See protocol.md Section 12.",
+  "weeks": [
+    {
+      "week": 29,
+      "year": 2026,
+      "start_date": "2026-07-13",
+      "end_date": "2026-07-19",
+
+      "pvei": {
+        "score": 52,
+        "band": "Elevated",
+        "color": "amber",
+        "change": 0,
+        "trend_arrow": "→",
+        "indicators": [
+          { "name": "Politically motivated violence", "status": "Escalating", "arrow": "→", "note": "DOJ indicted eight men on murder/terrorism-conspiracy charges over a foiled drone-and-sniper plot targeting President Trump, VP Vance, and other officials at a White House UFC event; separately, a Manhattan arson attack on a federal building housing ICE offices was attributed by one outlet to an anti-ICE motive (single-sourced, flagged for corroboration)." },
+          { "name": "Threats against officials/candidates/workers/judges", "status": "Escalating", "arrow": "→", "note": "Supreme Court Justices Barrett and Kagan testified before Congress July 14 warning of a sharp rise in threats against the Court, including a swatting incident targeting Barrett; Capitol Police have logged over 5,000 threats against Members of Congress and staff in the past year." },
+          { "name": "Hate crimes and bias-motivated violence", "status": "Warning", "arrow": "→", "note": "No new dated incident this week; baseline held elevated given documented anti-Semitic incidents (synagogue arsons) and DOJ's Anti-Semitism Advisory Committee earlier in 2026." },
+          { "name": "Extremist mobilization", "status": "Warning", "arrow": "→", "note": "State Department hosted a ministerial on 'the resurgence of political terrorism' July 16, characterizing the threat as driven primarily by far-left networks; independent monitors (Bridging Divides Initiative) describe political violence risk as broadly worsening rather than concentrated on one side — the divergence in framing is itself notable." },
+          { "name": "Incitement and normalization", "status": "Escalating", "arrow": "→", "note": "Analysis pieces (Brennan Center, CNN, Lawfare) argue the administration's domestic-terrorism framework (the Bondi memo, NSPM-7, the Antifa designation) defines political violence as an exclusively left-wing phenomenon rather than condemning violent rhetoric evenhandedly — treated here as a normalization concern; the underlying policy documents are verifiable, the characterization of their effect is more interpretive and flagged accordingly." },
+          { "name": "Protest-related violence", "status": "Warning", "arrow": "→", "note": "A nationwide 'day of action' on July 18 protesting ICE-related deaths was overwhelmingly peaceful mass protest (not scored as violence per protocol Section 4.4); isolated exceptions included a clash at a Scarborough, Maine ICE facility and the Manhattan arson incident noted above." },
+          { "name": "Weapons/plot activity", "status": "Warning", "arrow": "→", "note": "Reflects the same foiled White House UFC plot noted above — the group allegedly planned to use explosives-laden drones and firearms, indicating continued sophistication in plot planning; not scored as a separate incident from indicator 1." }
+        ]
+      },
+
+      "sci": {
+        "score": 44,
+        "band": "Mixed",
+        "color": "yellow",
+        "change": 0,
+        "trend_arrow": "→",
+        "indicators": [
+          { "name": "Cross-partisan social trust", "status": "Strained", "arrow": "→", "note": "A UC San Diego survey found confidence that 2026 midterm votes will be counted accurately fell to 60% from 77% just after the 2024 election, with trust declining across all party lines (Republicans -17pts, independents -16pts, Democrats -13pts)." },
+          { "name": "Civic and community engagement", "status": "Mixed", "arrow": "→", "note": "No new data this week; carried forward at baseline." },
+          { "name": "De-escalation and bridging efforts", "status": "Mixed", "arrow": "→", "note": "Princeton's Bridging Divides Initiative continues active bystander-intervention and de-escalation training programs and published a 2026 outlook identifying resilience strategies, though this reflects an ongoing program rather than a new event this week." },
+          { "name": "Leadership rhetoric and cross-aisle condemnation", "status": "Strained", "arrow": "→", "note": "Multiple analyses describe the administration characterizing political violence as a one-sided, left-wing problem rather than condemning violent rhetoric evenhandedly across the spectrum — the clearest negative signal in this week's SCI reading." },
+          { "name": "Law-enforcement and prosecutorial response", "status": "Holding", "arrow": "→", "note": "The FBI and DOJ successfully disrupted the White House UFC plot before it could be carried out and indicted all eight alleged participants, demonstrating real investigative and prosecutorial capacity; this week's evidence doesn't test even-handed application across ideological targets." },
+          { "name": "Local news and information ecosystem health", "status": "Strained", "arrow": "→", "note": "YouGov's 2026 Trust in Media survey found stark partisan bifurcation in outlet trust (an 85-point gap between Democrats and Republicans on both CNN and Fox News), consistent with a fragmented rather than shared information environment." },
+          { "name": "Institutional trust in elections/courts as fair arbiters", "status": "Strained", "arrow": "→", "note": "Same UC San Diego survey shows declining confidence in accurate vote counting across all parties heading into the midterms." }
+        ]
+      },
+
+      "gap": -8,
+      "gap_interpretation": "Manageable strain",
+      "relationship_note": "Real threat activity this week — a disrupted mass-casualty plot against the president and VP, rising threats against the judiciary — sits against a social fabric that is fraying on trust and leadership condemnation, but law enforcement's successful plot disruption and active civil-society de-escalation work are keeping the strain from becoming acute.",
+
+      "pvei_gates_crossed": [],
+      "sci_gates_crossed": [],
+      "pvei_gates_reinforced": [],
+      "sci_gates_reinforced": [],
+      "pvei_gates_crossed_count": 0,
+      "sci_gates_crossed_count": 0,
+
+      "event_log": [
+        {
+          "event_id": "2026W29-V001",
+          "event_date": "2026-07-09",
+          "report_date": "2026-07-10",
+          "actor": "Eight indicted defendants (alleged plotters)",
+          "target": "President Trump, VP Vance, and other officials/attendees at a White House UFC event",
+          "action": "DOJ indicted eight men on murder and terrorism-conspiracy charges over an alleged foiled plot to attack the event using explosives-laden drones and firearms; arrests occurred across several states over the preceding weeks, with the final suspect arrested in West Virginia the week of this report.",
+          "motive_classification": "disputed/unclear",
+          "implementation_status": "foiled",
+          "pvei_indicator": "Politically motivated violence",
+          "sci_indicator": "Law-enforcement and prosecutorial response",
+          "pvei_effect": "positive",
+          "sci_effect": "positive",
+          "severity": "systemic",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.justice.gov/opa/pr/five-men-arrested-and-charged-plot-attack-and-kill-government-officials-and-others-attending",
+          "source_2": "https://www.nbcnews.com/politics/trump-administration/fbi-foils-alleged-plot-attack-white-house-ufc-event-patel-says-rcna350248",
+          "notes": "Indictment reported July 9-10, just before this reporting window, but the eighth and final arrest fell within the window (per NBC reporting) and the case's severity and ongoing legal proceedings make it clearly relevant to this week's assessment. Stated ideological motive of the defendants was not clearly established in available sourcing as of this report — classified as disputed/unclear rather than attributed to a specific side."
+        },
+        {
+          "event_id": "2026W29-V002",
+          "event_date": "2026-07-14",
+          "report_date": "2026-07-14",
+          "actor": "Supreme Court Justices Amy Coney Barrett and Elena Kagan",
+          "target": "Congress / public",
+          "action": "Testified before Congress in a rare appearance, warning of a sharp rise in threats against the Court and requesting increased security funding; Barrett described being sent home with a bulletproof vest after a swatting incident.",
+          "motive_classification": "unclear",
+          "implementation_status": "threatened",
+          "pvei_indicator": "Threats against officials/candidates/workers/judges",
+          "sci_indicator": null,
+          "pvei_effect": "positive",
+          "sci_effect": "neutral",
+          "severity": "high",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.usnews.com/news/politics/articles/2026-07-14/justices-barrett-kagan-testify-before-congress-as-court-seeks-security-funds",
+          "source_2": "",
+          "notes": "Bipartisan appearance by justices appointed by different presidents; framed as a shared institutional concern rather than a partisan complaint."
+        },
+        {
+          "event_id": "2026W29-V003",
+          "event_date": "2026-07-18",
+          "report_date": "2026-07-19",
+          "actor": "Nationwide protest organizers and participants",
+          "target": "ICE / federal immigration enforcement policy",
+          "action": "Coordinated 'day of action' protests in dozens of cities nationwide following two fatal shootings during ICE encounters (Biddeford, ME and Houston, TX); overwhelmingly peaceful, with isolated exceptions including a clash outside a Scarborough, ME ICE facility and a Manhattan arson attack on a federal building housing ICE offices, the latter attributed to an anti-ICE motive by one partisan-leaning outlet (uncorroborated by wire services as of this report).",
+          "motive_classification": "disputed",
+          "implementation_status": "attempted",
+          "pvei_indicator": "Protest-related violence",
+          "sci_indicator": null,
+          "pvei_effect": "positive",
+          "sci_effect": "neutral",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "medium",
+          "source_1": "https://www.amny.com/news/protest-ice-killings-foley-square-07152026/",
+          "source_2": "https://wgme.com/news/local/protesters-clash-in-front-of-scarborough-ice-facility-maine-immigration-customs-enforcement-president-donald-trump",
+          "notes": "Per protocol Section 4.4, the large peaceful protest turnout itself is not scored as violence; only the isolated clash and arson incident are. The arson's political-motive characterization comes from a single partisan-leaning source and should be treated as unconfirmed pending corroboration."
+        },
+        {
+          "event_id": "2026W29-V004",
+          "event_date": "2026-07-16",
+          "report_date": "2026-07-16",
+          "actor": "US Department of State (Secretary Marco Rubio)",
+          "target": "Domestic and international framing of political violence",
+          "action": "Hosted a ministerial on 'the resurgence of political terrorism,' characterizing the threat as driven primarily by organized far-left networks.",
+          "motive_classification": "disputed",
+          "implementation_status": "announced",
+          "pvei_indicator": null,
+          "sci_indicator": "Leadership rhetoric and cross-aisle condemnation",
+          "pvei_effect": "neutral",
+          "sci_effect": "negative",
+          "severity": "medium",
+          "novelty": "continuation",
+          "gate_status": "none",
+          "evidence_quality": "medium",
+          "source_1": "https://www.state.gov/the-resurgence-of-political-terrorism",
+          "source_2": "",
+          "notes": "Scored under SCI rather than PVEI: the concern here is one-sided framing undermining evenhanded cross-aisle condemnation of violence, not a claim about the underlying threat data itself, which independent monitors describe as broader than one ideological direction."
+        }
+      ],
+
+      "trajectory_note": "This is the first tracked week, so there is no prior baseline for week-over-week movement; all changes and arrows are set to zero/steady accordingly. The baseline picture shows genuinely serious threat activity — a disrupted mass-casualty plot against the president and vice president, and Supreme Court justices publicly warning of rising threats — running alongside clear strain in the social fabric: declining cross-partisan trust in elections, a starkly bifurcated media-trust landscape, and, most notably, a federal leadership posture that critics across several outlets describe as characterizing political violence as a one-sided problem rather than condemning it evenhandedly. The most important positive counterweight this week is that law enforcement's response to the concrete, high-severity plot was fast and effective. The clearest thing to watch going forward is whether the administration's domestic-terrorism framework translates into uneven enforcement over time — that would be the gate that most changes this tracker's trajectory.",
+      "confidence": "Medium",
+
+      "retrospective_revision": null
+    }
+  ]
+};
+
+const COLOR_MAP = {
+  green: "var(--green)", darkgreen: "var(--darkgreen)", yellow: "var(--yellow)",
+  amber: "var(--amber)", orange: "var(--orange)", red: "var(--red)"
+};
+
+function esc(s){ return (s ?? "").toString().replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+function arcSVG(score, color){
+  const r = 40, cx = 48, cy = 48, circumference = Math.PI * r;
+  const pct = Math.max(0, Math.min(100, score)) / 100;
+  const dash = circumference * pct;
+  return `<svg width="96" height="96" viewBox="0 0 96 96">
+    <path d="M 8 48 A 40 40 0 0 1 88 48" fill="none" stroke="var(--hair)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M 8 48 A 40 40 0 0 1 88 48" fill="none" stroke="${color}" stroke-width="8" stroke-linecap="round"
+      stroke-dasharray="${dash.toFixed(1)} ${circumference.toFixed(1)}"/>
+  </svg>`;
+}
+
+function statusPill(status, arrow){
+  const key = (status||"").toLowerCase();
+  let bg = "var(--hair)", fg = "var(--muted)";
+  if(["severe","fractured"].includes(key)){bg="rgba(201,64,59,.18)";fg="var(--red)";}
+  else if(["escalating","strained"].includes(key)){bg="rgba(217,98,43,.18)";fg="var(--orange)";}
+  else if(["warning","mixed"].includes(key)){bg="rgba(201,162,39,.18)";fg="var(--yellow)";}
+  else if(["stable","holding"].includes(key)){bg="rgba(76,154,106,.18)";fg="var(--green)";}
+  else if(["strong"].includes(key)){bg="rgba(47,107,69,.25)";fg="var(--darkgreen)";}
+  return `<span class="pill" style="background:${bg};color:${fg}">${esc(status)} ${esc(arrow||"")}</span>`;
+}
+
+function gapInterpretation(gap){
+  if(gap > 10) return "Cohesion exceeds pressure";
+  if(gap >= 0) return "Favorable balance";
+  if(gap >= -10) return "Manageable strain";
+  if(gap >= -20) return "Dangerous imbalance";
+  return "Acute fracture risk";
+}
+
+function render(){
+  const app = document.getElementById("app");
+  const weeks = TRACKER_DATA.weeks || [];
+  if(weeks.length === 0){
+    app.innerHTML = `
+      <a class="back" href="../index.html">&larr; World dashboard</a>
+      <header>
+        <div><div class="eyebrow">Political Violence &amp; Social Cohesion Tracker</div>
+        <h1>No data yet</h1></div>
+      </header>
+      <div class="empty">This dashboard renders from <code>data.json</code>.<br>
+      Run the weekly scheduled task once to populate the first week's entry.</div>`;
+    return;
+  }
+
+  const latest = weeks[weeks.length - 1];
+  const pvei = latest.pvei, sci = latest.sci;
+  const gap = latest.gap;
+  const gapPct = Math.max(-50, Math.min(50, gap));
+  const gapLeft = 50 + (gapPct < 0 ? gapPct : 0);
+  const gapWidth = Math.abs(gapPct);
+
+  app.innerHTML = `
+    <a class="back" href="../index.html">&larr; World dashboard</a>
+    <header>
+      <div>
+        <div class="eyebrow">Political Violence &amp; Social Cohesion Tracker</div>
+        <h1>Week ${latest.week}, ${latest.year}</h1>
+      </div>
+      <div class="period">Reporting period: ${esc(latest.start_date)} – ${esc(latest.end_date)}</div>
+    </header>
+
+    <div class="gauges">
+      <div class="gauge-panel">
+        <div class="gauge-label">Political Violence &amp; Extremism Index</div>
+        <div class="gauge-score" style="color:${COLOR_MAP[pvei.color]||'var(--ink)'}">${pvei.score}</div>
+        <div class="gauge-band" style="color:${COLOR_MAP[pvei.color]||'var(--ink)'}">${esc(pvei.band)}</div>
+        <div class="gauge-trend">${esc(pvei.trend_arrow)} ${pvei.change > 0 ? "+"+pvei.change : pvei.change} vs last week</div>
+        <div class="arc-wrap">${arcSVG(pvei.score, COLOR_MAP[pvei.color]||'#888')}</div>
+      </div>
+      <div class="gauge-panel">
+        <div class="gauge-label">Social Cohesion Index</div>
+        <div class="gauge-score" style="color:${COLOR_MAP[sci.color]||'var(--ink)'}">${sci.score}</div>
+        <div class="gauge-band" style="color:${COLOR_MAP[sci.color]||'var(--ink)'}">${esc(sci.band)}</div>
+        <div class="gauge-trend">${esc(sci.trend_arrow)} ${sci.change > 0 ? "+"+sci.change : sci.change} vs last week</div>
+        <div class="arc-wrap">${arcSVG(sci.score, COLOR_MAP[sci.color]||'#888')}</div>
+      </div>
+    </div>
+
+    <div class="gap-bar">
+      <div class="gap-label">COHESION GAP &nbsp;<span class="gap-value">${gap > 0 ? "+"+gap : gap}</span> — ${esc(latest.gap_interpretation || gapInterpretation(gap))}</div>
+      <div class="gap-track">
+        <div class="gap-mid"></div>
+        <div class="gap-fill" style="left:${gapLeft}%;width:${gapWidth}%;background:${gap < 0 ? 'var(--red)' : 'var(--green)'}"></div>
+      </div>
+      <div class="relationship-note">${esc(latest.relationship_note)}</div>
+    </div>
+
+    <div class="cols">
+      <div>
+        <div class="col-title">PVEI Indicators</div>
+        ${pvei.indicators.map(i => `
+          <div class="indicator">
+            <div class="ind-top"><span class="ind-name">${esc(i.name)}</span>${statusPill(i.status, i.arrow)}</div>
+            <div class="ind-note">${esc(i.note)}</div>
+          </div>`).join("")}
+      </div>
+      <div>
+        <div class="col-title">SCI Indicators</div>
+        ${sci.indicators.map(i => `
+          <div class="indicator">
+            <div class="ind-top"><span class="ind-name">${esc(i.name)}</span>${statusPill(i.status, i.arrow)}</div>
+            <div class="ind-note">${esc(i.note)}</div>
+          </div>`).join("")}
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">PVEI trigger events crossed</div>
+      ${(latest.pvei_gates_crossed && latest.pvei_gates_crossed.length) ? `<ul class="gate-list">${latest.pvei_gates_crossed.map(g => `
+        <li class="gate-item"><b>${esc(g.indicator)}</b> — ${esc(g.event)}<div class="meta">${esc(g.why)}</div></li>`).join("")}</ul>`
+        : `<div class="none-note">No new PVEI gates crossed this week.</div>`}
+    </div>
+
+    <div class="section">
+      <div class="section-title">SCI trigger events crossed</div>
+      ${(latest.sci_gates_crossed && latest.sci_gates_crossed.length) ? `<ul class="gate-list">${latest.sci_gates_crossed.map(g => `
+        <li class="gate-item"><b>${esc(g.indicator)}</b> — ${esc(g.event)}<div class="meta">${esc(g.why)}</div></li>`).join("")}</ul>`
+        : `<div class="none-note">No new SCI gates crossed this week.</div>`}
+    </div>
+
+    <div class="section">
+      <div class="section-title">Notable events this week</div>
+      ${(latest.event_log && latest.event_log.length) ? latest.event_log.map(e => `
+        <div class="event-item">
+          <span class="event-date">${esc(e.event_date)}</span> — <b>${esc(e.actor)}</b>: ${esc(e.action)}
+          <div class="event-meta">target: ${esc(e.target)} · motive: ${esc(e.motive_classification)} · status: ${esc(e.implementation_status)} · severity: ${esc(e.severity)} · evidence: ${esc(e.evidence_quality)}</div>
+        </div>`).join("") : `<div class="none-note">No notable events logged this week.</div>`}
+    </div>
+
+    <div class="section">
+      <div class="section-title">90-day trajectory</div>
+      <div class="trajectory">${esc(latest.trajectory_note).split("\\n\\n").map(p=>`<p>${p}</p>`).join("")}</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">History</div>
+      <table class="history">
+        <thead><tr><th>Week</th><th>PVEI</th><th>SCI</th><th>Gap</th><th>PVEI gates</th><th>SCI gates</th><th>Confidence</th></tr></thead>
+        <tbody>
+          ${weeks.slice().reverse().map(w => `
+            <tr>
+              <td>${w.week}/${w.year}</td>
+              <td style="color:${COLOR_MAP[w.pvei.color]||'var(--ink)'}">${w.pvei.score}</td>
+              <td style="color:${COLOR_MAP[w.sci.color]||'var(--ink)'}">${w.sci.score}</td>
+              <td>${w.gap > 0 ? "+"+w.gap : w.gap}</td>
+              <td>${(w.pvei_gates_crossed||[]).length}/7</td>
+              <td>${(w.sci_gates_crossed||[]).length}/7</td>
+              <td>${esc(w.confidence)}</td>
+            </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>
+
+    <footer>
+      <span>PVEI gates crossed this week: ${(latest.pvei_gates_crossed||[]).length}/7. SCI gates crossed this week: ${(latest.sci_gates_crossed||[]).length}/7.</span>
+      <span><a href="methodology.html">Methodology &amp; scoring protocol &rarr;</a></span>
+      <span>Updated ${esc(latest.end_date)}</span>
+    </footer>
+  `;
+}
+
+render();
+</script>
+</body>
+</html>

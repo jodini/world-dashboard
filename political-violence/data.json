@@ -1,0 +1,151 @@
+{
+  "tracker_id": "political-violence",
+  "tracker_name": "Political Violence and Social Cohesion Tracker",
+  "schema_version": 1,
+  "_schema_note": "Append one object to weeks[] per run. Never edit a past week's original scores — add a retrospective_revision instead. See protocol.md Section 12.",
+  "weeks": [
+    {
+      "week": 29,
+      "year": 2026,
+      "start_date": "2026-07-13",
+      "end_date": "2026-07-19",
+
+      "pvei": {
+        "score": 52,
+        "band": "Elevated",
+        "color": "amber",
+        "change": 0,
+        "trend_arrow": "→",
+        "indicators": [
+          { "name": "Politically motivated violence", "status": "Escalating", "arrow": "→", "note": "DOJ indicted eight men on murder/terrorism-conspiracy charges over a foiled drone-and-sniper plot targeting President Trump, VP Vance, and other officials at a White House UFC event; separately, a Manhattan arson attack on a federal building housing ICE offices was attributed by one outlet to an anti-ICE motive (single-sourced, flagged for corroboration)." },
+          { "name": "Threats against officials/candidates/workers/judges", "status": "Escalating", "arrow": "→", "note": "Supreme Court Justices Barrett and Kagan testified before Congress July 14 warning of a sharp rise in threats against the Court, including a swatting incident targeting Barrett; Capitol Police have logged over 5,000 threats against Members of Congress and staff in the past year." },
+          { "name": "Hate crimes and bias-motivated violence", "status": "Warning", "arrow": "→", "note": "No new dated incident this week; baseline held elevated given documented anti-Semitic incidents (synagogue arsons) and DOJ's Anti-Semitism Advisory Committee earlier in 2026." },
+          { "name": "Extremist mobilization", "status": "Warning", "arrow": "→", "note": "State Department hosted a ministerial on 'the resurgence of political terrorism' July 16, characterizing the threat as driven primarily by far-left networks; independent monitors (Bridging Divides Initiative) describe political violence risk as broadly worsening rather than concentrated on one side — the divergence in framing is itself notable." },
+          { "name": "Incitement and normalization", "status": "Escalating", "arrow": "→", "note": "Analysis pieces (Brennan Center, CNN, Lawfare) argue the administration's domestic-terrorism framework (the Bondi memo, NSPM-7, the Antifa designation) defines political violence as an exclusively left-wing phenomenon rather than condemning violent rhetoric evenhandedly — treated here as a normalization concern; the underlying policy documents are verifiable, the characterization of their effect is more interpretive and flagged accordingly." },
+          { "name": "Protest-related violence", "status": "Warning", "arrow": "→", "note": "A nationwide 'day of action' on July 18 protesting ICE-related deaths was overwhelmingly peaceful mass protest (not scored as violence per protocol Section 4.4); isolated exceptions included a clash at a Scarborough, Maine ICE facility and the Manhattan arson incident noted above." },
+          { "name": "Weapons/plot activity", "status": "Warning", "arrow": "→", "note": "Reflects the same foiled White House UFC plot noted above — the group allegedly planned to use explosives-laden drones and firearms, indicating continued sophistication in plot planning; not scored as a separate incident from indicator 1." }
+        ]
+      },
+
+      "sci": {
+        "score": 44,
+        "band": "Mixed",
+        "color": "yellow",
+        "change": 0,
+        "trend_arrow": "→",
+        "indicators": [
+          { "name": "Cross-partisan social trust", "status": "Strained", "arrow": "→", "note": "A UC San Diego survey found confidence that 2026 midterm votes will be counted accurately fell to 60% from 77% just after the 2024 election, with trust declining across all party lines (Republicans -17pts, independents -16pts, Democrats -13pts)." },
+          { "name": "Civic and community engagement", "status": "Mixed", "arrow": "→", "note": "No new data this week; carried forward at baseline." },
+          { "name": "De-escalation and bridging efforts", "status": "Mixed", "arrow": "→", "note": "Princeton's Bridging Divides Initiative continues active bystander-intervention and de-escalation training programs and published a 2026 outlook identifying resilience strategies, though this reflects an ongoing program rather than a new event this week." },
+          { "name": "Leadership rhetoric and cross-aisle condemnation", "status": "Strained", "arrow": "→", "note": "Multiple analyses describe the administration characterizing political violence as a one-sided, left-wing problem rather than condemning violent rhetoric evenhandedly across the spectrum — the clearest negative signal in this week's SCI reading." },
+          { "name": "Law-enforcement and prosecutorial response", "status": "Holding", "arrow": "→", "note": "The FBI and DOJ successfully disrupted the White House UFC plot before it could be carried out and indicted all eight alleged participants, demonstrating real investigative and prosecutorial capacity; this week's evidence doesn't test even-handed application across ideological targets." },
+          { "name": "Local news and information ecosystem health", "status": "Strained", "arrow": "→", "note": "YouGov's 2026 Trust in Media survey found stark partisan bifurcation in outlet trust (an 85-point gap between Democrats and Republicans on both CNN and Fox News), consistent with a fragmented rather than shared information environment." },
+          { "name": "Institutional trust in elections/courts as fair arbiters", "status": "Strained", "arrow": "→", "note": "Same UC San Diego survey shows declining confidence in accurate vote counting across all parties heading into the midterms." }
+        ]
+      },
+
+      "gap": -8,
+      "gap_interpretation": "Manageable strain",
+      "relationship_note": "Real threat activity this week — a disrupted mass-casualty plot against the president and VP, rising threats against the judiciary — sits against a social fabric that is fraying on trust and leadership condemnation, but law enforcement's successful plot disruption and active civil-society de-escalation work are keeping the strain from becoming acute.",
+
+      "pvei_gates_crossed": [],
+      "sci_gates_crossed": [],
+      "pvei_gates_reinforced": [],
+      "sci_gates_reinforced": [],
+      "pvei_gates_crossed_count": 0,
+      "sci_gates_crossed_count": 0,
+
+      "event_log": [
+        {
+          "event_id": "2026W29-V001",
+          "event_date": "2026-07-09",
+          "report_date": "2026-07-10",
+          "actor": "Eight indicted defendants (alleged plotters)",
+          "target": "President Trump, VP Vance, and other officials/attendees at a White House UFC event",
+          "action": "DOJ indicted eight men on murder and terrorism-conspiracy charges over an alleged foiled plot to attack the event using explosives-laden drones and firearms; arrests occurred across several states over the preceding weeks, with the final suspect arrested in West Virginia the week of this report.",
+          "motive_classification": "disputed/unclear",
+          "implementation_status": "foiled",
+          "pvei_indicator": "Politically motivated violence",
+          "sci_indicator": "Law-enforcement and prosecutorial response",
+          "pvei_effect": "positive",
+          "sci_effect": "positive",
+          "severity": "systemic",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.justice.gov/opa/pr/five-men-arrested-and-charged-plot-attack-and-kill-government-officials-and-others-attending",
+          "source_2": "https://www.nbcnews.com/politics/trump-administration/fbi-foils-alleged-plot-attack-white-house-ufc-event-patel-says-rcna350248",
+          "notes": "Indictment reported July 9-10, just before this reporting window, but the eighth and final arrest fell within the window (per NBC reporting) and the case's severity and ongoing legal proceedings make it clearly relevant to this week's assessment. Stated ideological motive of the defendants was not clearly established in available sourcing as of this report — classified as disputed/unclear rather than attributed to a specific side."
+        },
+        {
+          "event_id": "2026W29-V002",
+          "event_date": "2026-07-14",
+          "report_date": "2026-07-14",
+          "actor": "Supreme Court Justices Amy Coney Barrett and Elena Kagan",
+          "target": "Congress / public",
+          "action": "Testified before Congress in a rare appearance, warning of a sharp rise in threats against the Court and requesting increased security funding; Barrett described being sent home with a bulletproof vest after a swatting incident.",
+          "motive_classification": "unclear",
+          "implementation_status": "threatened",
+          "pvei_indicator": "Threats against officials/candidates/workers/judges",
+          "sci_indicator": null,
+          "pvei_effect": "positive",
+          "sci_effect": "neutral",
+          "severity": "high",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.usnews.com/news/politics/articles/2026-07-14/justices-barrett-kagan-testify-before-congress-as-court-seeks-security-funds",
+          "source_2": "",
+          "notes": "Bipartisan appearance by justices appointed by different presidents; framed as a shared institutional concern rather than a partisan complaint."
+        },
+        {
+          "event_id": "2026W29-V003",
+          "event_date": "2026-07-18",
+          "report_date": "2026-07-19",
+          "actor": "Nationwide protest organizers and participants",
+          "target": "ICE / federal immigration enforcement policy",
+          "action": "Coordinated 'day of action' protests in dozens of cities nationwide following two fatal shootings during ICE encounters (Biddeford, ME and Houston, TX); overwhelmingly peaceful, with isolated exceptions including a clash outside a Scarborough, ME ICE facility and a Manhattan arson attack on a federal building housing ICE offices, the latter attributed to an anti-ICE motive by one partisan-leaning outlet (uncorroborated by wire services as of this report).",
+          "motive_classification": "disputed",
+          "implementation_status": "attempted",
+          "pvei_indicator": "Protest-related violence",
+          "sci_indicator": null,
+          "pvei_effect": "positive",
+          "sci_effect": "neutral",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "medium",
+          "source_1": "https://www.amny.com/news/protest-ice-killings-foley-square-07152026/",
+          "source_2": "https://wgme.com/news/local/protesters-clash-in-front-of-scarborough-ice-facility-maine-immigration-customs-enforcement-president-donald-trump",
+          "notes": "Per protocol Section 4.4, the large peaceful protest turnout itself is not scored as violence; only the isolated clash and arson incident are. The arson's political-motive characterization comes from a single partisan-leaning source and should be treated as unconfirmed pending corroboration."
+        },
+        {
+          "event_id": "2026W29-V004",
+          "event_date": "2026-07-16",
+          "report_date": "2026-07-16",
+          "actor": "US Department of State (Secretary Marco Rubio)",
+          "target": "Domestic and international framing of political violence",
+          "action": "Hosted a ministerial on 'the resurgence of political terrorism,' characterizing the threat as driven primarily by organized far-left networks.",
+          "motive_classification": "disputed",
+          "implementation_status": "announced",
+          "pvei_indicator": null,
+          "sci_indicator": "Leadership rhetoric and cross-aisle condemnation",
+          "pvei_effect": "neutral",
+          "sci_effect": "negative",
+          "severity": "medium",
+          "novelty": "continuation",
+          "gate_status": "none",
+          "evidence_quality": "medium",
+          "source_1": "https://www.state.gov/the-resurgence-of-political-terrorism",
+          "source_2": "",
+          "notes": "Scored under SCI rather than PVEI: the concern here is one-sided framing undermining evenhanded cross-aisle condemnation of violence, not a claim about the underlying threat data itself, which independent monitors describe as broader than one ideological direction."
+        }
+      ],
+
+      "trajectory_note": "This is the first tracked week, so there is no prior baseline for week-over-week movement; all changes and arrows are set to zero/steady accordingly. The baseline picture shows genuinely serious threat activity — a disrupted mass-casualty plot against the president and vice president, and Supreme Court justices publicly warning of rising threats — running alongside clear strain in the social fabric: declining cross-partisan trust in elections, a starkly bifurcated media-trust landscape, and, most notably, a federal leadership posture that critics across several outlets describe as characterizing political violence as a one-sided problem rather than condemning it evenhandedly. The most important positive counterweight this week is that law enforcement's response to the concrete, high-severity plot was fast and effective. The clearest thing to watch going forward is whether the administration's domestic-terrorism framework translates into uneven enforcement over time — that would be the gate that most changes this tracker's trajectory.",
+      "confidence": "Medium",
+
+      "retrospective_revision": null
+    }
+  ]
+}

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Geopolitical Tracker Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12151b; --panel:#1a1e26; --panel-alt:#20242e; --hair:#2c3038; --ink:#e9e7df; --paper:#eae7df; --muted:#8b8f99;
+    --green:#4c9a6a; --darkgreen:#2f6b45; --yellow:#c9a227; --amber:#d98a2b; --orange:#d9622b; --red:#c9403b; --blue:#5b8fd9;
+    --serif:"Source Serif 4", Georgia, serif; --mono:"IBM Plex Mono", ui-monospace, monospace; --sans:"Inter", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);}
+  .wrap{max-width:1160px;margin:0 auto;padding:40px 24px 80px;}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+  h1{font-family:var(--serif);font-weight:700;font-size:30px;margin:6px 0 36px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(400px,1fr));gap:16px;}
+  a.card{display:block;border:1px solid var(--hair);border-radius:4px;padding:22px;background:var(--panel);text-decoration:none;color:var(--ink);transition:border-color .15s;}
+  a.card:hover{border-color:var(--muted);}
+  .card-title{font-family:var(--serif);font-weight:600;font-size:17px;margin-bottom:14px;}
+  .card-scores{display:flex;gap:22px;font-family:var(--mono);margin-bottom:14px;}
+  .card-score .num{font-size:28px;font-weight:600;line-height:1;}
+  .card-score .band{font-family:var(--sans);font-size:11px;color:var(--muted);margin-top:3px;}
+  .card-score .lbl{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:2px;}
+
+  .card-gap{font-family:var(--mono);font-size:12.5px;padding:8px 10px;border:1px solid var(--hair);border-radius:4px;background:var(--panel-alt);margin-bottom:12px;}
+  .card-gap b{font-size:14px;}
+
+  .card-highlights{font-size:12.5px;line-height:1.6;margin-bottom:12px;}
+  .card-highlights .hl-row{margin-bottom:4px;}
+  .card-highlights .hl-label{color:var(--muted);}
+
+  .mini-list{margin-bottom:12px;}
+  .mini-row{display:flex;align-items:center;gap:10px;padding:5px 0;border-bottom:1px solid var(--hair);}
+  .mini-row:last-child{border-bottom:none;}
+  .mini-name{font-size:12px;width:132px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .mini-axis{flex:1;height:16px;}
+  .mini-axis svg{display:block;width:100%;height:100%;overflow:visible;}
+  .mini-score{font-family:var(--mono);font-size:12px;width:28px;text-align:right;flex-shrink:0;}
+
+  .ind-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;margin-bottom:12px;}
+  .ind-col-title{font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:8px 0 4px;}
+  .ind-row{display:flex;justify-content:space-between;align-items:center;gap:6px;padding:3px 0;border-bottom:1px solid var(--hair);}
+  .ind-row:last-child{border-bottom:none;}
+  .ind-name{font-size:11.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .ind-pill{font-family:var(--mono);font-size:9.5px;letter-spacing:.02em;padding:1px 6px;border-radius:8px;white-space:nowrap;flex-shrink:0;}
+
+  .card-headline{font-family:var(--serif);font-size:13px;line-height:1.55;color:var(--paper);margin-bottom:12px;}
+
+  .card-updated{margin-top:2px;padding-top:12px;border-top:1px solid var(--hair);font-family:var(--mono);font-size:11px;color:var(--muted);display:flex;justify-content:space-between;}
+  .add-card{border:1px dashed var(--hair);display:flex;align-items:center;justify-content:center;color:var(--muted);font-family:var(--mono);font-size:12px;text-align:center;padding:22px;border-radius:4px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Geopolitical Tracker Dashboard</div>
+  <h1>Active trackers</h1>
+  <div class="grid" id="grid"></div>
+</div>
+<script>
+/* Add one entry per tracker subfolder. Each tracker keeps its own
+   data.json + dashboard.html; this page is a thin aggregator showing
+   enough of the latest week to be useful without clicking through.
+   Update the `latest` block whenever a tracker's weekly task runs
+   (pull the relevant fields from that tracker's data.json). */
+const TRACKERS = [
+  {
+    id: "democracy-risk",
+    name: "Democracy Risk & Institutional Resilience",
+    path: "democracy-risk/dashboard.html",
+    kind: "dri-iri",
+    latest: {
+      week: 29, year: 2026, end_date: "2026-07-19",
+      dri: { score: 61, band: "High", color: "orange" },
+      iri: { score: 56, band: "Mixed resilience", color: "yellow" },
+      gap: -5, gap_label: "Manageable strain",
+      top_risk: { name: "Agency weaponization", status: "Severe" },
+      top_resilience_concern: { name: "Civil-service independence", status: "Weak" },
+      gates_crossed: "0/7",
+      dri_indicators: [
+        { name: "Media retaliation", status: "Severe", arrow: "→" },
+        { name: "Agency weaponization", status: "Severe", arrow: "→" },
+        { name: "Narrative warfare", status: "Escalating", arrow: "→" },
+        { name: "Corruption/impunity", status: "Severe", arrow: "→" },
+        { name: "State-level conflict", status: "Escalating", arrow: "→" },
+        { name: "Election manipulation", status: "Escalating", arrow: "→" },
+        { name: "Judiciary attacks", status: "Warning", arrow: "→" }
+      ],
+      iri_indicators: [
+        { name: "Judicial independence", status: "Strong", arrow: "→" },
+        { name: "State-level resistance", status: "Strong", arrow: "→" },
+        { name: "Election-admin integrity", status: "Mixed", arrow: "→" },
+        { name: "Media/watchdog capacity", status: "Strong", arrow: "→" },
+        { name: "Civil-service independence", status: "Weak", arrow: "→" },
+        { name: "Legislative oversight", status: "Weak", arrow: "→" },
+        { name: "Accountability enforcement", status: "Strong", arrow: "→" }
+      ],
+      headline: "Pressure remains elevated across media, agency, and narrative fronts, but courts and states delivered a string of enforced, favorable-to-democracy outcomes this week that kept the gap from widening."
+    }
+  },
+  {
+    id: "geopolitical-conflict",
+    name: "Global Conflict & Coverage",
+    path: "geopolitical-conflict/dashboard.html",
+    kind: "conflict",
+    latest: {
+      week: 29, year: 2026, end_date: "2026-07-19",
+      active: 9, emerging: 1, escalating: 3, de_escalating: 0,
+      top_severity: [
+        { name: "Sudan civil war", score: 90, coverage: 34 },
+        { name: "Russia-Ukraine war", score: 82, coverage: 88 },
+        { name: "Sahel insurgency", score: 80, coverage: 12 },
+        { name: "Myanmar civil war", score: 77, coverage: 20 },
+        { name: "DRC / M23 conflict", score: 74, coverage: 15 },
+        { name: "Haiti gang crisis", score: 66, coverage: 40 },
+        { name: "Gaza-Israel conflict", score: 65, coverage: 82 },
+        { name: "Yemen / Red Sea", score: 55, coverage: 60 },
+        { name: "Syria sectarian violence", score: 52, coverage: 45 },
+        { name: "Taiwan Strait tension", score: 35, coverage: 58 }
+      ],
+      most_underreported: { name: "Sahel insurgency", gap: 7 },
+      headline: "The starkest pattern this week: the highest-casualty conflicts (Sudan, the Sahel, Myanmar, DRC) get the least global coverage, while strategically salient situations (Taiwan, Gaza, Yemen) draw attention somewhat independent of current casualty counts."
+    }
+  },
+  {
+    id: "economic-stress",
+    name: "Global Economic Stress & Resilience",
+    path: "economic-stress/dashboard.html",
+    kind: "esi-fri",
+    latest: {
+      week: 29, year: 2026, end_date: "2026-07-19",
+      esi: { score: 33, band: "Guarded", color: "yellow" },
+      fri: { score: 58, band: "Mixed", color: "yellow" },
+      gap: 25, gap_label: "Resilience exceeds pressure",
+      top_risk: { name: "Household financial strain", status: "Escalating" },
+      top_resilience_concern: { name: "Fiscal policy space", status: "Mixed" },
+      gates_crossed: "0/7",
+      esi_indicators: [
+        { name: "Growth momentum", status: "Stable", arrow: "→" },
+        { name: "Labor market deterioration", status: "Stable", arrow: "→" },
+        { name: "Inflation pressure", status: "Warning", arrow: "→" },
+        { name: "Financial market stress", status: "Warning", arrow: "→" },
+        { name: "Household financial strain", status: "Escalating", arrow: "→" },
+        { name: "Corporate/banking stress", status: "Stable", arrow: "→" },
+        { name: "Fiscal stress", status: "Warning", arrow: "→" }
+      ],
+      fri_indicators: [
+        { name: "Monetary policy space", status: "Mixed", arrow: "→" },
+        { name: "Fiscal policy space", status: "Mixed", arrow: "→" },
+        { name: "Banking system soundness", status: "Strong", arrow: "→" },
+        { name: "Labor safety net capacity", status: "Mixed", arrow: "→" },
+        { name: "External buffers", status: "Strong", arrow: "→" },
+        { name: "Corporate balance sheet health", status: "Strong", arrow: "→" },
+        { name: "Household balance sheet health", status: "Mixed", arrow: "→" }
+      ],
+      headline: "A genuinely resilient starting position — strong labor market, solid growth, well-capitalized banks — sits above two live risks: an Iran-conflict oil shock threatening the inflation trajectory, and a new, more hawkish Fed chair whose policy credibility is still being tested."
+    }
+  },
+  {
+    id: "political-violence",
+    name: "Political Violence & Social Cohesion",
+    path: "political-violence/dashboard.html",
+    kind: "pvei-sci",
+    latest: {
+      week: 29, year: 2026, end_date: "2026-07-19",
+      pvei: { score: 52, band: "Elevated", color: "amber" },
+      sci: { score: 44, band: "Mixed", color: "yellow" },
+      gap: -8, gap_label: "Manageable strain",
+      top_risk: { name: "Threats against officials/candidates/workers/judges", status: "Escalating" },
+      top_resilience_concern: { name: "Leadership rhetoric and cross-aisle condemnation", status: "Strained" },
+      gates_crossed: "0/7",
+      pvei_indicators: [
+        { name: "Politically motivated violence", status: "Escalating", arrow: "→" },
+        { name: "Threats vs. officials/judges", status: "Escalating", arrow: "→" },
+        { name: "Hate crimes / bias violence", status: "Warning", arrow: "→" },
+        { name: "Extremist mobilization", status: "Warning", arrow: "→" },
+        { name: "Incitement and normalization", status: "Escalating", arrow: "→" },
+        { name: "Protest-related violence", status: "Warning", arrow: "→" },
+        { name: "Weapons/plot activity", status: "Warning", arrow: "→" }
+      ],
+      sci_indicators: [
+        { name: "Cross-partisan social trust", status: "Strained", arrow: "→" },
+        { name: "Civic/community engagement", status: "Mixed", arrow: "→" },
+        { name: "De-escalation/bridging efforts", status: "Mixed", arrow: "→" },
+        { name: "Leadership cross-aisle condemnation", status: "Strained", arrow: "→" },
+        { name: "Law-enforcement response", status: "Holding", arrow: "→" },
+        { name: "Local news/info ecosystem", status: "Strained", arrow: "→" },
+        { name: "Institutional trust (elections/courts)", status: "Strained", arrow: "→" }
+      ],
+      headline: "A disrupted mass-casualty plot against the president and VP, and justices warning of rising threats, sit against a fraying social fabric — declining cross-partisan trust and a federal posture critics call one-sided on political violence — though fast, effective law enforcement kept the strain from becoming acute."
+    }
+  }
+];
+const COLOR_MAP = { green:"var(--green)", darkgreen:"var(--darkgreen)", yellow:"var(--yellow)", amber:"var(--amber)", orange:"var(--orange)", red:"var(--red)" };
+
+function esc(s){ return (s ?? "").toString().replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+function severityColor(score){
+  if(score >= 80) return "var(--red)";
+  if(score >= 60) return "var(--orange)";
+  if(score >= 40) return "var(--amber)";
+  if(score >= 20) return "var(--yellow)";
+  return "var(--green)";
+}
+
+function miniDotSVG(score, coverage){
+  const y = 8;
+  const dot = `<circle cx="${score}" cy="${y}" r="3.4" fill="${severityColor(score)}" stroke="var(--bg)" stroke-width="0.8"/>`;
+  const diamond = `<rect x="${coverage-2}" y="${y-2}" width="4" height="4" fill="var(--blue)" stroke="var(--bg)" stroke-width="0.6" transform="rotate(45 ${coverage} ${y})"/>`;
+  const baseline = `<line x1="0" y1="${y}" x2="100" y2="${y}" stroke="var(--hair)" stroke-width="0.6"/>`;
+  return `<svg viewBox="0 0 100 16" preserveAspectRatio="none">${baseline}${dot}${diamond}</svg>`;
+}
+
+function statusColor(status){
+  const key = (status||"").toLowerCase();
+  if(["severe","failed","escalating","fractured"].includes(key)) return "var(--red)";
+  if(["weak","emerging","strained"].includes(key)) return "var(--orange)";
+  if(["warning","mixed","stable"].includes(key)) return "var(--yellow)";
+  return "var(--green)";
+}
+
+function indPill(status, arrow){
+  const key = (status||"").toLowerCase();
+  let bg = "var(--hair)", fg = "var(--muted)";
+  if(["severe","failed","fractured"].includes(key)){bg="rgba(201,64,59,.18)";fg="var(--red)";}
+  else if(["escalating","weak","strained"].includes(key)){bg="rgba(217,98,43,.18)";fg="var(--orange)";}
+  else if(["warning","mixed"].includes(key)){bg="rgba(201,162,39,.18)";fg="var(--yellow)";}
+  else if(["stable","strong","holding"].includes(key)){bg="rgba(76,154,106,.18)";fg="var(--green)";}
+  else if(["very strong"].includes(key)){bg="rgba(47,107,69,.25)";fg="var(--darkgreen)";}
+  return `<span class="ind-pill" style="background:${bg};color:${fg}">${esc(status)} ${esc(arrow||"")}</span>`;
+}
+
+const PAIR_KIND_CONFIG = {
+  "dri-iri": { aKey:"dri", bKey:"iri", aLbl:"DRI", bLbl:"IRI", aIndKey:"dri_indicators", bIndKey:"iri_indicators", aIndTitle:"DRI indicators", bIndTitle:"IRI indicators", riskLabel:"Highest risk", resilienceLabel:"Weakest resilience" },
+  "esi-fri": { aKey:"esi", bKey:"fri", aLbl:"ESI", bLbl:"FRI", aIndKey:"esi_indicators", bIndKey:"fri_indicators", aIndTitle:"ESI indicators", bIndTitle:"FRI indicators", riskLabel:"Highest stress driver", resilienceLabel:"Weakest resilience buffer" },
+  "pvei-sci": { aKey:"pvei", bKey:"sci", aLbl:"PVEI", bLbl:"SCI", aIndKey:"pvei_indicators", bIndKey:"sci_indicators", aIndTitle:"PVEI indicators", bIndTitle:"SCI indicators", riskLabel:"Highest risk", resilienceLabel:"Weakest cohesion signal" }
+};
+
+const grid = document.getElementById("grid");
+grid.innerHTML = TRACKERS.map(t => {
+  if(!t.latest){
+    return `<a class="card" href="${t.path}">
+      <div class="card-title">${esc(t.name)}</div>
+      <div class="card-updated"><span>No data yet — open to run first update</span><span></span></div>
+    </a>`;
+  }
+  const l = t.latest;
+
+  if(t.kind === "conflict"){
+    return `<a class="card" href="${t.path}">
+      <div class="card-title">${esc(t.name)}</div>
+      <div class="card-scores">
+        <div class="card-score"><div class="num">${l.active}</div><div class="lbl">Active</div></div>
+        <div class="card-score"><div class="num" style="color:var(--red)">${l.escalating}</div><div class="lbl">Escalating</div></div>
+        <div class="card-score"><div class="num" style="color:var(--green)">${l.de_escalating}</div><div class="lbl">De-escal.</div></div>
+        <div class="card-score"><div class="num" style="color:var(--orange)">${l.emerging}</div><div class="lbl">Emerging</div></div>
+      </div>
+      <div class="mini-list">
+        ${(l.top_severity||[]).map(c => `
+          <div class="mini-row">
+            <div class="mini-name">${esc(c.name)}</div>
+            <div class="mini-axis">${miniDotSVG(c.score, c.coverage)}</div>
+            <div class="mini-score" style="color:${severityColor(c.score)}">${c.score}</div>
+          </div>`).join("")}
+      </div>
+      ${l.most_underreported ? `<div class="card-gap">Most underreported: <b>${esc(l.most_underreported.name)}</b> — gap +${l.most_underreported.gap}</div>` : ""}
+      ${l.headline ? `<div class="card-headline">${esc(l.headline)}</div>` : ""}
+      <div class="card-updated"><span>Week ${l.week}, ${l.year}</span><span>updated ${esc(l.end_date)}</span></div>
+    </a>`;
+  }
+
+  const cfg = PAIR_KIND_CONFIG[t.kind] || PAIR_KIND_CONFIG["dri-iri"];
+  const a = l[cfg.aKey], b = l[cfg.bKey];
+  return `<a class="card" href="${t.path}">
+    <div class="card-title">${esc(t.name)}</div>
+    <div class="card-scores">
+      <div class="card-score"><div class="num" style="color:${COLOR_MAP[a.color]}">${a.score}</div><div class="band" style="color:${COLOR_MAP[a.color]}">${esc(a.band)}</div><div class="lbl">${esc(cfg.aLbl)}</div></div>
+      <div class="card-score"><div class="num" style="color:${COLOR_MAP[b.color]}">${b.score}</div><div class="band" style="color:${COLOR_MAP[b.color]}">${esc(b.band)}</div><div class="lbl">${esc(cfg.bLbl)}</div></div>
+    </div>
+    <div class="card-gap">Gap <b>${l.gap > 0 ? "+"+l.gap : l.gap}</b> — ${esc(l.gap_label)}</div>
+    <div class="card-highlights">
+      <div class="hl-row"><span class="hl-label">${esc(cfg.riskLabel)}:</span> <span style="color:${statusColor(l.top_risk.status)}">${esc(l.top_risk.name)} — ${esc(l.top_risk.status)}</span></div>
+      <div class="hl-row"><span class="hl-label">${esc(cfg.resilienceLabel)}:</span> <span style="color:${statusColor(l.top_resilience_concern.status)}">${esc(l.top_resilience_concern.name)} — ${esc(l.top_resilience_concern.status)}</span></div>
+      <div class="hl-row"><span class="hl-label">Gates crossed:</span> ${esc(l.gates_crossed)}</div>
+    </div>
+    <div class="ind-grid">
+      <div>
+        <div class="ind-col-title">${esc(cfg.aIndTitle)}</div>
+        ${(l[cfg.aIndKey]||[]).map(ind => `<div class="ind-row"><span class="ind-name">${esc(ind.name)}</span>${indPill(ind.status, ind.arrow)}</div>`).join("")}
+      </div>
+      <div>
+        <div class="ind-col-title">${esc(cfg.bIndTitle)}</div>
+        ${(l[cfg.bIndKey]||[]).map(ind => `<div class="ind-row"><span class="ind-name">${esc(ind.name)}</span>${indPill(ind.status, ind.arrow)}</div>`).join("")}
+      </div>
+    </div>
+    ${l.headline ? `<div class="card-headline">${esc(l.headline)}</div>` : ""}
+    <div class="card-updated"><span>Week ${l.week}, ${l.year}</span><span>updated ${esc(l.end_date)}</span></div>
+  </a>`;
+}).join("") + `<div class="add-card">+ new tracker<br>add a subfolder + protocol.md</div>`;
+</script>
+</body>
+</html>

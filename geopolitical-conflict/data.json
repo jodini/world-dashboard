@@ -1,0 +1,329 @@
+{
+  "tracker_id": "geopolitical-conflict",
+  "tracker_name": "Global Conflict & Coverage Tracker",
+  "schema_version": 1,
+  "_schema_note": "registry holds permanent conflict identity; weeks[] holds weekly snapshots referencing conflict_id. Never edit a past week's original scores — add a retrospective_revision instead. See protocol.md Section 12.",
+
+  "registry": {
+    "sudan-civil-war": { "name": "Sudan civil war (SAF vs RSF)", "region": "East Africa", "category": "civil war", "first_tracked": "2026-07-26", "status": "active" },
+    "russia-ukraine-war": { "name": "Russia-Ukraine war", "region": "Eastern Europe", "category": "interstate war", "first_tracked": "2026-07-26", "status": "active" },
+    "sahel-jihadist-insurgency": { "name": "Sahel jihadist insurgency (Mali, Burkina Faso, Niger)", "region": "West Africa / Sahel", "category": "insurgency", "first_tracked": "2026-07-26", "status": "active" },
+    "myanmar-civil-war": { "name": "Myanmar civil war", "region": "Southeast Asia", "category": "civil war", "first_tracked": "2026-07-26", "status": "active" },
+    "drc-m23-conflict": { "name": "DRC / M23 conflict (eastern Congo)", "region": "Central Africa", "category": "civil war / proxy conflict", "first_tracked": "2026-07-26", "status": "active" },
+    "haiti-gang-crisis": { "name": "Haiti gang violence crisis", "region": "Caribbean", "category": "mass civil unrest / state collapse", "first_tracked": "2026-07-26", "status": "active" },
+    "gaza-israel-conflict": { "name": "Gaza-Israel conflict (post-ceasefire violations)", "region": "Middle East", "category": "interstate/asymmetric conflict", "first_tracked": "2026-07-26", "status": "active" },
+    "yemen-red-sea-conflict": { "name": "Yemen civil war / Houthi Red Sea attacks", "region": "Middle East", "category": "civil war / maritime conflict", "first_tracked": "2026-07-26", "status": "active" },
+    "syria-sectarian-violence": { "name": "Syria post-Assad sectarian violence", "region": "Middle East", "category": "post-conflict instability", "first_tracked": "2026-07-26", "status": "active" },
+    "taiwan-strait-tension": { "name": "Taiwan Strait / China-Taiwan-Japan tension", "region": "East Asia", "category": "interstate crisis (non-kinetic)", "first_tracked": "2026-07-26", "status": "emerging" }
+  },
+
+  "weeks": [
+    {
+      "week": 29,
+      "year": 2026,
+      "start_date": "2026-07-13",
+      "end_date": "2026-07-19",
+
+      "summary": {
+        "active": 9,
+        "emerging": 1,
+        "de_escalating": 0,
+        "dormant": 0,
+        "escalating_ids": ["drc-m23-conflict", "haiti-gang-crisis", "sahel-jihadist-insurgency"],
+        "de_escalating_ids": [],
+        "newly_added_ids": ["sudan-civil-war", "russia-ukraine-war", "sahel-jihadist-insurgency", "myanmar-civil-war", "drc-m23-conflict", "haiti-gang-crisis", "gaza-israel-conflict", "yemen-red-sea-conflict", "syria-sectarian-violence", "taiwan-strait-tension"],
+        "retired_ids": [],
+        "secondary_aggregate_note": "First tracked week — all conflicts are 'new' by definition. Rough directional gauge (unweighted average of severity scores): 68.6 — not authoritative, see protocol.md Section 9."
+      },
+
+      "conflicts": [
+        {
+          "conflict_id": "sudan-civil-war",
+          "severity": { "score": 90, "status": "Escalating", "arrow": "→", "change": 0, "note": "8.8M internally displaced, 4.5M refugees, cumulative deaths estimated 150,000-400,000; drone sieges around El Obeid put roughly half a million civilians at risk of large-scale atrocities, echoing the earlier El Fasher massacre." },
+          "coverage": {
+            "coverage_score": 34,
+            "global_english_note": "Covered mainly by humanitarian/policy outlets (IRC, CSIS, Georgetown, migrationpolicy.org) rather than sustained mainstream front-page coverage; one source explicitly describes it as 'forgotten and neglected.'",
+            "regional_note": null,
+            "severity_rank": 1,
+            "coverage_rank": 7,
+            "gap": 6,
+            "gap_direction": "underreported",
+            "plausible_reason": "Limited journalist access, compassion fatigue after three-plus years, and competition from higher-profile conflicts (Ukraine, Gaza) for finite global news attention."
+          },
+          "novelty": "new",
+          "evidence_quality": "medium",
+          "source_1": "https://www.migrationpolicy.org/article/sudan-civil-war-displacement",
+          "source_2": "https://news.un.org/en/story/2026/07/1167856",
+          "notes": "Widely regarded by conflict monitors as the world's largest displacement and humanitarian crisis; casualty range is wide and contested given restricted access."
+        },
+        {
+          "conflict_id": "russia-ukraine-war",
+          "severity": { "score": 82, "status": "Stable", "arrow": "→", "change": 0, "note": "High-tempo attritional war continues; Russian losses estimated over 30,000/month, exceeding recruitment; casualty ratio has widened to near 8:1 in Russia's disfavor; no major territorial shift confirmed this week." },
+          "coverage": {
+            "coverage_score": 88,
+            "global_english_note": "Extensive, continuous mainstream and wire coverage, including dedicated weekly tracking (e.g. Russia Matters 'War Report Card').",
+            "regional_note": null,
+            "severity_rank": 2,
+            "coverage_rank": 1,
+            "gap": -1,
+            "gap_direction": "roughly proportionate",
+            "plausible_reason": "Coverage broadly matches severity given the war's scale and direct stakes for NATO/Europe; slightly ahead of strict rank order due to sustained Western strategic interest."
+          },
+          "novelty": "new",
+          "evidence_quality": "high",
+          "source_1": "https://www.russiamatters.org/news/russia-ukraine-war-report-card/russia-ukraine-war-report-card-july-15-2026",
+          "source_2": "https://www.pravda.com.ua/eng/news/2026/07/23/8045444/",
+          "notes": "One of the best-documented conflicts in the tracked set; casualty estimates still vary by source and side."
+        },
+        {
+          "conflict_id": "sahel-jihadist-insurgency",
+          "severity": { "score": 80, "status": "Escalating", "arrow": "→", "change": 0, "note": "JNIM and ISSP-affiliated groups sustain sieges, IEDs, drone and landmine attacks across Mali, Burkina Faso and Niger; UN recorded 2,640 conflict-related civilian deaths in a single quarter earlier in 2026." },
+          "coverage": {
+            "coverage_score": 12,
+            "global_english_note": "Almost no sustained mainstream global coverage; visibility limited to specialist security/policy outlets (Security Council Report, CFR Global Conflict Tracker) and Wikipedia incident stubs.",
+            "regional_note": null,
+            "severity_rank": 3,
+            "coverage_rank": 10,
+            "gap": 7,
+            "gap_direction": "underreported",
+            "plausible_reason": "Difficult and dangerous reporting access, no single dramatic flashpoint event to anchor a story, and the AES states' withdrawal from ECOWAS/Western security partnerships has reduced Western outlets' on-the-ground presence."
+          },
+          "novelty": "new",
+          "evidence_quality": "medium",
+          "source_1": "https://www.securitycouncilreport.org/monthly-forecast/2026-07/west-africa-and-the-sahel-17.php",
+          "source_2": "https://www.cfr.org/global-conflict-tracker/conflict/violent-extremism-sahel",
+          "notes": "Most underreported conflict in this week's tracked set relative to its casualty toll; no single dated in-window flashpoint identified, evidence reflects ongoing high-tempo pattern."
+        },
+        {
+          "conflict_id": "myanmar-civil-war",
+          "severity": { "score": 77, "status": "Stable", "arrow": "→", "change": 0, "note": "Cumulative post-coup death toll passed 100,000 per ACLED, called Asia's deadliest active conflict; 2.7M displaced since 2021; no single major in-window battle identified." },
+          "coverage": {
+            "coverage_score": 20,
+            "global_english_note": "Milestone death-toll figure covered mainly by regional/specialist outlets (Irrawaddy, SBS, Manila Times) rather than sustained global front-page attention.",
+            "regional_note": "Somewhat more visible in Southeast Asian press than in Western outlets.",
+            "severity_rank": 4,
+            "coverage_rank": 8,
+            "gap": 4,
+            "gap_direction": "underreported",
+            "plausible_reason": "Severely restricted media access inside Myanmar and a long-running, diffuse multi-front conflict without a single clear narrative arc for global outlets to follow."
+          },
+          "novelty": "new",
+          "evidence_quality": "medium",
+          "source_1": "https://www.irrawaddy.com/news/burma/myanmar-mourns-as-post-coup-conflict-death-toll-hits-100000.html",
+          "source_2": "https://thedefensepost.com/2026/07/01/myanmar-post-coup-casualties/amp/",
+          "notes": "The 100,000 milestone was reported just before this reporting window (~July 1-2); treated here as established background context rather than an in-window event."
+        },
+        {
+          "conflict_id": "drc-m23-conflict",
+          "severity": { "score": 74, "status": "Escalating", "arrow": "→", "change": 0, "note": "UN High Commissioner for Human Rights condemned rising hostilities between FARDC and Rwanda-backed M23 in South Kivu, with both sides using drones and heavy artillery in populated areas; December 2025 ceasefire deal now at risk." },
+          "coverage": {
+            "coverage_score": 15,
+            "global_english_note": "Coverage largely confined to UN News, OHCHR, and HRW; little sustained mainstream global attention despite scale and duration.",
+            "regional_note": null,
+            "severity_rank": 5,
+            "coverage_rank": 9,
+            "gap": 4,
+            "gap_direction": "underreported",
+            "plausible_reason": "Decades-long conflict fatigue and complex multi-actor dynamics (Rwanda's role, multiple militias) make for a harder story to package than a clean two-sided war."
+          },
+          "novelty": "new",
+          "evidence_quality": "medium",
+          "source_1": "https://news.un.org/en/story/2026/07/1167906",
+          "source_2": "https://www.ohchr.org/en/press-releases/2026/07/m23s-reign-terror-torture-eastern-dr-congo-must-end-un-experts",
+          "notes": "M23 drone strike on a Wazalendo position near Nyabiondo reported July 14, within this window; ceasefire signed December 2025 is fraying."
+        },
+        {
+          "conflict_id": "haiti-gang-crisis",
+          "severity": { "score": 66, "status": "Escalating", "arrow": "→", "change": 0, "note": "2,310 killed in first six months of 2026; gangs control up to 90% of Port-au-Prince; drone attacks up 120%; 1.47M displaced, a record. Partially offset by new international security force deployment and progress toward elections." },
+          "coverage": {
+            "coverage_score": 40,
+            "global_english_note": "Moderate mainstream US coverage (Washington Post, UN News) given geographic proximity, though volume is not proportionate to the scale of displacement and violence.",
+            "regional_note": null,
+            "severity_rank": 6,
+            "coverage_rank": 6,
+            "gap": 0,
+            "gap_direction": "roughly proportionate",
+            "plausible_reason": "N/A this week — coverage and severity rank align."
+          },
+          "novelty": "new",
+          "evidence_quality": "medium",
+          "source_1": "https://news.un.org/en/story/2026/07/1167963",
+          "source_2": "https://www.washingtonpost.com/world/2026/07/20/haiti-un-gangs-waltz-us-violence/2bca7472-8465-11f1-9cec-0fb26676f07e_story.html",
+          "notes": "UN News (July 19) frames this as 'signs of hope despite gang violence' — one of the few tracked situations with a concrete, named de-escalation mechanism (new security force, election planning) alongside worsening violence metrics."
+        },
+        {
+          "conflict_id": "gaza-israel-conflict",
+          "severity": { "score": 65, "status": "Stable", "arrow": "→", "change": 0, "note": "Nominal ceasefire (since October 2025) continues with persistent violations; roughly 1,180 Palestinians killed since the ceasefire took effect; Israeli forces reported controlling about 70% of Gaza versus the 53% envisioned under the deal." },
+          "coverage": {
+            "coverage_score": 82,
+            "global_english_note": "Very high, sustained global coverage, including near-daily wire and major-outlet reporting on ceasefire violations.",
+            "regional_note": "Extensively covered in Middle East-based outlets (e.g. Al Jazeera) with a generally more critical framing of Israeli conduct than much of the Western press.",
+            "severity_rank": 7,
+            "coverage_rank": 2,
+            "gap": -5,
+            "gap_direction": "overreported relative to rank",
+            "plausible_reason": "Sustained global political salience and strategic stakes keep attention high even as its relative severity rank (within this specific tracked set) sits mid-table; this is not a claim the conflict is over-covered in absolute terms."
+          },
+          "novelty": "new",
+          "evidence_quality": "high",
+          "source_1": "https://www.aljazeera.com/news/2026/7/13/three-palestinians-killed-15-wounded-in-israeli-attacks-across-gaza?traffic_source=rss",
+          "source_2": "https://news.antiwar.com/2026/07/22/israel-has-killed-1180-palestinians-in-gaza-since-the-so-called-ceasefire-deal-was-signed/",
+          "notes": "Ceasefire violation figures come from advocacy-adjacent outlets and should be read alongside official Israeli and mediator statements, which this pass did not separately verify in detail."
+        },
+        {
+          "conflict_id": "yemen-red-sea-conflict",
+          "severity": { "score": 55, "status": "Escalating", "arrow": "→", "change": 0, "note": "Houthi forces reportedly killed 16 government-aligned troops in some of the most violent fighting in years and attacked a cargo ship in the Red Sea; UN warns of risk of wider regional escalation." },
+          "coverage": {
+            "coverage_score": 60,
+            "global_english_note": "Gets substantial mainstream coverage specifically around shipping/economic angles (Red Sea trade disruption); the underlying Yemeni civil-war humanitarian toll gets comparatively less attention.",
+            "regional_note": null,
+            "severity_rank": 8,
+            "coverage_rank": 4,
+            "gap": -4,
+            "gap_direction": "overreported relative to rank",
+            "plausible_reason": "Commercial/shipping stakes (Red Sea trade routes) drive coverage more than the humanitarian toll of the underlying civil war does."
+          },
+          "novelty": "new",
+          "evidence_quality": "low",
+          "source_1": "https://www.cbsnews.com/news/yemen-houthi-rebels-red-sea-attack-cargo-ship/",
+          "source_2": "https://www.securitycouncilreport.org/monthly-forecast/2026-07/the-red-sea.php",
+          "notes": "Exact date of the 16-troops/cargo-ship incident is unclear from available sourcing; a further, more clearly dated Saudi-Houthi escalation (tanker strikes, retaliatory strikes) appears to fall just after this window (~July 24-25) and will be assessed in next week's pass if confirmed."
+        },
+        {
+          "conflict_id": "syria-sectarian-violence",
+          "severity": { "score": 52, "status": "Stable", "arrow": "→", "change": 0, "note": "Sectarian violence in Suweida/southern Syria (Bedouin-Druze clashes, earlier Alawite-targeted killings) remains a live fault line in the post-Assad transition; cumulative tolls from 2025-2026 clashes exceed 1,000 dead and roughly 200,000 displaced, though this week had no single confirmed fresh flashpoint." },
+          "coverage": {
+            "coverage_score": 45,
+            "global_english_note": "Substantial coverage from HRW, ICG, and ACLED given the post-Assad transition's high policy interest, though mainstream daily coverage has thinned since the acute phase of the clashes.",
+            "regional_note": null,
+            "severity_rank": 9,
+            "coverage_rank": 5,
+            "gap": -4,
+            "gap_direction": "overreported relative to rank",
+            "plausible_reason": "Post-Assad Syria remains a high policy-interest story independent of this week's specific severity level."
+          },
+          "novelty": "new",
+          "evidence_quality": "low",
+          "source_1": "https://www.hrw.org/world-report/2026/country-chapters/syria",
+          "source_2": "https://www.crisisgroup.org/rpt/middle-east-north-africa/syria/253-restoring-security-post-assad-syria-lessons-coast-and-suweida",
+          "notes": "Source reporting conflates distinct incidents across 2025 and 2026; casualty/displacement figures should be treated as cumulative context rather than this week's specific toll."
+        },
+        {
+          "conflict_id": "taiwan-strait-tension",
+          "severity": { "score": 35, "status": "Emerging", "arrow": "→", "change": 0, "note": "No kinetic conflict; China continues an information and economic pressure campaign against Japan and a military buildup around Taiwan, including a July 6 SLBM test, but no direct engagement or casualties this week." },
+          "coverage": {
+            "coverage_score": 58,
+            "global_english_note": "Substantial policy and mainstream coverage (dedicated weekly AEI tracking, major-outlet strategic-affairs pieces) despite zero current casualties.",
+            "regional_note": null,
+            "severity_rank": 10,
+            "coverage_rank": 3,
+            "gap": -7,
+            "gap_direction": "most overreported relative to rank",
+            "plausible_reason": "Coverage here tracks strategic/nuclear-stakes significance rather than current on-the-ground damage — a useful illustration that severity and newsworthiness are legitimately different things, not evidence of media distortion."
+          },
+          "novelty": "new",
+          "evidence_quality": "medium",
+          "source_1": "https://www.aei.org/commentary/china-taiwan-update-july-17-2026/",
+          "source_2": "https://www.aei.org/commentary/china-taiwan-update-july-24-2026/",
+          "notes": "Included as a non-kinetic interstate crisis per protocol.md Section 3; will be retired from the watchlist if it stays inactive with no new developments for 4+ weeks."
+        }
+      ],
+
+      "notable_events": [
+        {
+          "event_id": "2026W29-C001",
+          "event_date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "conflict_id": "drc-m23-conflict",
+          "actor": "M23 (Rwanda-backed)",
+          "target": "Wazalendo militia position near Nyabiondo, South Kivu",
+          "action": "Drone strike on a Wazalendo position, part of a broader increase in FARDC-M23 hostilities in South Kivu's Fizi and Mwenga territories using drones and heavy artillery in populated areas",
+          "effect": "escalation",
+          "severity_delta": "positive",
+          "confidence": "Medium",
+          "source_1": "https://www.criticalthreats.org/briefs/congo-war-security-review",
+          "source_2": "https://news.un.org/en/story/2026/07/1167906",
+          "notes": "UN High Commissioner for Human Rights publicly condemned the increase in hostilities and use of explosive weapons in civilian areas."
+        },
+        {
+          "event_id": "2026W29-C002",
+          "event_date": "2026-07-13",
+          "report_date": "2026-07-13",
+          "conflict_id": "gaza-israel-conflict",
+          "actor": "Israeli forces",
+          "target": "Civilians in Gaza",
+          "action": "Israeli attacks across Gaza killed three Palestinians and wounded 15, part of a sustained pattern of strikes despite the nominal ceasefire",
+          "effect": "escalation",
+          "severity_delta": "positive",
+          "confidence": "High",
+          "source_1": "https://www.aljazeera.com/news/2026/7/13/three-palestinians-killed-15-wounded-in-israeli-attacks-across-gaza?traffic_source=rss",
+          "source_2": "",
+          "notes": "One of many similar strikes reported through July; ceasefire violations described as continuing for 284+ consecutive days as of late July."
+        },
+        {
+          "event_id": "2026W29-C003",
+          "event_date": "2026-07-15",
+          "report_date": "2026-07-15",
+          "conflict_id": "russia-ukraine-war",
+          "actor": "Russian and Ukrainian forces",
+          "target": "Frontline positions, Ukraine",
+          "action": "Weekly tracking (Russia Matters War Report Card) documented continued high-tempo attritional fighting with Russian monthly losses estimated above 30,000, exceeding Russian recruitment rates",
+          "effect": "escalation",
+          "severity_delta": "neutral",
+          "confidence": "Medium",
+          "source_1": "https://www.russiamatters.org/news/russia-ukraine-war-report-card/russia-ukraine-war-report-card-july-15-2026",
+          "source_2": "",
+          "notes": "No major territorial shift identified this week; casualty rate itself is the notable trend, consistent with recent months rather than a sharp in-week escalation."
+        },
+        {
+          "event_id": "2026W29-C004",
+          "event_date": "2026-07-19",
+          "report_date": "2026-07-19",
+          "conflict_id": "haiti-gang-crisis",
+          "actor": "Haitian authorities, international partners",
+          "target": "Gang-controlled areas of Port-au-Prince and surrounding departments",
+          "action": "UN News reported 'signs of hope despite gang violence and political uncertainty' as a new international security force deploys and election planning continues, even as drone-attack frequency and displacement keep rising",
+          "effect": "diplomatic",
+          "severity_delta": "neutral",
+          "confidence": "Medium",
+          "source_1": "https://news.un.org/en/story/2026/07/1167963",
+          "source_2": "",
+          "notes": "Mixed-signal event: genuine institutional response underway alongside continued deterioration in ground-level violence metrics."
+        },
+        {
+          "event_id": "2026W29-C005",
+          "event_date": "2026-07-17",
+          "report_date": "2026-07-17",
+          "conflict_id": "taiwan-strait-tension",
+          "actor": "People's Republic of China",
+          "target": "Taiwan, Japan",
+          "action": "Continued information and economic pressure campaign against Japan over its military modernization stance, alongside criticism of Taiwan's drone-procurement and asymmetric-defense plans",
+          "effect": "escalation",
+          "severity_delta": "neutral",
+          "confidence": "Medium",
+          "source_1": "https://www.aei.org/commentary/china-taiwan-update-july-17-2026/",
+          "source_2": "",
+          "notes": "Non-kinetic; tracked as a strategic pressure campaign rather than a casualty-producing event."
+        }
+      ],
+
+      "underreported": [
+        { "conflict_id": "sahel-jihadist-insurgency", "severity_rank": 3, "coverage_rank": 10, "gap": 7, "reason": "Dangerous reporting access, no single anchor event, reduced Western outlet presence after AES states' break with ECOWAS." },
+        { "conflict_id": "sudan-civil-war", "severity_rank": 1, "coverage_rank": 7, "gap": 6, "reason": "Limited access, compassion fatigue, competition from higher-profile conflicts for attention." },
+        { "conflict_id": "myanmar-civil-war", "severity_rank": 4, "coverage_rank": 8, "gap": 4, "reason": "Restricted media access, diffuse multi-front conflict without a clean narrative arc." },
+        { "conflict_id": "drc-m23-conflict", "severity_rank": 5, "coverage_rank": 9, "gap": 4, "reason": "Decades-long conflict fatigue and complex multi-actor dynamics." }
+      ],
+      "overreported": [
+        { "conflict_id": "taiwan-strait-tension", "severity_rank": 10, "coverage_rank": 3, "gap": -7, "reason": "Coverage tracks strategic/nuclear stakes rather than current on-the-ground damage, of which there is currently none." },
+        { "conflict_id": "gaza-israel-conflict", "severity_rank": 7, "coverage_rank": 2, "gap": -5, "reason": "Sustained global political salience keeps attention high relative to this week's rank; not a claim the conflict is over-covered in absolute terms." },
+        { "conflict_id": "yemen-red-sea-conflict", "severity_rank": 8, "coverage_rank": 4, "gap": -4, "reason": "Commercial shipping stakes drive coverage more than the underlying humanitarian toll does." },
+        { "conflict_id": "syria-sectarian-violence", "severity_rank": 9, "coverage_rank": 5, "gap": -4, "reason": "Post-Assad Syria remains high policy-interest independent of this week's specific severity level." }
+      ],
+
+      "trajectory_note": "This is the first tracked week, so there is no prior baseline for week-over-week movement; all ten situations are 'new' by definition and all changes/arrows are set to zero/steady accordingly. The starkest pattern in this baseline is the split between conflicts with the highest casualty tolls (Sudan, the Sahel insurgency, Myanmar, DRC) and their comparatively minimal presence in global/English-language media, versus conflicts with strong strategic or political salience (Taiwan, Gaza, Yemen's Red Sea dimension) that draw attention somewhat independent of current casualty counts. Russia-Ukraine and Haiti are the closest to proportionate coverage given their severity. None of this should be read as a claim that heavily-covered conflicts don't deserve their coverage — the point is that severity and newsworthiness are measured on different bases, and the biggest blind spots (the Sahel and Sudan in particular) are worth watching for whether coverage improves or the gap widens as these wars continue.",
+      "confidence": "Medium",
+
+      "retrospective_revision": null
+    }
+  ]
+}

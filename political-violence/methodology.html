@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How this tracker works — Political Violence &amp; Social Cohesion</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12151b; --panel:#1a1e26; --panel-alt:#20242e; --paper:#eae7df; --ink:#e9e7df;
+    --muted:#8b8f99; --hair:#2c3038; --green:#4c9a6a; --darkgreen:#2f6b45; --yellow:#c9a227;
+    --amber:#d98a2b; --orange:#d9622b; --red:#c9403b;
+    --serif:"Source Serif 4", Georgia, serif; --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace; --sans:"Inter", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);}
+  .wrap{max-width:720px;margin:0 auto;padding:36px 24px 90px;}
+  .back{display:inline-block;margin-bottom:20px;font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--muted);}
+  .back:hover{color:var(--ink);}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+  h1{font-family:var(--serif);font-weight:600;font-size:26px;margin:6px 0 16px;}
+  .lede{font-family:var(--serif);font-size:16px;line-height:1.6;color:var(--paper);margin:0 0 32px;padding-bottom:24px;border-bottom:1px solid var(--hair);}
+
+  h2{font-family:var(--serif);font-size:17px;font-weight:600;margin:32px 0 12px;}
+  p{font-size:14px;line-height:1.65;color:var(--paper);margin:0 0 14px;}
+
+  .score-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:8px;}
+  @media (max-width:560px){.score-cards{grid-template-columns:1fr;}}
+  .score-card{border:1px solid var(--hair);border-radius:4px;padding:16px 18px;background:var(--panel);}
+  .score-card .name{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+  .score-card .dir{font-family:var(--serif);font-size:14px;font-weight:600;margin-bottom:6px;}
+  .score-card p{font-size:13px;margin:0;color:var(--paper);}
+
+  .ind-list{list-style:none;margin:0;padding:0;border:1px solid var(--hair);border-radius:4px;overflow:hidden;}
+  .ind-list li{padding:11px 16px;border-bottom:1px solid var(--hair);font-size:13.5px;line-height:1.5;background:var(--panel);}
+  .ind-list li:last-child{border-bottom:none;}
+  .ind-list b{color:var(--ink);}
+  .ind-list .w{font-family:var(--mono);font-size:11px;color:var(--muted);}
+
+  .callout{border:1px solid var(--hair);background:var(--panel-alt);border-radius:4px;padding:16px 18px;margin:8px 0 8px;}
+  .callout p{margin:0;font-size:13.5px;}
+
+  ul.plain{margin:0;padding-left:20px;}
+  ul.plain li{font-size:13.5px;line-height:1.6;color:var(--paper);margin-bottom:8px;}
+
+  footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--hair);font-family:var(--mono);font-size:11px;color:var(--muted);}
+  footer a{color:var(--muted);border-bottom:1px dotted var(--muted);text-decoration:none;}
+  footer a:hover{color:var(--ink);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="dashboard.html">&larr; Back to dashboard</a>
+  <div class="eyebrow">How this tracker works</div>
+  <h1>Political Violence &amp; Social Cohesion</h1>
+  <p class="lede">This tracks politically or ideologically motivated violence and threats in the U.S. — and separately, whether the social fabric (trust, leadership, law enforcement response) is holding things together or fraying. It's a companion to the Democracy tracker, but focused on society and violence rather than government institutions; the same event can touch both, but each is scored on its own lens, not double-counted.</p>
+
+  <h2>The two scores</h2>
+  <div class="score-cards">
+    <div class="score-card">
+      <div class="name">Political Violence &amp; Extremism Index (PVEI)</div>
+      <div class="dir">0&ndash;100, higher = worse</div>
+      <p>How much politically motivated violence, threats, and extremist activity is happening.</p>
+    </div>
+    <div class="score-card">
+      <div class="name">Social Cohesion Index (SCI)</div>
+      <div class="dir">0&ndash;100, higher = better</div>
+      <p>Whether trust, leadership, and institutions are containing that pressure.</p>
+    </div>
+  </div>
+
+  <h2>What PVEI looks at</h2>
+  <ul class="ind-list">
+    <li><b>Politically motivated violence</b> <span class="w">(weighted highest)</span> — attacks, assassination attempts, or plots targeting people over political or ideological beliefs.</li>
+    <li><b>Threats against officials and judges</b> — credible threats aimed at elected officials, judges, or election workers.</li>
+    <li><b>Hate crimes</b> — violence or intimidation targeting people for who they are.</li>
+    <li><b>Extremist mobilization</b> — organized activity by militias or extremist groups, online or in person.</li>
+    <li><b>Incitement and normalization</b> — rhetoric from prominent figures that encourages or excuses violence.</li>
+    <li><b>Protest-related violence</b> — violence that breaks out around a demonstration, distinct from the protest itself.</li>
+    <li><b>Weapons and plot activity</b> — caches, foiled plots, and related law-enforcement actions.</li>
+  </ul>
+
+  <h2>What SCI looks at</h2>
+  <ul class="ind-list">
+    <li><b>Law-enforcement and prosecutorial response</b> <span class="w">(weighted highest)</span> — are threats and attacks actually investigated and charged, regardless of the perpetrator's politics?</li>
+    <li><b>Cross-partisan trust</b> — how much people across the political spectrum trust each other and shared institutions.</li>
+    <li><b>Leadership rhetoric</b> — do prominent figures condemn violence on their own side, not just the other side's?</li>
+    <li><b>De-escalation and bridging efforts</b> — organized work to lower the temperature across divides.</li>
+    <li><b>Civic engagement</b> — participation in normal, peaceful civic and political life.</li>
+    <li><b>Local news and information ecosystem</b> — whether communities have reliable, non-inflammatory local reporting.</li>
+    <li><b>Institutional trust in elections and courts</b> — public confidence that these institutions are fair.</li>
+  </ul>
+
+  <h2>The Cohesion Gap</h2>
+  <div class="callout">
+    <p><b>Gap = SCI &minus; PVEI.</b> A positive gap means the social fabric currently has more strength than the violence pressing on it; a negative gap means the pressure is winning.</p>
+  </div>
+
+  <h2>Good to know</h2>
+  <ul class="plain">
+    <li>The same evidentiary bar applies no matter who the perpetrator or target is politically — an attack isn't scored more or less seriously based on which side it favors.</li>
+    <li>Lawful protest is never scored as violence on its own; only actual violence, credible threats, or organized extremist activity counts.</li>
+    <li>Advocacy groups (on any side) are treated as sources with a point of view, like any other — their data is used, but corroborated where possible.</li>
+    <li>An isolated incident by a disturbed individual is treated differently from an organized, systemic campaign — the tracker distinguishes the two rather than lumping them together.</li>
+  </ul>
+
+  <footer>This page summarizes the full scoring protocol this tracker follows every week. Numbers and events on the dashboard are sourced individually — see each week's entry for citations.</footer>
+</div>
+</body>
+</html>
