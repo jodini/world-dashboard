@@ -21,10 +21,13 @@
   a.card{display:block;border:1px solid var(--hair);border-radius:4px;padding:22px;background:var(--panel);text-decoration:none;color:var(--ink);transition:border-color .15s;}
   a.card:hover{border-color:var(--muted);}
   .card-title{font-family:var(--serif);font-weight:600;font-size:17px;margin-bottom:14px;}
-  .card-scores{display:flex;gap:22px;font-family:var(--mono);margin-bottom:14px;}
-  .card-score .num{font-size:28px;font-weight:600;line-height:1;}
-  .card-score .band{font-family:var(--sans);font-size:11px;color:var(--muted);margin-top:3px;}
-  .card-score .lbl{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:2px;}
+  .card-scores{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--hair);border-radius:4px;overflow:hidden;background:var(--panel-alt);margin-bottom:14px;}
+  .card-scores.n4{grid-template-columns:repeat(4,1fr);}
+  .card-score{padding:12px 14px;}
+  .card-score+.card-score{border-left:1px solid var(--hair);}
+  .card-score .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+  .card-score .num{font-family:var(--mono);font-size:26px;font-weight:600;line-height:1;}
+  .card-score .band{font-family:var(--sans);font-size:11px;color:var(--muted);margin-top:4px;}
 
   .card-gap{font-family:var(--mono);font-size:12.5px;padding:8px 10px;border:1px solid var(--hair);border-radius:4px;background:var(--panel-alt);margin-bottom:12px;}
   .card-gap b{font-size:14px;}
@@ -252,11 +255,11 @@ grid.innerHTML = TRACKERS.map(t => {
   if(t.kind === "conflict"){
     return `<a class="card" href="${t.path}">
       <div class="card-title">${esc(t.name)}</div>
-      <div class="card-scores">
-        <div class="card-score"><div class="num">${l.active}</div><div class="lbl">Active</div></div>
-        <div class="card-score"><div class="num" style="color:var(--red)">${l.escalating}</div><div class="lbl">Escalating</div></div>
-        <div class="card-score"><div class="num" style="color:var(--green)">${l.de_escalating}</div><div class="lbl">De-escal.</div></div>
-        <div class="card-score"><div class="num" style="color:var(--orange)">${l.emerging}</div><div class="lbl">Emerging</div></div>
+      <div class="card-scores n4">
+        <div class="card-score"><div class="lbl">Active</div><div class="num">${l.active}</div></div>
+        <div class="card-score"><div class="lbl">Escalating</div><div class="num" style="color:var(--red)">${l.escalating}</div></div>
+        <div class="card-score"><div class="lbl">De-escal.</div><div class="num" style="color:var(--green)">${l.de_escalating}</div></div>
+        <div class="card-score"><div class="lbl">Emerging</div><div class="num" style="color:var(--orange)">${l.emerging}</div></div>
       </div>
       <div class="mini-list">
         ${(l.top_severity||[]).map(c => `
@@ -277,8 +280,8 @@ grid.innerHTML = TRACKERS.map(t => {
   return `<a class="card" href="${t.path}">
     <div class="card-title">${esc(t.name)}</div>
     <div class="card-scores">
-      <div class="card-score"><div class="num" style="color:${COLOR_MAP[a.color]}">${a.score}</div><div class="band" style="color:${COLOR_MAP[a.color]}">${esc(a.band)}</div><div class="lbl">${esc(cfg.aLbl)}</div></div>
-      <div class="card-score"><div class="num" style="color:${COLOR_MAP[b.color]}">${b.score}</div><div class="band" style="color:${COLOR_MAP[b.color]}">${esc(b.band)}</div><div class="lbl">${esc(cfg.bLbl)}</div></div>
+      <div class="card-score"><div class="lbl">${esc(cfg.aLbl)}</div><div class="num" style="color:${COLOR_MAP[a.color]}">${a.score}</div><div class="band" style="color:${COLOR_MAP[a.color]}">${esc(a.band)}</div></div>
+      <div class="card-score"><div class="lbl">${esc(cfg.bLbl)}</div><div class="num" style="color:${COLOR_MAP[b.color]}">${b.score}</div><div class="band" style="color:${COLOR_MAP[b.color]}">${esc(b.band)}</div></div>
     </div>
     <div class="card-gap">Gap <b>${l.gap > 0 ? "+"+l.gap : l.gap}</b> — ${esc(l.gap_label)}</div>
     <div class="card-highlights">
