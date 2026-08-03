@@ -342,6 +342,178 @@ const TRACKER_DATA = {
       "confidence": "Medium",
 
       "retrospective_revision": null
+    },
+    {
+      "week": 31,
+      "year": 2026,
+      "start_date": "2026-07-27",
+      "end_date": "2026-08-02",
+      "_note": "Week 30 (2026-07-20 to 2026-07-26) was not scored in this dataset; trend/change figures below compare against the most recent prior entry, Week 29.",
+
+      "dri": {
+        "score": 65,
+        "band": "High",
+        "color": "orange",
+        "change": 4,
+        "trend_arrow": "↑",
+        "indicators": [
+          { "name": "Media retaliation", "status": "Escalating", "arrow": "↓", "note": "No new retaliatory action against journalists was recorded in this window; the DOJ's withdrawal of its New York Times reporter subpoenas just before this period continues to ease acute pressure, though the underlying pattern remains a live risk." },
+          { "name": "Agency weaponization", "status": "Severe", "arrow": "→", "note": "No new weaponization event fell inside this window; the pending Jack Smith criminal referral and the Cory Mills DOJ investigation (both opened the prior week) continue to signal a pattern of politicized DOJ activity." },
+          { "name": "Narrative warfare", "status": "Escalating", "arrow": "→", "note": "Unsubstantiated DHS claims of 250,000+ noncitizens on four states' voter rolls continued to circulate and be cited politically even as state reviews undercut the underlying numbers." },
+          { "name": "Corruption/impunity", "status": "Severe", "arrow": "→", "note": "No new self-dealing or impunity event surfaced in this window; prior pardon and IRS-settlement patterns remain the operative baseline." },
+          { "name": "State-level conflict", "status": "Escalating", "arrow": "→", "note": "No new coercive federal-state confrontation this week; the extended National Guard deployment in Washington, D.C. remains an active but unchanged flashpoint." },
+          { "name": "Election manipulation", "status": "Severe", "arrow": "↑", "note": "DOJ's emergency Supreme Court application to reinstate nationwide mail-voting restrictions before the midterms, a parallel D.C. Circuit ruling favoring the administration, and continued unsubstantiated noncitizen-voter claims together mark a genuine escalation in near-term risk to election administration." },
+          { "name": "Judiciary attacks", "status": "Escalating", "arrow": "↑", "note": "A sitting House member announced concrete plans to file impeachment articles against a federal judge over a ruling against the administration, moving beyond generalized rhetoric to a specific targeted action." }
+        ]
+      },
+
+      "iri": {
+        "score": 57,
+        "band": "Mixed resilience",
+        "color": "yellow",
+        "change": 1,
+        "trend_arrow": "↑",
+        "indicators": [
+          { "name": "Judicial independence", "status": "Strong", "arrow": "↑", "note": "Courts continued ruling against the administration on the merits (a second TPS block, a procedural mail-voting ruling) with no evidence of defiance, including one ruling issued in the face of a public impeachment threat against the judge." },
+          { "name": "State-level resistance", "status": "Strong", "arrow": "↑", "note": "California, Nevada, New Jersey, and Pennsylvania publicly rebutted inflated DHS noncitizen-voter figures with their own data and declined to hand over full voter files, an effective, evidence-based pushback." },
+          { "name": "Election-administration integrity", "status": "Mixed", "arrow": "↓", "note": "Operational independence is increasingly contingent on a pending Supreme Court decision due August 3; a favorable-to-administration D.C. Circuit ruling adds near-term uncertainty ahead of the midterms." },
+          { "name": "Media and watchdog capacity", "status": "Strong", "arrow": "→", "note": "No new press-freedom incident fell inside this window; capacity remains intact following the prior week's subpoena withdrawal, though a chilling effect from the broader pattern persists." },
+          { "name": "Civil-service independence", "status": "Weak", "arrow": "→", "note": "No new development this week; the OPM firing-authority rule and Schedule Policy/Career expansion remain the operative baseline of eroded protections." },
+          { "name": "Legislative oversight", "status": "Weak", "arrow": "→", "note": "Congress took no binding oversight action in this window; a House bill to abolish the inspector-general coordinating council remains pending without a floor vote." },
+          { "name": "Accountability enforcement", "status": "Strong", "arrow": "→", "note": "No new sanctions, prosecutions, or disciplinary outcomes were recorded this week; the prior weeks' enforced court judgments remain the most recent concrete accountability wins." }
+        ]
+      },
+
+      "resilience_gap": -8,
+      "resilience_gap_interpretation": "Manageable strain",
+      "relationship_note": "Pressure rose this week mainly through the election-manipulation and judiciary-attacks indicators, driven by a Supreme Court emergency application over mail voting and a concrete impeachment threat against a sitting judge, but courts and states again produced real, evidence-based resistance that kept the Resilience Gap from widening further.",
+
+      "dri_gates_crossed": [
+        { "indicator": "Election manipulation", "from": "Escalating", "to": "Severe", "event": "DOJ's emergency Supreme Court application (joined by 12 GOP-led states) to reinstate nationwide mail-voting restrictions before the midterms, reinforced by a D.C. Circuit ruling favoring the administration and continued unsubstantiated DHS noncitizen-voter claims.", "why": "For the first time, the mail-voting restriction dispute has reached the Supreme Court with an explicit request to allow implementation before the midterms, materially raising the near-term probability of restrictions taking effect nationwide; this is a qualitatively higher-stakes posture than ongoing lower-court litigation." },
+        { "indicator": "Judiciary attacks", "from": "Warning", "to": "Escalating", "event": "Rep. Andy Ogles announced concrete plans to file articles of impeachment against U.S. District Judge Allison Burroughs over a TPS ruling against the administration.", "why": "This moves from generalized baseline risk (rhetoric about judges) to an announced, specific legislative action targeting a named sitting judge for a particular ruling." }
+      ],
+      "iri_gates_crossed": [],
+      "dri_gates_reinforced": [
+        { "indicator": "Media retaliation", "status": "Escalating (moved down from Severe within the same broad pattern)", "note": "No new incident, but the underlying press-freedom threat pattern from prior weeks remains unresolved." },
+        { "indicator": "Agency weaponization", "status": "Severe", "note": "Prior week's Jack Smith referral and Cory Mills investigation remain open with no new developments in this window." },
+        { "indicator": "Corruption/impunity", "status": "Severe", "note": "No new event; prior pattern stands." },
+        { "indicator": "State-level conflict", "status": "Escalating", "note": "No new event; extended D.C. National Guard deployment remains the operative flashpoint." }
+      ],
+      "iri_gates_reinforced": [
+        { "indicator": "Judicial independence", "status": "Strong", "note": "Continued independent rulings against the administration, including under public pressure, reinforce the existing Strong status without crossing to Very strong." },
+        { "indicator": "State-level resistance", "status": "Strong", "note": "Effective, data-based state pushback on federal noncitizen-voter claims reinforces the existing Strong status." }
+      ],
+
+      "dri_gates_crossed_count": 2,
+      "iri_gates_crossed_count": 0,
+
+      "event_log": [
+        {
+          "event_id": "2026W31-001",
+          "event_date": "2026-07-27",
+          "report_date": "2026-07-27",
+          "actor": "Solicitor General John Sauer (DOJ), joined by 12 Republican-led states led by Missouri",
+          "target": "Nationwide implementation of Trump's mail-in voting executive order (EO 14399) ahead of the midterms",
+          "action": "Filed an emergency application asking the Supreme Court to lift the injunction blocking USPS and other federal agencies from implementing restrictions on mail-in voting before the November midterms.",
+          "implementation_status": "filed",
+          "dri_indicator": "Election manipulation",
+          "iri_indicator": "Election-administration integrity",
+          "dri_effect": "negative",
+          "iri_effect": "neutral",
+          "severity": "high",
+          "novelty": "new",
+          "gate_status": "crossed",
+          "evidence_quality": "high",
+          "source_1": "https://www.cnn.com/2026/07/27/politics/trump-supreme-court-mail-voting-executive-order",
+          "source_2": "https://www.democracydocket.com/news-alerts/trump-anti-mail-voting-executive-order-supreme-court-justice-department-emergency-appeal/",
+          "notes": "The Supreme Court requested a response by August 3, after the close of this reporting period; no decision has been issued yet. This is the first time the dispute has reached the Supreme Court with a request to allow implementation before the midterms."
+        },
+        {
+          "event_id": "2026W31-002",
+          "event_date": "2026-07-28",
+          "report_date": "2026-07-28",
+          "actor": "Three-judge panel, U.S. Court of Appeals for the D.C. Circuit",
+          "target": "Plaintiffs challenging Trump's mail-in voting executive order (separate case track before Judge Carl Nichols)",
+          "action": "Unanimously declined to block the executive order, upholding Judge Nichols's May ruling that a preliminary injunction was premature.",
+          "implementation_status": "implemented",
+          "dri_indicator": "Election manipulation",
+          "iri_indicator": "Judicial independence",
+          "dri_effect": "negative",
+          "iri_effect": "neutral",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "reinforced",
+          "evidence_quality": "high",
+          "source_1": "https://www.usnews.com/news/politics/articles/2026-07-28/court-panel-declines-to-block-trumps-mail-ballot-order-but-its-status-for-midterms-remains-unclear",
+          "source_2": "https://www.dailysignal.com/2026/07/28/trump-supreme-court-mail-ballot/",
+          "notes": "A separate litigation track from the Talwani injunction now before the Supreme Court; this ruling addressed procedural prematurity, not the merits of the mail-voting restrictions."
+        },
+        {
+          "event_id": "2026W31-003",
+          "event_date": "2026-07-31",
+          "report_date": "2026-07-31",
+          "actor": "Election officials in California, Nevada, New Jersey, and Pennsylvania",
+          "target": "DHS Secretary Markwayne Mullin's claim that the four states have 250,000+ noncitizens on their voter rolls",
+          "action": "Publicly disputed DHS's uncorroborated noncitizen voter-roll figures; New Jersey disclosed its own review found 6,600 inadvertent noncitizen registrations (versus DHS's claimed 35,000 for that state), and DHS's own 'preliminary review' reportedly found only about 118,000 matches (versus the 250,000+ headline claim); states declined to hand over full voter files including Social Security numbers.",
+          "implementation_status": "announced",
+          "dri_indicator": "Election manipulation",
+          "iri_indicator": "State-level resistance",
+          "dri_effect": "negative",
+          "iri_effect": "positive",
+          "severity": "high",
+          "novelty": "continuation",
+          "gate_status": "reinforced",
+          "evidence_quality": "high",
+          "source_1": "https://www.npr.org/2026/07/31/nx-s1-5906708/trump-claim-noncitizens-midterms-election-interference-voter-rolls",
+          "source_2": "https://thehill.com/homenews/5992636-dhs-vague-voting-data/",
+          "notes": "DHS has not published its methodology. This also functions as continued narrative warfare (unsubstantiated claims of mass noncitizen voting) but is logged once, under Election manipulation, per protocol Section 4.2's instruction not to double-count a single event across indicators."
+        },
+        {
+          "event_id": "2026W31-004",
+          "event_date": "2026-08-01",
+          "report_date": "2026-08-01",
+          "actor": "Rep. Andy Ogles (R-TN)",
+          "target": "U.S. District Judge Allison Burroughs (D. Mass.)",
+          "action": "Announced plans to file articles of impeachment against Judge Burroughs after she blocked the administration's termination of Temporary Protected Status for Somali nationals for a second time; allies characterized the ruling as defying the Supreme Court's June decision limiting judicial review of TPS determinations.",
+          "implementation_status": "announced",
+          "dri_indicator": "Judiciary attacks",
+          "iri_indicator": null,
+          "dri_effect": "negative",
+          "iri_effect": "neutral",
+          "severity": "medium",
+          "novelty": "continuation",
+          "gate_status": "crossed",
+          "evidence_quality": "medium",
+          "source_1": "https://justthenews.com/government/congress/ogles-introduce-articles-impeachment-against-obama-appointed-judge",
+          "source_2": "https://townhall.com/news/josephchalfant/2026/08/02/rep-andy-ogles-moves-to-impeach-obama-appointed-judge-blocking-tps-terminations-n2680528",
+          "notes": "Per protocol Section 5, the 'defiance of SCOTUS' framing is disputed, not established fact: Judge Burroughs's order reportedly rests on Fifth Amendment equal-protection and APA claims distinct from the TPS-designation-review question the Supreme Court addressed in its June ruling. Part of a broader pattern of GOP lawmakers threatening impeachment of judges who rule against the administration. Coverage of this specific announcement skews toward partisan/conservative outlets; treated as a confirmed fact of Ogles's announcement (multiple outlets agree), while the characterization of the ruling as 'defiance' is noted as contested."
+        },
+        {
+          "event_id": "2026W31-005",
+          "event_date": "2026-08-01",
+          "report_date": "2026-08-01",
+          "actor": "U.S. District Judge Allison Burroughs",
+          "target": "Trump administration DHS termination of Temporary Protected Status for Somali nationals",
+          "action": "Issued a fresh order blocking the administration from ending Somalia's TPS designation, based on Fifth Amendment equal-protection and Administrative Procedure Act claims.",
+          "implementation_status": "blocked",
+          "dri_indicator": null,
+          "iri_indicator": "Judicial independence",
+          "dri_effect": "neutral",
+          "iri_effect": "positive",
+          "severity": "medium",
+          "novelty": "continuation",
+          "gate_status": "reinforced",
+          "evidence_quality": "high",
+          "source_1": "https://www.foxnews.com/politics/trump-immigration-agenda-faces-setback-obama-appointed-judge-issues-fresh-tps-stay",
+          "source_2": "https://clearinghouse.net/case/47878/",
+          "notes": "The court continued ruling against the administration on the merits notwithstanding public impeachment threats against the judge, evidence that judicial independence was not chilled by those threats this week."
+        }
+      ],
+
+      "trajectory_note": "The Resilience Gap has held in the 'manageable strain' band for two consecutive tracked weeks (-5, then -8), but the composition of pressure shifted meaningfully this week: instead of diffuse pressure across many fronts, it concentrated in election administration, where the mail-voting dispute reached the Supreme Court with an explicit request to allow restrictions before the midterms, and in judiciary attacks, where a threat against judges moved from rhetoric to an announced, targeted impeachment effort. Both are indicators the protocol flags as carrying outsized structural weight — election manipulation is the highest-weighted DRI indicator, and judicial independence is the highest-weighted IRI indicator — so continued movement here would be the clearest signal of genuine backsliding rather than routine political conflict. The countervailing pattern remains intact: courts kept ruling against the administration without defiance, and states responded to unsubstantiated federal voter-roll claims with concrete counter-data rather than capitulation. The single most important thing to watch next is the Supreme Court's response to the mail-voting emergency application (due August 3, just after this window closes) — a stay favoring the administration ahead of the midterms would be a severe escalation, while a denial would reinforce this week's resistance pattern.",
+      "confidence": "Medium",
+
+      "retrospective_revision": null
     }
   ]
 };

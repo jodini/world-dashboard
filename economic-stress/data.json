@@ -147,6 +147,203 @@
       "confidence": "Medium",
 
       "retrospective_revision": null
+    },
+    {
+      "week": 31,
+      "year": 2026,
+      "start_date": "2026-07-27",
+      "end_date": "2026-08-02",
+
+      "esi": {
+        "score": 40,
+        "band": "Elevated",
+        "color": "amber",
+        "change": 7,
+        "trend_arrow": "↑",
+        "indicators": [
+          { "name": "Growth momentum", "status": "Warning", "arrow": "↑", "note": "Q2 GDP advance estimate (BEA, July 30) came in at 1.5% annualized, below the 1.8% consensus and down sharply from Q1's 2.1%; Conference Board consumer confidence (July 28) fell to 90.8, with the present-situation index at its lowest since Feb 2021. Genuine gate crossing (Stable to Warning), reinforced by new blanket tariffs on 60 trading partners adding trade-policy drag risk." },
+          { "name": "Labor market deterioration", "status": "Stable", "arrow": "→", "note": "Initial jobless claims ticked up to 197,000 for the week ending July 25 (vs. 188,000 revised prior week) but remain historically low; the four-week average actually fell to 202,750. No payrolls report this week (next release Aug 7) — not a material change, status carried forward." },
+          { "name": "Inflation pressure", "status": "Warning", "arrow": "↓", "note": "June PCE (BEA, July 30) cooled to 3.7% y/y headline (from 4.1% in May) and 3.3% core — a genuine second straight month of disinflation following June's CPI cooling, though both remain well above the 2% target." },
+          { "name": "Financial market stress", "status": "Warning", "arrow": "↑", "note": "The 10-year Treasury yield climbed to roughly 4.73-4.75%, its highest since January 2025, and the dollar index rose to 101.64; CCC-rated high-yield credit spreads widened sharply to about 876bps even as investment-grade spreads and the VIX stayed calm (VIX eased from ~20.7 to ~16 intra-week) — a bifurcated but genuine tightening in financial conditions." },
+          { "name": "Household financial strain", "status": "Escalating", "arrow": "↑", "note": "The Q2 Employment Cost Index (BLS, July 31) showed real (inflation-adjusted) wages and salaries fell 0.4% y/y for private-sector workers even as nominal compensation rose 3.3%, reinforcing the strain picture alongside the Conference Board's weakest labor-market differential since February 2021." },
+          { "name": "Corporate/banking stress", "status": "Stable", "arrow": "→", "note": "No new bank earnings or supervisory data this week (banks last reported July 14). Corporate bankruptcy filings remain on an elevated multi-year-high trajectory, but that trend was already reflected in prior weeks — status carried forward unchanged." },
+          { "name": "Fiscal stress", "status": "Warning", "arrow": "→", "note": "No new deficit, debt-service, or Treasury-auction data released this week; carrying forward last week's reading unchanged. New tariffs on 60 trading partners (10-12.5%, replacing expired duties) and a threatened 35% Canada tariff effective Aug 1 are trade-policy events tracked under Growth momentum rather than this indicator pending any fiscal/revenue data." }
+        ]
+      },
+
+      "fri": {
+        "score": 56,
+        "band": "Mixed",
+        "color": "yellow",
+        "change": -2,
+        "trend_arrow": "↓",
+        "indicators": [
+          { "name": "Monetary policy space", "status": "Mixed", "arrow": "↓", "note": "The Fed held rates at 3.50-3.75% on July 29, but three governors dissented in favor of a hike — the first unified hawkish three-way dissent since September 2016 — signaling reduced internal consensus and testing new Chair Warsh's credibility just as inflation remains above target." },
+          { "name": "Fiscal policy space", "status": "Mixed", "arrow": "→", "note": "No new deficit or Treasury-auction data this week; carrying forward unchanged." },
+          { "name": "Banking system soundness", "status": "Strong", "arrow": "→", "note": "No new bank earnings or supervisory data this week; carrying forward last week's post-stress-test reading unchanged." },
+          { "name": "Labor market safety net capacity", "status": "Mixed", "arrow": "→", "note": "No new developments this week; unchanged." },
+          { "name": "External buffers", "status": "Strong", "arrow": "→", "note": "The dollar index rose to 101.64 (highest since June 25) on the hawkish Fed hold — a continuation of existing reserve-currency demand rather than a new distinct buffer event; no auction-demand stress observed." },
+          { "name": "Corporate balance sheet health", "status": "Strong", "arrow": "↓", "note": "CCC-rated high-yield credit spreads widened sharply to roughly 876bps this week even as broad investment-grade and BB-tier spreads stayed calm (~281-284bps) — a fresh signal of stress concentrating in the lowest-quality corporate credit tier." },
+          { "name": "Household balance sheet health", "status": "Mixed", "arrow": "↓", "note": "Real wages fell 0.4% y/y per the Q2 Employment Cost Index and Conference Board present-situation confidence hit its lowest level since February 2021, both fresh data points reinforcing the bifurcated household picture." }
+        ]
+      },
+
+      "gap": 16,
+      "gap_interpretation": "Resilience exceeds pressure",
+      "relationship_note": "A dense month-end data cluster (GDP, PCE, ECI, consumer confidence, FOMC) delivered genuine new evidence this week, and it skewed toward stress: growth decelerated more than expected and financial conditions tightened (higher yields, wider junk-credit spreads, a divided Fed), while resilience buffers softened only modestly — narrowing the Stress-Resilience Gap from +25 to +16 even though the system remains in a favorable-to-resilient position overall.",
+
+      "esi_gates_crossed": [
+        { "indicator": "Growth momentum", "from_status": "Stable", "to_status": "Warning", "why": "Q2 GDP advance estimate (1.5%) missed consensus (1.8%) and decelerated sharply from Q1's 2.1%, compounded by consumer confidence falling to a multi-year low in present conditions and new sweeping tariffs on 60 trading partners." }
+      ],
+      "fri_gates_crossed": [],
+      "esi_gates_reinforced": ["Financial market stress", "Household financial strain"],
+      "fri_gates_reinforced": ["Monetary policy space", "Corporate balance sheet health", "Household balance sheet health"],
+      "esi_gates_crossed_count": 1,
+      "fri_gates_crossed_count": 0,
+
+      "event_log": [
+        {
+          "event_id": "2026W31-E001",
+          "event_date": "2026-07-27",
+          "report_date": "2026-07-27",
+          "indicator": "Growth momentum",
+          "event_type": "policy action",
+          "description": "The US imposed new tariffs of 10-12.5% on 60 trading partners (framed as addressing forced-labor violations) as temporary duties expired, and separately threatened a 35% tariff on Canada effective August 1.",
+          "esi_effect": "positive",
+          "fri_effect": "negative",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "reinforced",
+          "evidence_quality": "high",
+          "source_1": "https://www.cnbc.com/2026/07/27/donald-trump-tariffs-trade-war-iran.html",
+          "source_2": "https://www.tradecomplianceresourcehub.com/2026/07/27/trump-2-0-tariff-tracker/",
+          "notes": "Adds trade-policy uncertainty and cost-push risk to growth and inflation outlooks; no direct fiscal/revenue data yet to score against the Fiscal stress indicator."
+        },
+        {
+          "event_id": "2026W31-E002",
+          "event_date": "2026-07-22",
+          "report_date": "2026-07-28",
+          "indicator": "Household financial strain",
+          "event_type": "data release",
+          "description": "Conference Board Consumer Confidence Index fell 1.4 points to 90.8 in July, entirely driven by the Present Situation Index dropping to 114.9 (lowest since Feb 2021); the labor-market differential fell to its weakest since Feb 2021.",
+          "esi_effect": "positive",
+          "fri_effect": "neutral",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://qz.com/conference-board-consumer-confidence-july-2026-072826",
+          "source_2": "https://www.advisorperspectives.com/dshort/updates/2026/07/28/consumer-confidence-conference-board-july-2026",
+          "notes": "Survey window (July 1-22) overlapped ongoing Middle East conflict; expectations sub-index held flat and stayed below the 80 threshold historically associated with recession risk."
+        },
+        {
+          "event_id": "2026W31-E003",
+          "event_date": "2026-07-29",
+          "report_date": "2026-07-29",
+          "indicator": "Monetary policy space",
+          "event_type": "policy action",
+          "description": "FOMC voted 9-3 to hold the federal funds rate at 3.50-3.75% for a fifth consecutive meeting; three governors dissented in favor of a 25bp hike, the first unified three-way hawkish dissent since September 2016.",
+          "esi_effect": "neutral",
+          "fri_effect": "negative",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm",
+          "source_2": "https://www.cnbc.com/2026/07/29/fed-rate-decision-july-2026.html",
+          "notes": "Policy response, not proof of resolved stress; the unusual dissent signals a credibility/consensus test for the newer Fed leadership rather than a direct change in current stress levels."
+        },
+        {
+          "event_id": "2026W31-E004",
+          "event_date": "2026-07-27",
+          "report_date": "2026-07-30",
+          "indicator": "Financial market stress",
+          "event_type": "market event",
+          "description": "CCC-rated high-yield credit spreads widened to roughly 876bps while the broader ICE BofA US High Yield Index stayed calm at ~281-284bps and the VIX eased from ~20.7 to ~16 over the week — an unusual divergence between benign broad volatility/credit measures and acute stress in the lowest-quality credit tier.",
+          "esi_effect": "positive",
+          "fri_effect": "negative",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "medium",
+          "source_1": "https://thebahnsengroup.com/dividend-cafe-monday/monday-jul-27-2026/",
+          "source_2": "https://convextrade.com/metrics/bamlh0a0hym2",
+          "notes": "Single-segment signal (CCC tier only); also weighs on the Corporate balance sheet health FRI indicator. Worth confirming persistence next week before treating as a trend."
+        },
+        {
+          "event_id": "2026W31-E005",
+          "event_date": "2026-07-30",
+          "report_date": "2026-07-30",
+          "indicator": "Growth momentum",
+          "event_type": "data release",
+          "description": "BEA advance estimate: Q2 2026 real GDP grew at a 1.5% annualized rate, below the 1.8% consensus and down from 2.1% in Q1; consumer spending, investment, and exports rose, partly offset by a decline in government spending.",
+          "esi_effect": "positive",
+          "fri_effect": "neutral",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "crossed",
+          "evidence_quality": "high",
+          "source_1": "https://www.bea.gov/news/2026/gdp-advance-estimate-2nd-quarter-2026",
+          "source_2": "https://www.advisorperspectives.com/dshort/updates/2026/07/30/gdp-gross-domestic-product-q2-2026-advance-estimate",
+          "notes": "Advance estimate, subject to revision August 26. Primary driver of the Growth momentum gate crossing from Stable to Warning."
+        },
+        {
+          "event_id": "2026W31-E006",
+          "event_date": "2026-06-30",
+          "report_date": "2026-07-30",
+          "indicator": "Inflation pressure",
+          "event_type": "data release",
+          "description": "BEA Personal Income and Outlays: June 2026 PCE price index fell 0.1% m/m, with the year-over-year rate cooling to 3.7% from 4.1% in May; core PCE rose 0.1% m/m and was 3.3% higher y/y.",
+          "esi_effect": "negative",
+          "fri_effect": "neutral",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.bea.gov/news/2026/personal-income-and-outlays-june-2026",
+          "source_2": "https://www.cnn.com/2026/07/30/economy/us-pce-inflation-consumer-spending-june",
+          "notes": "Cooling partly attributed to a temporary truce-related pullback in energy prices; Fed Chair Warsh said the softer reading did not weigh heavily on the July 29 rate decision. Still well above the 2% target."
+        },
+        {
+          "event_id": "2026W31-E007",
+          "event_date": "2026-07-25",
+          "report_date": "2026-07-30",
+          "indicator": "Labor market deterioration",
+          "event_type": "data release",
+          "description": "Initial jobless claims for the week ending July 25 rose to 197,000, up 9,000 from a revised 188,000 the prior week (below the 201,000 consensus); the four-week moving average fell to 202,750.",
+          "esi_effect": "neutral",
+          "fri_effect": "neutral",
+          "severity": "low",
+          "novelty": "continuation",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.advisorperspectives.com/dshort/updates/2026/07/30/initial-jobless-claims-up-9k-lower-than-expected",
+          "source_2": "https://qz.com/weekly-jobless-claims-197000-july-2026-073026",
+          "notes": "Small week-over-week uptick within a still-historically-low range; not treated as a material change to status."
+        },
+        {
+          "event_id": "2026W31-E008",
+          "event_date": "2026-06-30",
+          "report_date": "2026-07-31",
+          "indicator": "Household financial strain",
+          "event_type": "data release",
+          "description": "BLS Q2 2026 Employment Cost Index: compensation costs rose 0.9% q/q (vs. 0.8% expected); private-sector wages and salaries up 3.1% y/y nominally, but real (inflation-adjusted) wages and salaries fell 0.4% y/y.",
+          "esi_effect": "positive",
+          "fri_effect": "negative",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "reinforced",
+          "evidence_quality": "high",
+          "source_1": "https://www.bls.gov/news.release/archives/eci_07312026.htm",
+          "source_2": "https://www.hiringlab.org/2026/07/31/q2-2026-employment-cost-index-losing-ground/",
+          "notes": "Real-wage decline reinforces both the ESI household-strain indicator and depletes the FRI household balance-sheet indicator; labor market described as 'low hiring, low firing.'"
+        }
+      ],
+
+      "trajectory_note": "This week's data was unusually dense — the month-end cluster of GDP, PCE, the Employment Cost Index, consumer confidence, and a live FOMC meeting all landed within a six-day window — and on balance it tilted toward stress. Growth momentum genuinely weakened (a GDP miss plus falling consumer confidence, compounded by a fresh round of tariffs on 60 trading partners), financial conditions tightened at the margin (higher long-end yields, a stronger dollar, and a sharp widening in the lowest-quality credit spreads even as headline volatility measures stayed calm), and household strain deepened with the first real-wage decline reading in some time. Inflation was the one clear bright spot, cooling for a second straight month per the PCE reading, but a divided, more hawkish-leaning Fed complicates how much of that disinflation translates into future rate cuts. Note that data.json's prior entry is Week 29 (July 13-19); no Week 30 entry was produced, so this week's changes and arrows are measured against Week 29 rather than an unbroken prior week, which the confidence rating below reflects. The Stress-Resilience Gap narrowed from +25 to +16 — still a favorable position, but resilience is being tested on more fronts (monetary-policy consensus, junk-credit stress, household real wages) than it was two weeks ago. Key things to watch next: the July jobs report (Aug 7), the next CPI print, and whether the CCC-tier credit spread widening persists or reverses.",
+      "confidence": "Medium",
+
+      "retrospective_revision": null
     }
   ]
 }

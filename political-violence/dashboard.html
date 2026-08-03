@@ -249,6 +249,128 @@ const TRACKER_DATA = {
       "confidence": "Medium",
 
       "retrospective_revision": null
+    },
+    {
+      "week": 31,
+      "year": 2026,
+      "start_date": "2026-07-27",
+      "end_date": "2026-08-02",
+
+      "pvei": {
+        "score": 47,
+        "band": "Elevated",
+        "color": "amber",
+        "change": -5,
+        "trend_arrow": "↓",
+        "indicators": [
+          { "name": "Politically motivated violence", "status": "Warning", "arrow": "↓", "note": "No new completed, attempted, or foiled politically motivated attack or plot was identified in vetted sourcing this week (contrast with last tracked week's foiled White House UFC plot); indicator eases from Escalating to Warning on the absence of a fresh high-severity incident, not on any reduction of the underlying case, which remains in active prosecution." },
+          { "name": "Threats against officials/candidates/workers/judges", "status": "Escalating", "arrow": "↑", "note": "DHS General Counsel James Percival publicly named four sitting federal district judges in a 'Worst of the Worst, District Judge Edition' social-media series, accusing them of 'open defiance' and 'naked political activism'; U.S. Marshals Service data cited in coverage shows 564 threats against judges in FY2025 and 370 already in FY2026 as of July 1, and Judge Esther Salas — whose son was murdered in a 2020 attack motivated by a litigant's grievance with her rulings — publicly warned the naming-by-name campaign could inspire similar violence." },
+          { "name": "Hate crimes and bias-motivated violence", "status": "Warning", "arrow": "→", "note": "Prosecution continued this week in the July 23 Upper West Side double stabbing of a Jewish man and an Asian man (Raul Morales, charged with multiple hate-crime counts and held without bail); the underlying attack predates this reporting window but its prosecutorial status carried into it. No new dated hate-crime incident was identified within the window itself." },
+          { "name": "Extremist mobilization", "status": "Warning", "arrow": "→", "note": "No significant new evidence of organized extremist recruitment or coordinated mobilization surfaced this week; scattered background items (e.g., local political figures with past militia/'sovereign citizen'-adjacent affiliations) do not rise to a systemic signal. Carried at baseline." },
+          { "name": "Incitement and normalization", "status": "Escalating", "arrow": "↑", "note": "The DHS 'Worst of the Worst' campaign (see indicator 2) marks a concrete escalation from the more abstract framing concerns flagged in prior weeks: a senior administration official is now naming individual sitting judges by name, which multiple outlets and the judiciary itself describe as a materially different and more dangerous form of normalization given documented cases of judges being attacked over specific rulings." },
+          { "name": "Protest-related violence", "status": "Warning", "arrow": "→", "note": "No major new violent clash at ICE-related protests was confirmed within the window in vetted sourcing; ongoing 24/7 anti-ICE demonstrations in Portland and Los Angeles continued with routine arrests but no newly reported injuries or property destruction with injury risk this week. Carried at baseline." },
+          { "name": "Weapons/plot activity", "status": "Stable", "arrow": "↓", "note": "No new foiled plot, weapons-stockpiling case, or arrest for planning a politically motivated attack was identified this week, in contrast to the prior tracked week's active White House UFC-plot indictment." }
+        ]
+      },
+
+      "sci": {
+        "score": 42,
+        "band": "Mixed",
+        "color": "yellow",
+        "change": -2,
+        "trend_arrow": "↓",
+        "indicators": [
+          { "name": "Cross-partisan social trust", "status": "Strained", "arrow": "→", "note": "No new cross-partisan trust survey was identified within the window; carried forward at the prior baseline (UC San Diego election-confidence findings from mid-July)." },
+          { "name": "Civic and community engagement", "status": "Mixed", "arrow": "→", "note": "No new data this week; carried forward at baseline." },
+          { "name": "De-escalation and bridging efforts", "status": "Mixed", "arrow": "→", "note": "No new bridging/de-escalation initiative or reach data was identified this week; Princeton's Bridging Divides Initiative and similar programs continue operating but without a new dated development in the window." },
+          { "name": "Leadership rhetoric and cross-aisle condemnation", "status": "Strained", "arrow": "↓", "note": "A senior DHS official's campaign naming individual federal judges by name, without identified corresponding condemnation from congressional Republican leadership in available sourcing, extends the one-sided-framing pattern flagged in prior weeks into a more targeted and personal form; Judge Salas's public rebuke was a notable counter-voice but from within the judiciary itself rather than cross-aisle political leadership." },
+          { "name": "Law-enforcement and prosecutorial response", "status": "Holding", "arrow": "→", "note": "DOJ obtained a 37-month federal sentence against Ismael Vega for a June 2025 attack on CHP officers during an anti-ICE protest (rock- and burning-debris-throwing from an overpass), and the Manhattan DA's office secured hate-crime charges and no-bail detention in the Upper West Side stabbing case; both show continued prosecutorial follow-through, though neither newly tests even-handed application across ideological targets this week." },
+          { "name": "Local news and information ecosystem health", "status": "Strained", "arrow": "→", "note": "No new survey or data point on local news capacity or media-trust bifurcation was identified this week; carried forward at baseline." },
+          { "name": "Institutional trust in elections/courts as fair arbiters", "status": "Strained", "arrow": "→", "note": "No new survey data this week; carried forward at baseline. The DHS campaign naming judges by name is scored under indicators 2 (PVEI) and 4 (SCI) rather than here, to avoid double-counting the same fact pattern." }
+        ]
+      },
+
+      "gap": -5,
+      "gap_interpretation": "Manageable strain",
+      "relationship_note": "Violence-pressure indicators eased slightly on the absence of a new completed/attempted/foiled attack, but a senior federal official's decision to publicly name individual sitting judges — met with alarm from the judiciary itself but no clearly documented cross-aisle political condemnation — kept both the threats/incitement side of PVEI and the leadership-rhetoric side of SCI moving in an unfavorable direction, narrowing but not closing the gap.",
+
+      "pvei_gates_crossed": [],
+      "sci_gates_crossed": [],
+      "pvei_gates_reinforced": ["Threats against officials/candidates/workers/judges", "Incitement and normalization"],
+      "sci_gates_reinforced": ["Leadership rhetoric and cross-aisle condemnation"],
+      "pvei_gates_crossed_count": 0,
+      "sci_gates_crossed_count": 0,
+
+      "event_log": [
+        {
+          "event_id": "2026W31-V001",
+          "event_date": "2026-07-29",
+          "report_date": "2026-07-29",
+          "actor": "James Percival, DHS General Counsel",
+          "target": "U.S. District Judges Matthew Kennelly, Allison Burroughs, Paula Xinis, and Hernán Vera",
+          "action": "Publicly named and criticized four sitting federal district judges by name in a social-media series titled 'Worst of the Worst, District Judge Edition,' accusing them of 'open defiance' of the Supreme Court and 'naked political activism' over rulings that blocked administration immigration policies. Judge Esther Salas — whose 20-year-old son was murdered in 2020 by a litigant angry over her rulings — publicly stated the campaign was 'so dangerous' and that she was 'more concerned right now than I was after my only child was murdered.'",
+          "motive_classification": "politically motivated",
+          "implementation_status": "completed",
+          "pvei_indicator": "Incitement and normalization",
+          "sci_indicator": "Leadership rhetoric and cross-aisle condemnation",
+          "pvei_effect": "positive",
+          "sci_effect": "negative",
+          "severity": "high",
+          "novelty": "new",
+          "gate_status": "reinforced",
+          "evidence_quality": "high",
+          "source_1": "https://www.krwg.org/npr-politics/2026-07-29/as-dhs-condemns-judges-by-name-judge-esther-salas-who-lost-her-son-in-an-attack-is-fighting-back",
+          "source_2": "https://www.huffpost.com/entry/james-percival-dhs-counsel-threatens-federal-judges-esther-salas-beth-bloom_n_6a6a44b6e4b098352c306ba7",
+          "notes": "Scored under both the PVEI incitement/normalization indicator and the SCI leadership-rhetoric indicator because the same fact pattern speaks to both climate-normalization risk and the absence of cross-aisle condemnation; not double-counted within either index. Also logged, separately, under the PVEI threats-against-judges indicator in the indicator note rather than as a second event-log entry, since it is the same underlying episode. No corresponding statement of bipartisan congressional condemnation of the campaign was identified in available sourcing as of this report."
+        },
+        {
+          "event_id": "2026W31-V002",
+          "event_date": "2026-07-28",
+          "report_date": "2026-07-28",
+          "actor": "U.S. District Court, Central District of California (Judge John F. Walter) / DOJ",
+          "target": "Ismael Vega (defendant); underlying target of original 2025 offense was CHP officers",
+          "action": "Sentenced Ismael Vega, 42, to 37 months in federal prison and $253,415 in restitution for throwing rocks and lit burning debris onto a CHP vehicle from a downtown Los Angeles freeway overpass during a June 8, 2025 anti-ICE protest, trapping officers below and creating a risk of death or serious injury; Vega pleaded guilty April 29 to obstructing law enforcement during civil disorder.",
+          "motive_classification": "politically motivated",
+          "implementation_status": "prosecuted",
+          "pvei_indicator": "Protest-related violence",
+          "sci_indicator": "Law-enforcement and prosecutorial response",
+          "pvei_effect": "neutral",
+          "sci_effect": "positive",
+          "severity": "medium",
+          "novelty": "continuation",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.justice.gov/usao-cdca/pr/westlake-man-sentenced-more-3-years-prison-throwing-rocks-and-lighted-debris-chp",
+          "source_2": "https://ktla.com/news/local-news/man-sentenced-for-throwing-rocks-burning-debris-at-chp-la-protest/",
+          "notes": "The underlying violent act occurred in June 2025 and was not newly counted against this week's protest-related-violence score (pvei_effect: neutral); the sentencing itself is logged as a positive prosecutorial-follow-through signal for SCI."
+        },
+        {
+          "event_id": "2026W31-V003",
+          "event_date": "2026-07-23",
+          "report_date": "2026-08-02",
+          "actor": "Raul Morales (defendant) / Manhattan District Attorney's Office",
+          "target": "A 57-year-old Asian man and a 50-year-old Jewish man, stabbed in separate incidents blocks apart on Manhattan's Upper West Side",
+          "action": "Morales was arraigned July 24 on hate-crime counts including attempted second-degree murder as a hate crime for both stabbings and held without bail; witnesses reported he yelled 'Allahu Akbar' and 'justice for Islam' during the attacks. Case remained in active prosecution through this reporting window.",
+          "motive_classification": "bias-motivated",
+          "implementation_status": "prosecuted",
+          "pvei_indicator": "Hate crimes and bias-motivated violence",
+          "sci_indicator": "Law-enforcement and prosecutorial response",
+          "pvei_effect": "neutral",
+          "sci_effect": "positive",
+          "severity": "high",
+          "novelty": "continuation",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.cnn.com/2026/07/23/us/nyc-stabbing-upper-west-side",
+          "source_2": "https://fortune.com/2026/07/25/nyc-stabbing-hate-crimes-jewish-asian-victims/",
+          "notes": "The stabbings themselves occurred July 23, just before this tracker's reporting window (and were not covered by a prior weekly report, since no report was produced for week 30/July 20-26). Included here because the case's hate-crime prosecution was actively developing through the current window and materially informs this week's hate-crimes indicator status; not scored as a new attack this week (pvei_effect: neutral) to avoid overstating a within-window escalation."
+        }
+      ],
+
+      "trajectory_note": "Note on continuity: no weekly report was produced for week 30 (July 20-26, 2026), so this entry compares directly against week 29 (July 13-19) rather than an unbroken prior week; readers should treat the week-over-week point changes as spanning roughly two weeks of underlying developments rather than one. Over that span, the clearest through-line is a shift in the character of institutional pressure on the judiciary: last period's concern was broad framing documents (the Bondi memo, NSPM-7) and general warnings from justices about rising threat volume; this period saw a senior DHS official personally naming four sitting judges by name and accusing them of political activism, which the judiciary itself — including a judge who has lived through the worst-case outcome of that kind of personalized targeting — described as materially more dangerous than generic rhetoric. That is organized, institutional incitement risk, not lone-actor violence, and it was not met with identified cross-aisle political condemnation this week, even as it was met with real prosecutorial follow-through on unrelated protest-violence and hate-crime cases. Violence/threat activity this period is diffuse rather than concentrated: no single high-severity plot or attack anchors the week, unlike the prior period's foiled White House UFC plot, which is itself a modest positive data point. The gap narrowed slightly (from -8 to -5) primarily because PVEI eased on the absence of a new violent incident, not because social cohesion strengthened — cohesion in fact weakened slightly on the leadership-rhetoric indicator. Watch next: whether the DHS judge-naming campaign is followed by any bipartisan congressional response (its absence so far is itself informative), and whether it correlates with any new increase in threats reported by the Marshals Service in the next data cycle.",
+      "confidence": "Medium",
+
+      "retrospective_revision": null
     }
   ]
 };
