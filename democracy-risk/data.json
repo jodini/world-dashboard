@@ -415,6 +415,176 @@
       "confidence": "Medium",
 
       "retrospective_revision": null
+    },
+    {
+      "week": 32,
+      "year": 2026,
+      "start_date": "2026-08-03",
+      "end_date": "2026-08-09",
+
+      "dri": {
+        "score": 66,
+        "band": "High",
+        "color": "orange",
+        "change": 1,
+        "trend_arrow": "↑",
+        "indicators": [
+          { "name": "Media retaliation", "status": "Escalating", "arrow": "→", "note": "No new retaliatory action against journalists fell inside this window; a DOJ subpoena to freelance journalist Matthew Cole over North Korea reporting came to light just before this period (August 1) and keeps the underlying pattern live without being scored as a new event this week." },
+          { "name": "Agency weaponization", "status": "Severe", "arrow": "→", "note": "The Senate confirmed Todd Blanche — Trump's former personal defense lawyer and acting Attorney General since Pam Bondi's April ouster — as permanent Attorney General on a near party-line 50-49 vote, cementing loyalist DOJ leadership; the Jack Smith and Cory Mills referrals remain open with no new developments." },
+          { "name": "Narrative warfare", "status": "Escalating", "arrow": "→", "note": "DHS General Counsel James Percival publicly branded a federal judge's lawful ruling as 'defiance, obstruction, and delay' without evidentiary support, extending legitimacy attacks from election administration to the judiciary; unsubstantiated DHS noncitizen-voter figures continued circulating with no major new numbers this week." },
+          { "name": "Corruption/impunity", "status": "Severe", "arrow": "→", "note": "No new self-dealing or impunity event surfaced in this window; the established pattern of expansive pardons for allies and unresolved self-dealing allegations remains the operative baseline." },
+          { "name": "State-level conflict", "status": "Escalating", "arrow": "→", "note": "No new coercive federal-state confrontation occurred in this window; the extended National Guard deployment remains an unresolved but unchanged flashpoint." },
+          { "name": "Election manipulation", "status": "Severe", "arrow": "→", "note": "Plaintiff states filed their court-ordered response by the August 3 deadline asking the Supreme Court to leave the mail-voting injunction in place, but no ruling had issued by the close of this window, leaving nationwide restrictions before the midterms a live, unresolved possibility." },
+          { "name": "Judiciary attacks", "status": "Escalating", "arrow": "→", "note": "Rep. Andy Ogles moved from announcing to formally filing articles of impeachment against Judge Allison Burroughs, reinforced by DHS's public 'defiance' framing of her ruling; a genuine intensification but still short of an implemented or systemic action, so status held rather than crossing to Severe." }
+        ]
+      },
+
+      "iri": {
+        "score": 59,
+        "band": "Mixed resilience",
+        "color": "yellow",
+        "change": 2,
+        "trend_arrow": "↑",
+        "indicators": [
+          { "name": "Judicial independence", "status": "Strong", "arrow": "→", "note": "Judge Burroughs's TPS stay continued to stand through the week despite the impeachment filing and DHS's public 'defiance' accusation, with the administration pursuing ordinary appellate briefing (due August 5-6) rather than disregarding the order." },
+          { "name": "State-level resistance", "status": "Strong", "arrow": "→", "note": "No major new election-specific state pushback event fell inside this window; the prior week's rebuttal of DHS noncitizen-voter figures and refusal to hand over full voter files remain the most recent concrete resistance." },
+          { "name": "Election-administration integrity", "status": "Mixed", "arrow": "→", "note": "Operational independence remains contingent on the still-pending Supreme Court decision on the mail-voting executive order; states filed their response by the deadline, but the absence of a ruling leaves continued uncertainty heading into the midterms." },
+          { "name": "Media and watchdog capacity", "status": "Strong", "arrow": "→", "note": "No new press-freedom incident specific to this window; the Matthew Cole subpoena disclosure landed just before this period and continues to weigh on the broader climate without a new development this week." },
+          { "name": "Civil-service independence", "status": "Weak", "arrow": "→", "note": "No new development this week; the Schedule Policy/Career rollout and OPM firing-authority rule remain the operative baseline of eroded protections." },
+          { "name": "Legislative oversight", "status": "Mixed", "arrow": "↑", "note": "The Senate confirmed career DOJ Inspector General Don Berthiaume with bipartisan support, restoring a permanent independent watchdog after a long vacancy, while confirming Attorney General Todd Blanche only narrowly (50-49, with two Republicans joining all Democrats in opposition) — a real, outcome-based sign that Senate confirmation is functioning as more than a rubber stamp." },
+          { "name": "Accountability enforcement", "status": "Strong", "arrow": "→", "note": "No new sanctions, prosecutions, or disciplinary outcomes were recorded this week; the new permanent Inspector General is a future-capacity development, credited under watchdog/oversight capacity rather than as a delivered consequence." }
+        ]
+      },
+
+      "resilience_gap": -7,
+      "resilience_gap_interpretation": "Manageable strain",
+      "relationship_note": "Pressure held roughly steady this week, reinforced by the Attorney General's confirmation and intensifying but still largely rhetorical/procedural pressure on the judiciary, while the Senate's restoration of a permanent, career DOJ Inspector General gave resilience a genuine, outcome-based boost, keeping the Resilience Gap essentially flat.",
+
+      "dri_gates_crossed": [],
+      "iri_gates_crossed": [
+        { "indicator": "Legislative oversight", "from": "Weak", "to": "Mixed", "response": "Senate confirmed a permanent, bipartisan-backed DOJ Inspector General (Don Berthiaume) after a long vacancy, and confirmed the new Attorney General only by a narrow, contested 50-49 vote.", "outcome": "A career IG watchdog is now permanently in place at DOJ — a concrete institutional restoration, not merely a statement — while the AG confirmation vote shows genuine, if ultimately unsuccessful, Senate scrutiny rather than automatic approval." }
+      ],
+      "dri_gates_reinforced": [
+        { "indicator": "Agency weaponization", "status": "Severe", "note": "Todd Blanche, Trump's former personal defense lawyer, confirmed as permanent Attorney General, cementing loyalist leadership at DOJ that began with his April elevation to acting AG after Bondi's ouster." },
+        { "indicator": "Narrative warfare", "status": "Escalating", "note": "DHS General Counsel publicly accused a sitting federal judge of 'defiance, obstruction, and delay' without evidentiary support, extending legitimacy attacks from election administration to the judiciary." },
+        { "indicator": "Judiciary attacks", "status": "Escalating", "note": "Rep. Ogles moved from announcing to formally filing impeachment articles against Judge Burroughs, reinforced by DHS's public 'defiance' framing of her ruling." },
+        { "indicator": "Election manipulation", "status": "Severe", "note": "The Supreme Court mail-voting emergency application remained unresolved after the states' court-ordered response was filed by the August 3 deadline; no ruling yet, keeping nationwide restrictions before the midterms a live possibility." }
+      ],
+      "iri_gates_reinforced": [
+        { "indicator": "Judicial independence", "status": "Strong", "note": "Judge Burroughs's TPS stay continued to stand through public pressure and an impeachment filing, with the administration pursuing ordinary appellate channels rather than disregarding the order." },
+        { "indicator": "State-level resistance", "status": "Strong", "note": "No new election-specific event this week, but the prior week's rebuttal of DHS noncitizen-voter figures remains the operative, unretracted pattern of resistance." }
+      ],
+
+      "dri_gates_crossed_count": 0,
+      "iri_gates_crossed_count": 1,
+
+      "event_log": [
+        {
+          "event_id": "2026W32-001",
+          "event_date": "2026-08-03",
+          "report_date": "2026-08-03",
+          "actor": "Plaintiff states (23 Democratic-led states) / Solicitor General John Sauer (DOJ)",
+          "target": "Supreme Court emergency application to reinstate nationwide mail-voting restrictions (EO 14399) before the midterms",
+          "action": "Plaintiff states filed their court-ordered response asking the Supreme Court to leave the existing injunction in place; the administration continued to press for full implementation before the midterms. No ruling had issued by the end of this window.",
+          "implementation_status": "filed",
+          "dri_indicator": "Election manipulation",
+          "iri_indicator": "Election-administration integrity",
+          "dri_effect": "neutral",
+          "iri_effect": "neutral",
+          "severity": "high",
+          "novelty": "continuation",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.votebeat.org/national/2026/08/03/trump-supreme-court-mail-ballot-restrictions-executive-order-usps/",
+          "source_2": "https://www.scotusblog.com/2026/08/states-challenging-executive-order-on-mail-in-voting-ask-justices-to-leave-in-place-limits-on-it/",
+          "notes": "USPS itself has told the courts it is running out of time to implement the changes before the midterms regardless of outcome. The stakes and unresolved status keep this indicator at Severe without a fresh gate this week."
+        },
+        {
+          "event_id": "2026W32-002",
+          "event_date": "2026-08-03",
+          "report_date": "2026-08-05",
+          "actor": "James Percival, DHS General Counsel",
+          "target": "U.S. District Judge Allison Burroughs (D. Mass.)",
+          "action": "Publicly stated of Judge Burroughs's fresh administrative stay blocking Somalia TPS termination: 'There is no serious debate about what is going on in these cases — defiance, obstruction, and delay.'",
+          "implementation_status": "announced",
+          "dri_indicator": "Narrative warfare",
+          "iri_indicator": null,
+          "dri_effect": "negative",
+          "iri_effect": "neutral",
+          "severity": "medium",
+          "novelty": "continuation",
+          "gate_status": "reinforced",
+          "evidence_quality": "high",
+          "source_1": "https://www.bostonglobe.com/2026/08/05/metro/somalian-tps-allison-burroughs/",
+          "source_2": "https://www.foxnews.com/politics/trump-immigration-agenda-faces-setback-obama-appointed-judge-issues-fresh-tps-stay",
+          "notes": "Per protocol Section 5, the 'defiance' characterization is disputed, not established fact: Judge Burroughs's stay is grounded in Fifth Amendment equal-protection and APA claims distinct from the TPS-designation-review question the Supreme Court addressed in its June Mullin ruling. Treated as an attack on judicial legitimacy from a senior executive-branch official, a step beyond a single lawmaker's rhetoric."
+        },
+        {
+          "event_id": "2026W32-003",
+          "event_date": "2026-08-04",
+          "report_date": "2026-08-04",
+          "actor": "Rep. Andy Ogles (R-TN)",
+          "target": "U.S. District Judge Allison Burroughs (D. Mass.)",
+          "action": "Formally introduced articles of impeachment against Judge Burroughs over her TPS rulings, moving from the prior week's announced intent to an actual filed resolution.",
+          "implementation_status": "filed",
+          "dri_indicator": "Judiciary attacks",
+          "iri_indicator": null,
+          "dri_effect": "negative",
+          "iri_effect": "neutral",
+          "severity": "medium",
+          "novelty": "continuation",
+          "gate_status": "reinforced",
+          "evidence_quality": "medium",
+          "source_1": "https://www.presidentialprayerteam.org/2026/08/04/congressman-introduces-impeachment-articles-against-federal-judge/",
+          "source_2": "https://townhall.com/news/mattvespa/2026/08/04/impeachment-resolution-against-this-obama-appointed-judge-has-been-filed-heres-why-n2680607",
+          "notes": "Coverage skews toward partisan/conservative outlets, though multiple sources agree on the underlying fact of filing. A single House member's resolution is symbolic, has no realistic path to Senate conviction, and does not by itself indicate a completed or systemic action, so it reinforces rather than crosses the Judiciary attacks gate."
+        },
+        {
+          "event_id": "2026W32-004",
+          "event_date": "2026-08-08",
+          "report_date": "2026-08-08",
+          "actor": "U.S. Senate",
+          "target": "Todd Blanche, nominee for U.S. Attorney General",
+          "action": "Confirmed Todd Blanche — Trump's former personal defense lawyer, acting Attorney General since Pam Bondi's April 2026 removal — as permanent Attorney General by a 50-49 vote, with Sens. Susan Collins and Lisa Murkowski the only Republicans opposed alongside all Democrats.",
+          "implementation_status": "implemented",
+          "dri_indicator": "Agency weaponization",
+          "iri_indicator": "Legislative oversight",
+          "dri_effect": "negative",
+          "iri_effect": "neutral",
+          "severity": "medium",
+          "novelty": "continuation",
+          "gate_status": "reinforced",
+          "evidence_quality": "high",
+          "source_1": "https://www.npr.org/2026/08/08/g-s1-137631/senate-confirms-todd-blanche-attorney-general",
+          "source_2": "https://www.washingtonpost.com/national-security/2026/08/08/senate-narrowly-approves-todd-blanche-ag-capping-tough-confirmation-fight/",
+          "notes": "Bondi's April removal followed reported frustration that she had not sufficiently targeted the administration's opponents and criticism of her handling of the Epstein files; Blanche's confirmation after months as acting AG is treated as a continuation of an already-known weaponization concern, not a new event, but the narrow contested vote is logged separately as a modest legislative-oversight data point."
+        },
+        {
+          "event_id": "2026W32-005",
+          "event_date": "2026-08-07",
+          "report_date": "2026-08-07",
+          "actor": "U.S. Senate",
+          "target": "Don Berthiaume, nominee for DOJ Inspector General",
+          "action": "Confirmed career DOJ investigator Don Berthiaume as permanent DOJ Inspector General by a 51-47 vote (with two Democrats in support), as part of a package of 74 executive-branch nominees, ending a lengthy vacancy at the department's independent watchdog post.",
+          "implementation_status": "implemented",
+          "dri_indicator": null,
+          "iri_indicator": "Legislative oversight",
+          "dri_effect": "neutral",
+          "iri_effect": "positive",
+          "severity": "high",
+          "novelty": "new",
+          "gate_status": "crossed",
+          "evidence_quality": "high",
+          "source_1": "https://www.govexec.com/oversight/2026/08/oversight-and-federal-workforce-nominees-confirmed/415295/",
+          "source_2": "https://news.bloombergtax.com/daily-tax-report-international/doj-watchdog-federal-prosecutors-win-confirmation-in-senate",
+          "notes": "Berthiaume is a career DOJ IG office investigator (2010-2020) who also served as acting and senior adviser to the acting IG; his confirmation drew bipartisan support and restores a permanent, professional watchdog rather than an indefinite acting arrangement, satisfying protocol Section 4.4's preference for outcomes over statements."
+        }
+      ],
+
+      "trajectory_note": "Across the three most recently tracked weeks (29, 31, 32; week 30 unscored), the Resilience Gap has held in a narrow band between -5 and -8, and this week's -7 keeps that pattern intact rather than signaling either stabilization or acceleration toward rupture. DRI ticked up modestly to 66 on the cumulative weight of a formally confirmed loyalist Attorney General, an intensifying but still largely rhetorical and procedural (rather than implemented) campaign against a single federal judge, and the still-unresolved Supreme Court mail-voting docket that keeps the highest-weighted DRI indicator, election manipulation, pinned at Severe. None of this week's developments individually cleared the bar for a new gate; each reinforced an already-known pattern rather than opening a genuinely new one. IRI rose slightly to 59 on the back of a genuine, outcome-based resilience mechanism — Senate confirmation of a permanent, bipartisan-backed DOJ Inspector General after a long vacancy, restoring independent oversight capacity rather than merely producing a statement of concern — combined with a narrow, contested confirmation vote for the new Attorney General showing Senate confirmation has not become a pure formality. Judicial independence remains the strongest active resilience mechanism: Judge Burroughs's order continued to stand through public pressure and an impeachment filing with no sign of administration defiance of the underlying order, and the government continued to litigate through normal appellate channels. The most important thing to watch next week is the Supreme Court's still-pending ruling on the mail-voting emergency application — a stay favoring the administration ahead of the midterms would be this dataset's most severe single escalation to date, while a denial would meaningfully reinforce the resistance pattern that has now held for three consecutive tracked weeks.",
+      "confidence": "Medium",
+
+      "retrospective_revision": null
     }
   ]
 }

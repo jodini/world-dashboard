@@ -666,6 +666,347 @@
       "confidence": "Medium",
 
       "retrospective_revision": null
+    },
+    {
+      "week": 32,
+      "year": 2026,
+      "start_date": "2026-08-03",
+      "end_date": "2026-08-09",
+
+      "summary": {
+        "active": 9,
+        "emerging": 0,
+        "de_escalating": 2,
+        "dormant": 0,
+        "escalating_ids": ["sudan-civil-war", "sahel-jihadist-insurgency", "haiti-gang-crisis", "gaza-israel-conflict", "yemen-red-sea-conflict", "taiwan-strait-tension"],
+        "de_escalating_ids": ["drc-m23-conflict", "israel-iran-us-war"],
+        "newly_added_ids": [],
+        "retired_ids": [],
+        "secondary_aggregate_note": "Rough directional gauge (unweighted average of severity scores across all 11 tracked conflicts): 68.4, up slightly from week 31's 67.9. Not authoritative — see protocol.md Section 9."
+      },
+
+      "conflicts": [
+        {
+          "conflict_id": "sudan-civil-war",
+          "severity": { "score": 92, "status": "Escalating", "arrow": "↑", "change": 1, "note": "El-Obeid siege deepened further: UN warns of a 'red alert' atrocity risk echoing el-Fasher, cholera spreading through the city, RSF continuing to target water infrastructure, and 20+ US senators wrote to the Secretary of State (Aug 3) urging action and an end to arms sales to the UAE over its alleged RSF backing; government forces retook a highway in North Kordofan but researchers say no military relief of the city is likely soon." },
+          "coverage": {
+            "coverage_score": 39,
+            "global_english_note": "A substantial NPR broadcast/print feature (Aug 7) plus continued Al Jazeera/Dropsite coverage marks a modest uptick, but volume remains well below what the scale of the crisis would warrant and was still crowded out of top headlines by Gaza and the Iran war.",
+            "regional_note": null,
+            "severity_rank": 1,
+            "coverage_rank": 7,
+            "gap": 6,
+            "gap_direction": "underreported",
+            "plausible_reason": "Restricted journalist access, compassion fatigue, and a news cycle still dominated by Gaza and the Iran war."
+          },
+          "novelty": "continuation",
+          "evidence_quality": "medium",
+          "source_1": "https://www.npr.org/2026/08/07/nx-s1-5921212/el-obeid-sudan-war",
+          "source_2": "https://www.vanhollen.senate.gov/imo/media/doc/08-03-2026_letter_to_rubio_on_el_obeid_sudan.pdf",
+          "notes": "Casualty figures remain disputed by methodology: NPR cites ACLED's directly-recorded conflict-death count (at least 59,000 since 2023), well below the 150,000-400,000 cumulative estimates (including indirect/famine-linked deaths) used in earlier tracker entries; both are cited here as different, non-comparable measures rather than a revision of prior figures."
+        },
+        {
+          "conflict_id": "russia-ukraine-war",
+          "severity": { "score": 83, "status": "Stable", "arrow": "→", "change": 0, "note": "Daily General Staff reports (Aug 3, Aug 9) show continued high-tempo attritional fighting concentrated around Hulyaipilske and adjacent settlements, with no confirmed major territorial shift or new weapons system introduced within the window." },
+          "coverage": {
+            "coverage_score": 76,
+            "global_english_note": "Continued dense specialist and wire tracking (GlobalSecurity.org daily logs, ISW/Critical Threats, Kyiv Post), though relative prominence this week was again somewhat overshadowed by the Iran war and Gaza.",
+            "regional_note": null,
+            "severity_rank": 2,
+            "coverage_rank": 3,
+            "gap": 1,
+            "gap_direction": "roughly proportionate",
+            "plausible_reason": "Coverage remains broadly proportionate to severity given NATO/European stakes; a one-rank gap is within normal variation."
+          },
+          "novelty": "continuation",
+          "evidence_quality": "high",
+          "source_1": "https://www.globalsecurity.org/military/world/war/russo-ukraine-2026-08-09.htm",
+          "source_2": "https://www.globalsecurity.org/military/world/war/russo-ukraine-2026-08-03.htm",
+          "notes": "Score held flat per protocol.md 8.4; the daily-clash pattern (100+ combat clashes, hundreds of UAVs downed) is consistent with recent weeks rather than a sharp in-window move."
+        },
+        {
+          "conflict_id": "sahel-jihadist-insurgency",
+          "severity": { "score": 80, "status": "Escalating", "arrow": "→", "change": 0, "note": "High-tempo JNIM/ISSP campaign across Mali, Burkina Faso and Niger continues per specialist trackers (CFR Global Conflict Tracker, Africa Center); no single dated in-window flashpoint was confirmed for Aug 3-9 specifically, so the score is held flat rather than moved on incomplete evidence." },
+          "coverage": {
+            "coverage_score": 12,
+            "global_english_note": "Still almost no sustained global mainstream coverage; visibility limited to specialist trackers (CFR, Africa Center, Security Council Report).",
+            "regional_note": null,
+            "severity_rank": 3,
+            "coverage_rank": 11,
+            "gap": 8,
+            "gap_direction": "most underreported",
+            "plausible_reason": "Dangerous reporting access, no single anchor event this week, and reduced Western outlet presence after the AES states' break with ECOWAS."
+          },
+          "novelty": "continuation",
+          "evidence_quality": "medium",
+          "source_1": "https://www.cfr.org/global-conflict-tracker/conflict/violent-extremism-sahel",
+          "source_2": "https://africacenter.org/spotlight/jnim-attacks-western-mali-sahel/",
+          "notes": "Available sourcing this pass described the ongoing pattern (JNIM targeting supply routes and commercial traffic) rather than a specific dated Aug 3-9 incident; per protocol.md 8.4 this is treated as no material score change rather than an assumed escalation."
+        },
+        {
+          "conflict_id": "myanmar-civil-war",
+          "severity": { "score": 77, "status": "Stable", "arrow": "→", "change": 0, "note": "Mixed-signal week: reporting describes the Tatmadaw regaining ground on several fronts even as a rare diplomatic opening for talks appears to be forming under regional pressure; no single confirmed major in-window battle, and the two trends (military and diplomatic) are treated as offsetting rather than a net severity move this week." },
+          "coverage": {
+            "coverage_score": 30,
+            "global_english_note": "The 'diplomacy gaining ground' story received wider syndication (Detroit News/wire pickup) than Myanmar coverage typically gets, though it remains well short of sustained global front-page attention.",
+            "regional_note": "More visible in Southeast Asian and specialist outlets than in most Western press.",
+            "severity_rank": 4,
+            "coverage_rank": 9,
+            "gap": 5,
+            "gap_direction": "underreported",
+            "plausible_reason": "Severely restricted media access and a diffuse multi-front conflict without a single clear narrative arc for global outlets."
+          },
+          "novelty": "continuation",
+          "evidence_quality": "medium",
+          "source_1": "https://www.detroitnews.com/story/news/world/2026/08/05/myanmar-civil-war-nears-rare-opening-talks-diplomacy-gains-ground/91181363007/",
+          "source_2": "https://armedconflicts.org/myanmar-civil-war.html",
+          "notes": "Claims of a battlefield/diplomatic 'crunch time' are treated as directional reporting rather than a confirmed discrete event; will revisit if a concrete talks framework is announced."
+        },
+        {
+          "conflict_id": "drc-m23-conflict",
+          "severity": { "score": 73, "status": "De-escalating", "arrow": "↓", "change": -2, "note": "DR Congo and AFC/M23 carried out the first known prisoner transfer under the Doha-mediated peace deal (Aug 6-7), with 15 detainees moved via ICRC facilitation from Beni through Uganda to M23-held Rutshuru — a concrete implemented step rather than an announcement, per protocol.md 8.1. Ground fighting around Fizi/Minembwe continues at a lower simmer than the ceasefire-violation pattern logged in prior weeks." },
+          "coverage": {
+            "coverage_score": 24,
+            "global_english_note": "The prisoner exchange drew more mainstream pickup (Al Jazeera, AllAfrica) than DRC coverage typically gets, though still well below the scale and duration of the conflict.",
+            "regional_note": null,
+            "severity_rank": 5,
+            "coverage_rank": 10,
+            "gap": 5,
+            "gap_direction": "underreported",
+            "plausible_reason": "Long-running conflict fatigue and complex multi-actor dynamics, compounded by a news cycle dominated by the Iran war and Gaza."
+          },
+          "novelty": "continuation",
+          "evidence_quality": "medium",
+          "source_1": "https://www.aljazeera.com/news/2026/8/7/dr-congo-releases-15-prisoners-to-m23-rebels-as-part-of-doha-peace-process",
+          "source_2": "https://www.criticalthreats.org/briefs/congo-war-security-review",
+          "notes": "This is the strongest de-escalation evidence logged for this conflict since tracking began — an implemented confidence-building measure under the Doha process — but the ceasefire itself remains fragile given continued low-level clashes, so the score move is modest (-2) rather than large."
+        },
+        {
+          "conflict_id": "haiti-gang-crisis",
+          "severity": { "score": 68, "status": "Escalating", "arrow": "↑", "change": 1, "note": "UN report (Aug 6) documented 613 killed and 375 injured in just two Port-au-Prince neighborhoods over 4.5 months, over a third of victims uninvolved bystanders, and more than 176 women/girls raped by gang members 'often as a form of punishment' — new detail on the severity and deliberateness of the violence even though headline national tolls (1.5M displaced, ~1,642 killed in 2026) are consistent with prior weeks." },
+          "coverage": {
+            "coverage_score": 41,
+            "global_english_note": "UN News reporting was syndicated fairly widely (GlobalSecurity.org and others), continuing moderate mainstream attention, though still not proportionate to the displacement and sexual-violence scale documented this week.",
+            "regional_note": null,
+            "severity_rank": 6,
+            "coverage_rank": 6,
+            "gap": 0,
+            "gap_direction": "roughly proportionate",
+            "plausible_reason": "N/A this week — coverage and severity rank align."
+          },
+          "novelty": "continuation",
+          "evidence_quality": "medium",
+          "source_1": "https://news.un.org/en/story/2026/08/1168090",
+          "source_2": "https://www.globalsecurity.org/military/library/news/2026/08/mil-260806-unnews02.htm",
+          "notes": "Sexual-violence and bystander-casualty detail is new/more granular this week rather than a change in overall scale; scored as a modest (+1) severity increase reflecting the added evidence of deliberate targeting, per protocol.md Section 5."
+        },
+        {
+          "conflict_id": "gaza-israel-conflict",
+          "severity": { "score": 67, "status": "Escalating", "arrow": "↑", "change": 4, "note": "Despite the Jul 31 Hamas disarmament announcement, Israeli strikes intensified rather than paused: at least 19 killed in a single day (Aug 3), a weekend toll of 26, and a Board of Peace envoy publicly condemned the escalation without naming Israel; July was confirmed the deadliest month in Gaza this year (152 killed), with the cumulative post-ceasefire toll reaching roughly 1,250 killed and 4,100+ wounded by Aug 3. Per protocol.md 8.1, the gap between the announced deal and the enforced reality on the ground means this week's evidence (continued/intensified strikes) outweighs last week's claim-level de-escalation score." },
+          "coverage": {
+            "coverage_score": 92,
+            "global_english_note": "Very high, near-continuous coverage of both the disarmament deadlock and the intensified strikes (Al Jazeera dedicated weekly coverage, NPR, Chatham House analysis).",
+            "regional_note": "Extensive Middle East-based coverage (Al Jazeera) with a more critical framing of Israeli conduct than much Western press; West Bank settler-violence coverage also surged this week (OCHA: deadliest month for settler incidents since Oct 2023, tied with March).",
+            "severity_rank": 7,
+            "coverage_rank": 2,
+            "gap": -5,
+            "gap_direction": "overreported relative to rank",
+            "plausible_reason": "Sustained global political salience and this week's diplomatic-deadlock story keep attention very high relative to its severity rank within this tracked set; not a claim the conflict is over-covered in absolute terms."
+          },
+          "novelty": "continuation",
+          "evidence_quality": "high",
+          "source_1": "https://www.aljazeera.com/news/2026/8/4/palestine-weekly-israel-kills-dozens-in-gaza-after-hamas-disarmament-deal",
+          "source_2": "https://www.aljazeera.com/news/2026/8/3/israel-defies-trumps-peace-plan-as-it-escalates-deadly-attacks-on-gaza",
+          "notes": "Reverses last week's modest de-escalation move: the disarmament roadmap remains unimplemented and unaccepted by Israel, while strike intensity and the West Bank settler-violence pattern both worsened, per protocol.md 8.1 (enforced outcome > announcement)."
+        },
+        {
+          "conflict_id": "yemen-red-sea-conflict",
+          "severity": { "score": 63, "status": "Escalating", "arrow": "↑", "change": 3, "note": "Houthis struck the Saudi tanker Wafa off Yanbu (Aug 5) — the eighth Saudi tanker targeted since the blockade began Jul 22 — and announced (Aug 5) they will extend attacks to tankers in the northern Red Sea generally, an explicit geographic expansion after Saudi vessels began rerouting north to avoid the declared blockade zone near Bab el-Mandeb." },
+          "coverage": {
+            "coverage_score": 60,
+            "global_english_note": "Continued substantial trade/shipping-angle coverage (Bloomberg, Daily Sabah, Seatrade Maritime, Long War Journal); the underlying Yemeni civil-war humanitarian toll still receives comparatively less attention than the tanker campaign itself.",
+            "regional_note": null,
+            "severity_rank": 8,
+            "coverage_rank": 5,
+            "gap": -3,
+            "gap_direction": "overreported relative to rank",
+            "plausible_reason": "Commercial/shipping and oil-price stakes drive coverage more than the underlying humanitarian toll of the civil war does."
+          },
+          "novelty": "continuation",
+          "evidence_quality": "medium",
+          "source_1": "https://windward.ai/blog/the-houthis-strike-a-saudi-tanker-off-yanbu/",
+          "source_2": "https://www.bloomberg.com/news/articles/2026-08-05/yemen-s-houthis-say-they-ll-target-tankers-in-northern-red-sea",
+          "notes": "Riyadh has not officially confirmed the Wafa strike; Houthi claims of ship damage/sinking should be read as one-sided pending independent verification, per protocol.md Section 7."
+        },
+        {
+          "conflict_id": "syria-sectarian-violence",
+          "severity": { "score": 52, "status": "Stable", "arrow": "→", "change": 0, "note": "No new confirmed flashpoint within Aug 3-9; the Suweida/southern Syria fault line remains live but quiet this week, consistent with prior assessments that reintegration of the Druze community has made little progress since the 2025 violence." },
+          "coverage": {
+            "coverage_score": 33,
+            "global_english_note": "Coverage remained thin this week, mostly policy/analysis pieces (e.g. BISI regional-consequences report) rather than daily news coverage, consistent with the quiet week on the ground.",
+            "regional_note": null,
+            "severity_rank": 10,
+            "coverage_rank": 8,
+            "gap": -2,
+            "gap_direction": "overreported relative to rank",
+            "plausible_reason": "Post-Assad Syria remains a higher policy-interest story than this week's low activity level alone would generate."
+          },
+          "novelty": "continuation",
+          "evidence_quality": "low",
+          "source_1": "https://www.newarab.com/news/syria-makes-no-progress-repairing-druze-relations-un",
+          "source_2": "https://bisi.org.uk/reports/syrias-sectarian-crisis-with-regional-consequences",
+          "notes": "No fresh in-window casualty event identified; score held flat per protocol.md 8.4."
+        },
+        {
+          "conflict_id": "taiwan-strait-tension",
+          "severity": { "score": 37, "status": "Escalating", "arrow": "↑", "change": 2, "note": "Taiwan launched its annual Han Kuang/Huang Kuang live-fire exercises (kicked off Wed Aug 5, running through Aug 14), mobilizing roughly 20,000 reservists — one of the largest call-ups yet — and testing wartime relocation of weapons production and internet-disruption resilience; China separately ran live-fire drills in the Strait. No direct engagement or casualties, but the mobilization/production-relocation testing meets protocol.md Section 5's escalation-trajectory criteria more clearly than in prior weeks, so status is upgraded from Emerging to Escalating." },
+          "coverage": {
+            "coverage_score": 62,
+            "global_english_note": "Wire coverage of the drills (AP-syndicated pieces via ABC/NBC) plus continued dedicated AEI weekly tracking pushed coverage volume higher than the past two weeks.",
+            "regional_note": null,
+            "severity_rank": 11,
+            "coverage_rank": 4,
+            "gap": -7,
+            "gap_direction": "most overreported relative to rank",
+            "plausible_reason": "Coverage tracks strategic/nuclear-stakes significance and the novelty of large-scale drills rather than current on-the-ground damage, of which there is currently none."
+          },
+          "novelty": "continuation",
+          "evidence_quality": "medium",
+          "source_1": "https://www.aei.org/commentary/china-taiwan-update-august-7-2026/",
+          "source_2": "https://abcnews.com/International/wireStory/taiwan-kicks-off-annual-military-drills-counter-potential-135378473",
+          "notes": "Status upgrade (Emerging to Escalating) is a judgment call based on the scale of this year's mobilization and production-relocation testing rather than a single kinetic incident; will be revisited if drills conclude Aug 14 without further escalation."
+        },
+        {
+          "conflict_id": "israel-iran-us-war",
+          "severity": { "score": 60, "status": "De-escalating", "arrow": "↓", "change": -4, "note": "Genuine negotiated progress on reopening the Strait of Hormuz: Iran and Oman agreed on specific transit-route coordinates (Aug 5), and by Aug 8 the IRGC signaled Hormuz would reopen once the US accepts Iran's conditions — an implemented technical step (route coordinates), not just a statement, though full reopening still depends on unresolved US concessions. No new dated kinetic strikes were confirmed within Aug 3-9. Separately, Saudi Arabia, Turkiye and Pakistan signed the Mecca Joint Defence Agreement (Aug 7), a regional mutual-defense pact both sides describe as not aimed at Iran, but signed against the backdrop of this war and the Houthi-Saudi fighting." },
+          "coverage": {
+            "coverage_score": 96,
+            "global_english_note": "Continued near-continuous global coverage (Al Jazeera and CNN live blogs) of both the Hormuz negotiations and the Mecca defence pact.",
+            "regional_note": "Extensive Arabic-language coverage of the Mecca pact and Hormuz talks given direct Gulf-state stakes.",
+            "severity_rank": 9,
+            "coverage_rank": 1,
+            "gap": -8,
+            "gap_direction": "most overreported relative to rank",
+            "plausible_reason": "Direct US/Israeli involvement and global economic stakes (Hormuz, oil prices, the new Mecca pact) keep coverage extremely high even as this week's severity evidence points toward de-escalation rather than active fighting; not a claim the war is over-covered in absolute terms."
+          },
+          "novelty": "continuation",
+          "evidence_quality": "medium",
+          "source_1": "https://www.aljazeera.com/news/liveblog/2026/8/8/iran-war-live-trilateral-mecca-defence-pact-signed-as-hormuz-deal-looms",
+          "source_2": "https://www.npr.org/2026/08/06/nx-s1-5923623/iran-strait-hormuz-us-israel-ban",
+          "notes": "Per protocol.md 8.1, the route-coordinates agreement is treated as stronger evidence than a bare announcement, but full Hormuz reopening remains contingent on unresolved US concessions (Iran's parliament is separately weighing a plan to ban US/Israeli-linked shipping), so this is scored as a meaningful but not yet resolved de-escalation."
+        }
+      ],
+
+      "notable_events": [
+        {
+          "event_id": "2026W32-C001",
+          "event_date": "2026-08-07",
+          "report_date": "2026-08-07",
+          "conflict_id": "drc-m23-conflict",
+          "actor": "DR Congo government / AFC-M23 (ICRC facilitating)",
+          "target": "N/A - prisoner transfer between parties",
+          "action": "First known prisoner transfer under the Doha-mediated peace deal: 15 detainees moved from government-held Beni through Uganda to M23-held Rutshuru, North Kivu",
+          "effect": "de-escalation",
+          "severity_delta": "negative",
+          "confidence": "High",
+          "source_1": "https://www.aljazeera.com/news/2026/8/7/dr-congo-releases-15-prisoners-to-m23-rebels-as-part-of-doha-peace-process",
+          "source_2": "https://allafrica.com/stories/202608100006.html",
+          "notes": "An implemented confidence-building step rather than an announcement; low-level clashes around Fizi/Minembwe continue in parallel."
+        },
+        {
+          "event_id": "2026W32-C002",
+          "event_date": "2026-08-03",
+          "report_date": "2026-08-03",
+          "conflict_id": "gaza-israel-conflict",
+          "actor": "Israeli forces",
+          "target": "Civilians across Gaza",
+          "action": "Israeli strikes killed at least 19 Palestinians in a single day, bringing the weekend toll to 26, days after the announced Hamas disarmament deal",
+          "effect": "escalation",
+          "severity_delta": "positive",
+          "confidence": "High",
+          "source_1": "https://www.aljazeera.com/news/2026/8/3/israel-defies-trumps-peace-plan-as-it-escalates-deadly-attacks-on-gaza",
+          "source_2": "https://www.aljazeera.com/news/2026/8/4/palestine-weekly-israel-kills-dozens-in-gaza-after-hamas-disarmament-deal",
+          "notes": "Board of Peace envoy Nickolay Mladenov condemned the escalation without naming Israel directly."
+        },
+        {
+          "event_id": "2026W32-C003",
+          "event_date": "2026-08-03",
+          "report_date": "2026-08-07",
+          "conflict_id": "sudan-civil-war",
+          "actor": "20+ US senators (Kaine, Sanders, Schiff and others)",
+          "target": "US Secretary of State Marco Rubio",
+          "action": "Sent a letter urging concrete action to prevent mass atrocities in besieged El-Obeid, including ending US arms sales to the UAE over its alleged RSF backing",
+          "effect": "diplomatic",
+          "severity_delta": "neutral",
+          "confidence": "Medium",
+          "source_1": "https://www.vanhollen.senate.gov/imo/media/doc/08-03-2026_letter_to_rubio_on_el_obeid_sudan.pdf",
+          "source_2": "https://www.npr.org/2026/08/07/nx-s1-5921212/el-obeid-sudan-war",
+          "notes": "Advocacy/pressure action, not a policy change; logged as diplomatic rather than escalation/de-escalation since it does not itself alter conditions on the ground."
+        },
+        {
+          "event_id": "2026W32-C004",
+          "event_date": "2026-08-05",
+          "report_date": "2026-08-05",
+          "conflict_id": "yemen-red-sea-conflict",
+          "actor": "Houthi forces (Ansar Allah)",
+          "target": "Saudi oil tanker Wafa, off Yanbu, Red Sea",
+          "action": "Claimed a ballistic-missile strike on the Saudi tanker Wafa, the eighth Saudi tanker targeted since the Jul 22 blockade began, and announced attacks would extend to tankers throughout the northern Red Sea",
+          "effect": "escalation",
+          "severity_delta": "positive",
+          "confidence": "Medium",
+          "source_1": "https://windward.ai/blog/the-houthis-strike-a-saudi-tanker-off-yanbu/",
+          "source_2": "https://www.bloomberg.com/news/articles/2026-08-05/yemen-s-houthis-say-they-ll-target-tankers-in-northern-red-sea",
+          "notes": "Riyadh has not confirmed the strike; Houthi claims should be treated as one-sided pending independent verification."
+        },
+        {
+          "event_id": "2026W32-C005",
+          "event_date": "2026-08-05",
+          "report_date": "2026-08-05",
+          "conflict_id": "taiwan-strait-tension",
+          "actor": "Taiwan military / PRC forces",
+          "target": "N/A - parallel exercises",
+          "action": "Taiwan launched its annual live-fire war games (through Aug 14) mobilizing ~20,000 reservists and testing wartime production relocation; China ran parallel live-fire drills in the Strait",
+          "effect": "escalation",
+          "severity_delta": "neutral",
+          "confidence": "Medium",
+          "source_1": "https://abcnews.com/International/wireStory/taiwan-kicks-off-annual-military-drills-counter-potential-135378473",
+          "source_2": "https://www.aei.org/commentary/china-taiwan-update-august-7-2026/",
+          "notes": "No kinetic engagement or casualties; logged as an escalation-trajectory indicator (mobilization, war-production testing) per protocol.md Section 5."
+        },
+        {
+          "event_id": "2026W32-C006",
+          "event_date": "2026-08-08",
+          "report_date": "2026-08-08",
+          "conflict_id": "israel-iran-us-war",
+          "actor": "Iran (IRGC) / Oman (mediator) / United States",
+          "target": "N/A - negotiation over Strait of Hormuz reopening",
+          "action": "Iran and Oman agreed on specific transit-route coordinates for the Strait of Hormuz (Aug 5); IRGC said Hormuz would reopen once the US accepts Iran's conditions (Aug 8), while Iran's parliament separately weighs a plan to ban US/Israeli-linked shipping until compensated for war damage",
+          "effect": "diplomatic",
+          "severity_delta": "negative",
+          "confidence": "Medium",
+          "source_1": "https://www.aljazeera.com/news/liveblog/2026/8/8/iran-war-live-trilateral-mecca-defence-pact-signed-as-hormuz-deal-looms",
+          "source_2": "https://www.npr.org/2026/08/06/nx-s1-5923623/iran-strait-hormuz-us-israel-ban",
+          "notes": "Route-coordinate agreement is an implemented technical step, stronger than a bare announcement per protocol.md 8.1, but full reopening remains contingent on unresolved US concessions."
+        }
+      ],
+
+      "underreported": [
+        { "conflict_id": "sahel-jihadist-insurgency", "severity_rank": 3, "coverage_rank": 11, "gap": 8, "reason": "Dangerous reporting access, no single anchor event this week, reduced Western outlet presence after AES states' break with ECOWAS." },
+        { "conflict_id": "sudan-civil-war", "severity_rank": 1, "coverage_rank": 7, "gap": 6, "reason": "Restricted access, compassion fatigue, and a news cycle still dominated by the Iran war and Gaza." },
+        { "conflict_id": "myanmar-civil-war", "severity_rank": 4, "coverage_rank": 9, "gap": 5, "reason": "Restricted media access, diffuse multi-front conflict without a clean narrative arc." },
+        { "conflict_id": "drc-m23-conflict", "severity_rank": 5, "coverage_rank": 10, "gap": 5, "reason": "Long-running conflict fatigue and complex multi-actor dynamics, compounded by competing major headlines this week." }
+      ],
+      "overreported": [
+        { "conflict_id": "israel-iran-us-war", "severity_rank": 9, "coverage_rank": 1, "gap": -8, "reason": "Direct US/Israeli involvement and global economic stakes (Hormuz, oil prices, the new Mecca pact) keep coverage extremely high even as this week's evidence points toward de-escalation; not a claim it is over-covered in absolute terms." },
+        { "conflict_id": "taiwan-strait-tension", "severity_rank": 11, "coverage_rank": 4, "gap": -7, "reason": "Coverage tracks strategic stakes and the novelty of large-scale drills rather than current on-the-ground damage, of which there is currently none." },
+        { "conflict_id": "gaza-israel-conflict", "severity_rank": 7, "coverage_rank": 2, "gap": -5, "reason": "Sustained political salience and this week's diplomatic-deadlock story keep attention very high relative to rank; not a claim of undeserved coverage." },
+        { "conflict_id": "yemen-red-sea-conflict", "severity_rank": 8, "coverage_rank": 5, "gap": -3, "reason": "Commercial shipping and oil-price stakes drive coverage more than the underlying civil-war humanitarian toll does." }
+      ],
+
+      "trajectory_note": "Two of the week's largest tracked conflicts moved in opposite directions on real, implemented evidence rather than announcements: the DRC/M23 conflict saw its first concrete prisoner exchange under the Doha process (a genuine, if modest, de-escalation signal), while the Israel-Iran-US war saw substantive technical progress toward reopening the Strait of Hormuz (route coordinates agreed, though full reopening remains contingent on unresolved US concessions) alongside a new regional defense pact (Saudi Arabia-Turkiye-Pakistan) signed against that war's backdrop. Gaza moved the opposite way: last week's disarmament announcement did not translate into reduced violence — strikes intensified, July was confirmed the deadliest month of the year, and West Bank settler violence hit its worst level since October 2023 — so this week's score reverses part of last week's claim-level de-escalation, consistent with protocol.md's evidence hierarchy (enforced outcomes outweigh announcements). Sudan, the Sahel insurgency, Myanmar and DRC remain the most severe and most structurally underreported situations in the tracked set, a pattern stable since week 29; Taiwan and the Israel-Iran-US war remain the most overreported relative to rank, now joined by a modestly widening gap as Iran-war coverage stayed at saturation levels even as the war's own evidence moved toward de-escalation. The overall pattern — severe, low-visibility conflicts in Africa and Asia persisting alongside intense coverage of conflicts with direct US/Western or global-economic stakes — looks structural rather than shifting.",
+      "confidence": "Medium",
+
+      "retrospective_revision": null
     }
   ]
 }

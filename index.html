@@ -76,32 +76,32 @@ const TRACKERS = [
     path: "democracy-risk/dashboard.html",
     kind: "dri-iri",
     latest: {
-      week: 31, year: 2026, end_date: "2026-08-02",
-      dri: { score: 65, band: "High", color: "orange" },
-      iri: { score: 57, band: "Mixed resilience", color: "yellow" },
-      gap: -8, gap_label: "Manageable strain",
+      week: 32, year: 2026, end_date: "2026-08-09",
+      dri: { score: 66, band: "High", color: "orange" },
+      iri: { score: 59, band: "Mixed resilience", color: "yellow" },
+      gap: -7, gap_label: "Manageable strain",
       top_risk: { name: "Election manipulation", status: "Severe" },
       top_resilience_concern: { name: "Civil-service independence", status: "Weak" },
-      gates_crossed: "2/7",
+      gates_crossed: "1/7",
       dri_indicators: [
-        { name: "Media retaliation", status: "Escalating", arrow: "↓" },
+        { name: "Media retaliation", status: "Escalating", arrow: "→" },
         { name: "Agency weaponization", status: "Severe", arrow: "→" },
         { name: "Narrative warfare", status: "Escalating", arrow: "→" },
         { name: "Corruption/impunity", status: "Severe", arrow: "→" },
         { name: "State-level conflict", status: "Escalating", arrow: "→" },
-        { name: "Election manipulation", status: "Severe", arrow: "↑" },
-        { name: "Judiciary attacks", status: "Escalating", arrow: "↑" }
+        { name: "Election manipulation", status: "Severe", arrow: "→" },
+        { name: "Judiciary attacks", status: "Escalating", arrow: "→" }
       ],
       iri_indicators: [
-        { name: "Judicial independence", status: "Strong", arrow: "↑" },
-        { name: "State-level resistance", status: "Strong", arrow: "↑" },
-        { name: "Election-admin integrity", status: "Mixed", arrow: "↓" },
+        { name: "Judicial independence", status: "Strong", arrow: "→" },
+        { name: "State-level resistance", status: "Strong", arrow: "→" },
+        { name: "Election-admin integrity", status: "Mixed", arrow: "→" },
         { name: "Media/watchdog capacity", status: "Strong", arrow: "→" },
         { name: "Civil-service independence", status: "Weak", arrow: "→" },
-        { name: "Legislative oversight", status: "Weak", arrow: "→" },
+        { name: "Legislative oversight", status: "Mixed", arrow: "↑" },
         { name: "Accountability enforcement", status: "Strong", arrow: "→" }
       ],
-      headline: "Pressure concentrated in the two highest-weighted indicators this week — a Supreme Court emergency bid to allow mail-voting restrictions before the midterms, and a first concrete impeachment threat against a sitting judge — while courts and states again delivered evidence-based resistance that kept the gap from widening further."
+      headline: "A formally confirmed loyalist Attorney General and an intensifying but still largely procedural campaign against a single federal judge kept pressure elevated, while the Senate's confirmation of a new permanent, career DOJ Inspector General delivered a genuine institutional-capacity win that held the Resilience Gap essentially flat."
     }
   },
   {
@@ -110,22 +110,22 @@ const TRACKERS = [
     path: "geopolitical-conflict/dashboard.html",
     kind: "conflict",
     latest: {
-      week: 31, year: 2026, end_date: "2026-08-02",
-      active: 9, emerging: 1, escalating: 7, de_escalating: 1,
+      week: 32, year: 2026, end_date: "2026-08-09",
+      active: 9, emerging: 0, escalating: 6, de_escalating: 2,
       top_severity: [
-        { name: "Sudan civil war", score: 91, coverage: 38 },
-        { name: "Russia-Ukraine war", score: 83, coverage: 80 },
+        { name: "Sudan civil war", score: 92, coverage: 39 },
+        { name: "Russia-Ukraine war", score: 83, coverage: 76 },
         { name: "Sahel insurgency", score: 80, coverage: 12 },
-        { name: "Myanmar civil war", score: 77, coverage: 20 },
-        { name: "DRC / M23 conflict", score: 75, coverage: 16 },
-        { name: "Haiti gang crisis", score: 67, coverage: 42 },
-        { name: "US-Israel-Iran war", score: 64, coverage: 95 },
-        { name: "Gaza-Israel conflict", score: 63, coverage: 90 },
-        { name: "Yemen / Red Sea", score: 60, coverage: 65 },
-        { name: "Syria sectarian violence", score: 52, coverage: 40 }
+        { name: "Myanmar civil war", score: 77, coverage: 30 },
+        { name: "DRC / M23 conflict", score: 73, coverage: 24 },
+        { name: "Haiti gang crisis", score: 68, coverage: 41 },
+        { name: "Gaza-Israel conflict", score: 67, coverage: 92 },
+        { name: "Yemen / Red Sea", score: 63, coverage: 60 },
+        { name: "US-Israel-Iran war", score: 60, coverage: 96 },
+        { name: "Syria sectarian violence", score: 52, coverage: 33 }
       ],
       most_underreported: { name: "Sahel insurgency", gap: 8 },
-      headline: "The US-Israel-Iran war expanded geographically this week (strikes on Iran resumed, Iran hit Kuwait, Egypt was struck for the first time), but the starkest pattern remains structural: Sudan's El-Obeid siege and the Sahel's high-tempo insurgency carry the highest severity scores yet the least global coverage of any tracked conflict."
+      headline: "Two of the week's largest tracked conflicts moved on implemented evidence rather than announcements: DRC/M23 saw its first concrete prisoner exchange under the Doha process, while Gaza-Israel reversed course as strikes intensified despite last week's disarmament announcement. Sudan and the Sahel insurgency remain the most severe and least-covered situations tracked."
     }
   },
   {
@@ -134,32 +134,32 @@ const TRACKERS = [
     path: "economic-stress/dashboard.html",
     kind: "esi-fri",
     latest: {
-      week: 31, year: 2026, end_date: "2026-08-02",
-      esi: { score: 40, band: "Elevated", color: "amber" },
-      fri: { score: 56, band: "Mixed", color: "yellow" },
-      gap: 16, gap_label: "Resilience exceeds pressure",
+      week: 32, year: 2026, end_date: "2026-08-09",
+      esi: { score: 42, band: "Elevated", color: "amber" },
+      fri: { score: 55, band: "Mixed", color: "yellow" },
+      gap: 13, gap_label: "Resilience exceeds pressure",
       top_risk: { name: "Household financial strain", status: "Escalating" },
       top_resilience_concern: { name: "Monetary policy space", status: "Mixed" },
       gates_crossed: "1/7",
       esi_indicators: [
-        { name: "Growth momentum", status: "Warning", arrow: "↑" },
-        { name: "Labor market deterioration", status: "Stable", arrow: "→" },
-        { name: "Inflation pressure", status: "Warning", arrow: "↓" },
-        { name: "Financial market stress", status: "Warning", arrow: "↑" },
+        { name: "Growth momentum", status: "Warning", arrow: "↓" },
+        { name: "Labor market deterioration", status: "Warning", arrow: "↑" },
+        { name: "Inflation pressure", status: "Warning", arrow: "→" },
+        { name: "Financial market stress", status: "Warning", arrow: "↓" },
         { name: "Household financial strain", status: "Escalating", arrow: "↑" },
         { name: "Corporate/banking stress", status: "Stable", arrow: "→" },
         { name: "Fiscal stress", status: "Warning", arrow: "→" }
       ],
       fri_indicators: [
-        { name: "Monetary policy space", status: "Mixed", arrow: "↓" },
+        { name: "Monetary policy space", status: "Mixed", arrow: "→" },
         { name: "Fiscal policy space", status: "Mixed", arrow: "→" },
         { name: "Banking system soundness", status: "Strong", arrow: "→" },
         { name: "Labor safety net capacity", status: "Mixed", arrow: "→" },
         { name: "External buffers", status: "Strong", arrow: "→" },
-        { name: "Corporate balance sheet health", status: "Strong", arrow: "↓" },
+        { name: "Corporate balance sheet health", status: "Strong", arrow: "↑" },
         { name: "Household balance sheet health", status: "Mixed", arrow: "↓" }
       ],
-      headline: "A dense month-end data cluster — GDP, PCE, employment costs, consumer confidence, and a divided Fed hold — delivered genuine new evidence this week, and it skewed toward stress: growth decelerated more than expected and financial conditions tightened, narrowing the gap from +25 to +16 even though the system remains in a favorable-to-resilient position overall."
+      headline: "July payrolls fell 23,000 with a combined 103,000-job downward revision to prior months — the clearest crack yet in the labor market — but strong ISM surveys and a rally that priced out a September Fed hike (VIX near 15, credit spreads near decade lows) kept financial conditions easing, narrowing the gap only modestly from +16 to +13."
     }
   },
   {
@@ -168,32 +168,32 @@ const TRACKERS = [
     path: "political-violence/dashboard.html",
     kind: "pvei-sci",
     latest: {
-      week: 31, year: 2026, end_date: "2026-08-02",
-      pvei: { score: 47, band: "Elevated", color: "amber" },
-      sci: { score: 42, band: "Mixed", color: "yellow" },
-      gap: -5, gap_label: "Manageable strain",
+      week: 32, year: 2026, end_date: "2026-08-09",
+      pvei: { score: 48, band: "Elevated", color: "amber" },
+      sci: { score: 44, band: "Mixed", color: "yellow" },
+      gap: -4, gap_label: "Manageable strain",
       top_risk: { name: "Threats against officials/candidates/workers/judges", status: "Escalating" },
       top_resilience_concern: { name: "Leadership rhetoric and cross-aisle condemnation", status: "Strained" },
       gates_crossed: "0/7",
       pvei_indicators: [
-        { name: "Politically motivated violence", status: "Warning", arrow: "↓" },
-        { name: "Threats vs. officials/judges", status: "Escalating", arrow: "↑" },
-        { name: "Hate crimes / bias violence", status: "Warning", arrow: "→" },
+        { name: "Politically motivated violence", status: "Warning", arrow: "→" },
+        { name: "Threats vs. officials/judges", status: "Escalating", arrow: "→" },
+        { name: "Hate crimes / bias violence", status: "Warning", arrow: "↑" },
         { name: "Extremist mobilization", status: "Warning", arrow: "→" },
-        { name: "Incitement and normalization", status: "Escalating", arrow: "↑" },
+        { name: "Incitement and normalization", status: "Escalating", arrow: "→" },
         { name: "Protest-related violence", status: "Warning", arrow: "→" },
-        { name: "Weapons/plot activity", status: "Stable", arrow: "↓" }
+        { name: "Weapons/plot activity", status: "Stable", arrow: "→" }
       ],
       sci_indicators: [
         { name: "Cross-partisan social trust", status: "Strained", arrow: "→" },
-        { name: "Civic/community engagement", status: "Mixed", arrow: "→" },
+        { name: "Civic/community engagement", status: "Mixed", arrow: "↑" },
         { name: "De-escalation/bridging efforts", status: "Mixed", arrow: "→" },
-        { name: "Leadership cross-aisle condemnation", status: "Strained", arrow: "↓" },
-        { name: "Law-enforcement response", status: "Holding", arrow: "→" },
-        { name: "Local news/info ecosystem", status: "Strained", arrow: "→" },
+        { name: "Leadership cross-aisle condemnation", status: "Strained", arrow: "→" },
+        { name: "Law-enforcement response", status: "Holding", arrow: "↑" },
+        { name: "Local news/info ecosystem", status: "Strained", arrow: "↓" },
         { name: "Institutional trust (elections/courts)", status: "Strained", arrow: "→" }
       ],
-      headline: "Violence-pressure indicators eased slightly on the absence of a new completed or foiled attack, but a senior DHS official's decision to publicly name individual sitting federal judges — met with alarm from the judiciary itself but no documented cross-aisle condemnation — kept both the threats/incitement side of PVEI and the leadership-rhetoric side of SCI moving in an unfavorable direction."
+      headline: "A federal judge's public account of death threats and 'pizza doxxing' reinforced last week's judiciary-targeting pattern, but prosecutorial follow-through across three separate hate-crime and protest-violence cases, plus a large National Night Out turnout, kept the cohesion gap from widening — narrowing slightly from -5 to -4."
     }
   }
 ];

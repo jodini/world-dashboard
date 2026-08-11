@@ -585,6 +585,275 @@ const TRACKER_DATA = {
       "trajectory_note": "This week's data was unusually dense \u2014 the month-end cluster of GDP, PCE, the Employment Cost Index, consumer confidence, and a live FOMC meeting all landed within a six-day window \u2014 and on balance it tilted toward stress. Growth momentum genuinely weakened (a GDP miss plus falling consumer confidence, compounded by a fresh round of tariffs on 60 trading partners), financial conditions tightened at the margin (higher long-end yields, a stronger dollar, and a sharp widening in the lowest-quality credit spreads even as headline volatility measures stayed calm), and household strain deepened with the first real-wage decline reading in some time. Inflation was the one clear bright spot, cooling for a second straight month per the PCE reading, but a divided, more hawkish-leaning Fed complicates how much of that disinflation translates into future rate cuts. Note that data.json's prior entry is Week 29 (July 13-19); no Week 30 entry was produced, so this week's changes and arrows are measured against Week 29 rather than an unbroken prior week, which the confidence rating below reflects. The Stress-Resilience Gap narrowed from +25 to +16 \u2014 still a favorable position, but resilience is being tested on more fronts (monetary-policy consensus, junk-credit stress, household real wages) than it was two weeks ago. Key things to watch next: the July jobs report (Aug 7), the next CPI print, and whether the CCC-tier credit spread widening persists or reverses.",
       "confidence": "Medium",
       "retrospective_revision": null
+    },
+    {
+      "week": 32,
+      "year": 2026,
+      "start_date": "2026-08-03",
+      "end_date": "2026-08-09",
+      "esi": {
+        "score": 42,
+        "band": "Elevated",
+        "color": "amber",
+        "change": 2,
+        "trend_arrow": "\u2191",
+        "indicators": [
+          {
+            "name": "Growth momentum",
+            "status": "Warning",
+            "arrow": "\u2193",
+            "note": "ISM Manufacturing PMI (Aug 3) jumped to 55.6% (from 53.3%, beating the ~54% consensus), the highest since May 2022, with its Employment sub-index back in expansion for the first time in 33 months; ISM Services PMI (Aug 5) held in expansion at 54.1%. Genuinely positive survey data partially offsets last week's GDP miss and tariff overhang, though hard output data hasn't yet confirmed the surveys, so status stays Warning with an improving arrow rather than a full reversal."
+          },
+          {
+            "name": "Labor market deterioration",
+            "status": "Warning",
+            "arrow": "\u2191",
+            "note": "Gate crossed (Stable to Warning). July nonfarm payrolls fell 23,000 (BLS, Aug 7) versus +83,000 expected \u2014 the first outright monthly decline in some time \u2014 with May and June combined revised down 103,000; unemployment ticked down to 4.1% but on shrinking labor-force participation, and average hourly earnings growth slowed to 3.2% y/y, the lowest since May 2021. ADP's July private-payrolls read (Aug 5) rose just 44,000 versus 70,000 expected, reinforcing the same direction; initial claims for the week ending Aug 1 stayed low and below consensus at 199,000, a partial counterpoint."
+          },
+          {
+            "name": "Inflation pressure",
+            "status": "Warning",
+            "arrow": "\u2192",
+            "note": "No new CPI print this week (July CPI due Aug 12, outside this window); carrying forward last month's PCE-based reading unchanged."
+          },
+          {
+            "name": "Financial market stress",
+            "status": "Warning",
+            "arrow": "\u2193",
+            "note": "Financial conditions eased this week: the VIX fell to roughly 14.9 by Aug 7 (from the 16-20 range last week), the 10-year Treasury yield eased to about 4.65%, and broad high-yield credit spreads tightened to roughly 271bps, among the tightest levels of the past decade. The move largely reflects markets pricing out a September Fed hike after the weak jobs data rather than a resolved risk backdrop, so it is read as a genuine but policy-linked easing."
+          },
+          {
+            "name": "Household financial strain",
+            "status": "Escalating",
+            "arrow": "\u2191",
+            "note": "No new NY Fed household-debt data this week (Q2 report due Aug 11); however, the July jobs report's wage figures (average hourly earnings growth slowing to 3.2% y/y, the weakest since May 2021) provide fresh evidence reinforcing the real-wage/purchasing-power strain flagged via last week's Employment Cost Index."
+          },
+          {
+            "name": "Corporate/banking stress",
+            "status": "Stable",
+            "arrow": "\u2192",
+            "note": "No new bank earnings, supervisory actions, or bankruptcy data released within this window; carrying forward unchanged."
+          },
+          {
+            "name": "Fiscal stress",
+            "status": "Warning",
+            "arrow": "\u2192",
+            "note": "No new deficit, debt-service, or Treasury-auction results this week (the July Monthly Treasury Statement is due mid-August); Treasury's Borrowing Advisory Committee met Aug 4 to discuss possible changes to long-end auction sizing amid the growing issuance burden, an institutional discussion rather than a data release, so status carries forward unchanged."
+          }
+        ]
+      },
+      "fri": {
+        "score": 55,
+        "band": "Mixed",
+        "color": "yellow",
+        "change": -1,
+        "trend_arrow": "\u2193",
+        "indicators": [
+          {
+            "name": "Monetary policy space",
+            "status": "Mixed",
+            "arrow": "\u2192",
+            "note": "No FOMC meeting this week (next meeting September). Rate-futures markets cut the implied probability of a September hike to roughly 44% from 57% before the jobs report, as the weak labor data reduced the perceived case made by July's three hawkish dissenters \u2014 a market-derived shift, not an actual policy action, so status is held at Mixed pending the Fed's next move."
+          },
+          {
+            "name": "Fiscal policy space",
+            "status": "Mixed",
+            "arrow": "\u2192",
+            "note": "No new deficit or Treasury-auction data this week; the Treasury Borrowing Advisory Committee met Aug 4 to discuss possible reductions to long-end auction sizes given the growing issuance burden, a notable discussion but not yet a concrete policy change."
+          },
+          {
+            "name": "Banking system soundness",
+            "status": "Strong",
+            "arrow": "\u2192",
+            "note": "No new bank earnings or supervisory data this week; carrying forward last reading unchanged."
+          },
+          {
+            "name": "Labor market safety net capacity",
+            "status": "Mixed",
+            "arrow": "\u2192",
+            "note": "No new developments this week; unchanged."
+          },
+          {
+            "name": "External buffers",
+            "status": "Strong",
+            "arrow": "\u2192",
+            "note": "The dollar index eased modestly (roughly 99.98 to 99.56) after the weak jobs report as hawkish-hike odds fell; no signs of reserve-demand or auction stress. Treated as a continuation of existing conditions rather than a new distinct buffer event."
+          },
+          {
+            "name": "Corporate balance sheet health",
+            "status": "Strong",
+            "arrow": "\u2191",
+            "note": "Broad high-yield OAS tightened to roughly 271bps (Aug 6) from about 281-284bps last week, among the tightest (richest) decile of its history. A CCC-tier-specific reading was not confirmed this week, so it's unclear whether last week's sharp CCC-tier widening persisted or reversed \u2014 flagged as a data-availability caveat rather than resolved."
+          },
+          {
+            "name": "Household balance sheet health",
+            "status": "Mixed",
+            "arrow": "\u2193",
+            "note": "Average hourly earnings growth slowing to 3.2% y/y (lowest since May 2021) per the July jobs report reinforces the wage-erosion picture flagged last week; the NY Fed's Q2 household debt and credit report (due Aug 11) will be the next major data point for this indicator."
+          }
+        ]
+      },
+      "gap": 13,
+      "gap_interpretation": "Resilience exceeds pressure",
+      "relationship_note": "A data-dense week split cleanly between a genuine, multi-source softening in the labor market (BLS payrolls, ADP, wage growth) and a genuine easing in financial conditions and growth surveys (ISM, credit spreads, yields, VIX), leaving the Stress-Resilience Gap only modestly narrower than last week even as markets read the news as clearing the way for the Fed to hold rather than hike in September.",
+      "esi_gates_crossed": [
+        {
+          "indicator": "Labor market deterioration",
+          "from_status": "Stable",
+          "to_status": "Warning",
+          "why": "July nonfarm payrolls fell 23,000 versus +83,000 expected, the first outright monthly decline in some time, compounded by a combined 103,000-job downward revision to May and June, wage growth slowing to its lowest pace since May 2021, and a corroborating ADP miss \u2014 a genuine, multi-source convergence of new labor-market weakness this week."
+        }
+      ],
+      "fri_gates_crossed": [],
+      "esi_gates_reinforced": [
+        "Household financial strain"
+      ],
+      "fri_gates_reinforced": [
+        "Household balance sheet health"
+      ],
+      "esi_gates_crossed_count": 1,
+      "fri_gates_crossed_count": 0,
+      "event_log": [
+        {
+          "event_id": "2026W32-E001",
+          "event_date": "2026-08-03",
+          "report_date": "2026-08-03",
+          "indicator": "Growth momentum",
+          "event_type": "data release",
+          "description": "ISM Manufacturing PMI for July registered 55.6%, up 2.3 points from June and the highest since May 2022; the Employment sub-index returned to expansion (52.8%) for the first time in 33 months, and New Orders rose to 56.7%.",
+          "esi_effect": "negative",
+          "fri_effect": "neutral",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.prnewswire.com/news-releases/manufacturing-pmi-at-55-6-july-2026-ism-manufacturing-pmi-report-302840669.html",
+          "source_2": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/pmi/july/",
+          "notes": "Survey-based data; a genuine positive counterweight to last week's GDP miss, though not yet confirmed by hard output figures."
+        },
+        {
+          "event_id": "2026W32-E002",
+          "event_date": "2026-08-05",
+          "report_date": "2026-08-05",
+          "indicator": "Growth momentum",
+          "event_type": "data release",
+          "description": "ISM Services PMI for July registered 54.1%, up 0.1 point from June, the 25th consecutive month of expansion.",
+          "esi_effect": "negative",
+          "fri_effect": "neutral",
+          "severity": "low",
+          "novelty": "continuation",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.prnewswire.com/news-releases/services-pmi-at-54-1-july-2026-ism-services-pmi-report-302843134.html",
+          "source_2": "",
+          "notes": "Confirms continued (if unspectacular) services-sector expansion alongside the stronger manufacturing print."
+        },
+        {
+          "event_id": "2026W32-E003",
+          "event_date": "2026-08-05",
+          "report_date": "2026-08-05",
+          "indicator": "Labor market deterioration",
+          "event_type": "data release",
+          "description": "ADP National Employment Report: private-sector payrolls rose 44,000 in July, below the roughly 70,000 consensus and down from a downwardly revised 95,000 in June.",
+          "esi_effect": "positive",
+          "fri_effect": "neutral",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "reinforced",
+          "evidence_quality": "high",
+          "source_1": "https://www.cnbc.com/2026/08/05/private-companies-added-just-44000-workers-in-july-below-expectations-adp-reports.html",
+          "source_2": "https://mediacenter.adp.com/2026-08-05-ADP-National-Employment-Report-Private-Sector-Employment-Increased-by-44,000-Jobs-in-July-Annual-Pay-was-Up-4-4",
+          "notes": "First of two labor-market misses this week; foreshadowed Friday's much larger BLS surprise."
+        },
+        {
+          "event_id": "2026W32-E004",
+          "event_date": "2026-08-01",
+          "report_date": "2026-08-06",
+          "indicator": "Labor market deterioration",
+          "event_type": "data release",
+          "description": "Initial jobless claims for the week ending Aug 1 rose to 199,000 (up 1,000 from a revised 198,000), below the roughly 202,000 consensus; the 4-week average fell to 198,750, while continued claims rose 24,000 to 1,801,000.",
+          "esi_effect": "neutral",
+          "fri_effect": "neutral",
+          "severity": "low",
+          "novelty": "continuation",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.dol.gov/ui/data.pdf",
+          "source_2": "https://qz.com/weekly-jobless-claims-199000-below-forecasts-080626",
+          "notes": "Initial claims remain historically low and below consensus, a partial counterpoint to the weaker payrolls and ADP reads; the rise in continued claims is a milder cautionary signal worth watching."
+        },
+        {
+          "event_id": "2026W32-E005",
+          "event_date": "2026-08-07",
+          "report_date": "2026-08-07",
+          "indicator": "Labor market deterioration",
+          "event_type": "data release",
+          "description": "BLS Employment Situation: July nonfarm payrolls fell 23,000 versus +83,000 expected; May was revised down 66,000 (129,000 to 63,000) and June down 37,000 (57,000 to 20,000), a combined 103,000-job downward revision; unemployment rate ticked down to 4.1% on falling labor-force participation; average hourly earnings rose 3.2% y/y, the slowest pace since May 2021; government payrolls fell 53,000.",
+          "esi_effect": "positive",
+          "fri_effect": "neutral",
+          "severity": "high",
+          "novelty": "new",
+          "gate_status": "crossed",
+          "evidence_quality": "high",
+          "source_1": "https://www.bls.gov/news.release/empsit.nr0.htm",
+          "source_2": "https://www.cnbc.com/2026/08/07/jobs-report-july-2026.html",
+          "notes": "Primary driver of the Labor market deterioration gate crossing (Stable to Warning); the scale of the revisions is as significant as the headline miss."
+        },
+        {
+          "event_id": "2026W32-E006",
+          "event_date": "2026-08-07",
+          "report_date": "2026-08-07",
+          "indicator": "Financial market stress",
+          "event_type": "market event",
+          "description": "Markets rallied on the soft jobs data: the VIX fell to about 14.9, the 10-year Treasury yield eased to roughly 4.65%, broad high-yield OAS tightened to about 271bps, and the dollar index slipped from about 99.98 to 99.56; the S&P 500 closed at a record high (+0.6%), the Nasdaq rose about 1.3%, and the Dow gained 0.3%, capping a winning week (S&P +3.5%, Nasdaq +5%).",
+          "esi_effect": "negative",
+          "fri_effect": "positive",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.detroitnews.com/story/business/2026/08/07/us-stocks-wall-street/91211476007/",
+          "source_2": "https://convextrade.com/metrics/bamlh0a0hym2",
+          "notes": "Easing driven mainly by reduced hawkish-hike odds rather than a resolved risk backdrop; single-week price action, worth confirming persistence next week per protocol's caution on market volatility."
+        },
+        {
+          "event_id": "2026W32-E007",
+          "event_date": "2026-08-07",
+          "report_date": "2026-08-08",
+          "indicator": "Monetary policy space",
+          "event_type": "market event",
+          "description": "Rate futures markets cut the implied probability of a September Fed hike to roughly 43.9% from 57% before the jobs report, after the weak labor data undercut the case made by July's three hawkish FOMC dissenters.",
+          "esi_effect": "neutral",
+          "fri_effect": "positive",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.cnbc.com/2026/08/07/odds-the-fed-hikes-in-september-tumble-following-big-july-jobs-miss.html",
+          "source_2": "https://www.investing.com/news/economy-news/us-rate-futures-cut-chances-of-september-rate-hike-after-jobs-data-4846500",
+          "notes": "Market-implied shift, not an actual Fed decision; status held at Mixed pending the September meeting, consistent with the protocol's rule against treating a policy expectation as a resolved outcome."
+        },
+        {
+          "event_id": "2026W32-E008",
+          "event_date": "2026-08-04",
+          "report_date": "2026-08-07",
+          "indicator": "Fiscal policy space",
+          "event_type": "institutional action",
+          "description": "The Treasury Borrowing Advisory Committee met Aug 4; a Bloomberg report (Aug 7) said Treasury is weighing changes to long-end auction sizes to help temper rising yields amid the growing debt-issuance burden.",
+          "esi_effect": "neutral",
+          "fri_effect": "neutral",
+          "severity": "low",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "medium",
+          "source_1": "https://www.bloomberg.com/news/articles/2026-08-07/us-treasury-sparks-debate-over-auction-cutbacks-to-temper-yields",
+          "source_2": "https://home.treasury.gov/news/press-releases/sb0592",
+          "notes": "A discussion/process item, not a concrete policy change; flagged for tracking rather than scored as a material move."
+        }
+      ],
+      "trajectory_note": "The week's dominant story was a broad, multi-source softening in the labor market: the July jobs report showed the first outright monthly payroll decline in some time (-23,000 versus +83,000 expected), compounded by a combined 103,000-job downward revision to May and June, wage growth cooling to its slowest pace since May 2021, and the unemployment rate's dip to 4.1% attributable more to shrinking labor-force participation than to hiring strength. ADP's private-payrolls read (44,000 versus 70,000 expected) corroborated the same direction, while initial jobless claims stayed low and below consensus \u2014 a partial counterpoint. Together this evidence justified a genuine gate crossing on Labor market deterioration from Stable to Warning. Growth momentum told a more mixed story: both ISM Manufacturing (55.6%, highest since May 2022, with its employment sub-index back in expansion after 33 months) and ISM Services (54.1%) surveys pointed to accelerating activity, a genuine positive counterweight to last week's soft GDP print and tariff overhang, though survey data has not yet been confirmed by hard output figures. Financial markets read the weak labor data as reducing the odds of the hawkish Fed hike three governors pushed for in July \u2014 futures-implied September hike odds fell from 57% to roughly 44% \u2014 and reacted accordingly: the VIX eased to a calm ~14.9, the 10-year Treasury yield fell to about 4.65%, broad high-yield credit spreads tightened to roughly 271bps, and equities rallied to fresh highs. This is a case of stress and resilience partially offsetting within the same week rather than moving together: the underlying labor-market weakness is not resolved by a more dovish policy path, so the modest narrowing of the Stress-Resilience Gap (16 to 13) reflects real but partial improvement in financial conditions layered on top of genuine new labor-market softening, not a clean turn in either direction. No new inflation, household-debt, bank-supervisory, or deficit data were released this week (July CPI lands Aug 12, the NY Fed's Q2 household debt report Aug 11), so those indicators carry forward unchanged; a separate institutional item \u2014 the Treasury Borrowing Advisory Committee's Aug 4 discussion of possible long-end auction-size changes amid the growing issuance burden \u2014 is a fiscal-space item to watch but not yet a policy change. No material new China, Eurozone, or EM-debt spillover data landed within this window. Key things to watch next week: the July CPI print and the NY Fed household debt report, both landing Aug 11-12, plus whether this week's labor-market softening is confirmed or reversed by subsequent data.",
+      "confidence": "Medium",
+      "retrospective_revision": null
     }
   ]
 };
