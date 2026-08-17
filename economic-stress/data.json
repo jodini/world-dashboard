@@ -541,6 +541,237 @@
       "confidence": "Medium",
 
       "retrospective_revision": null
+    },
+    {
+      "week": 33,
+      "year": 2026,
+      "start_date": "2026-08-10",
+      "end_date": "2026-08-16",
+
+      "esi": {
+        "score": 44,
+        "band": "Elevated",
+        "color": "amber",
+        "change": 2,
+        "trend_arrow": "↑",
+        "indicators": [
+          { "name": "Growth momentum", "status": "Warning", "arrow": "↑", "note": "July retail sales fell 0.6% m/m (Census, Aug 14) — the weakest monthly pace in over a year — though sales were still +5.0% y/y, with much of the miss traced to a nonstore-retail decline (partly a Prime Day timing shift into June) and lower gas-station receipts. Separately, the University of Michigan's preliminary August consumer sentiment reading (Aug 14) plunged to 51.0 from July's 55.2 final, well below the ~54.5 consensus, with 1-year inflation expectations rising to 4.3%. Genuine new data, but enough technical/survey-volatility caveats that status stays at Warning with a worsening arrow rather than a further gate crossing; partially offset by the US extending its 90-day pause on the threatened increase in the China reciprocal tariff (Aug 11), a de-escalatory trade signal." },
+          { "name": "Labor market deterioration", "status": "Warning", "arrow": "→", "note": "Initial jobless claims for the week ending Aug 8 rose to 209,000 (DOL, Aug 13), up 9,000 and above the 202,000 consensus, though the 4-week moving average held flat at 199,000 — a modest, noisy continuation of recent softening rather than a fresh acceleration. Status held at Warning following last week's gate crossing; no payrolls report this week." },
+          { "name": "Inflation pressure", "status": "Warning", "arrow": "↓", "note": "July CPI (BLS, Aug 12) cooled further to 3.4% y/y headline (from 3.5% in June) and 2.5% core (from 2.6%), both in line with consensus and a third straight month of disinflation across the CPI/PCE readings. July PPI (Aug 13) was flat m/m but running 4.7% y/y unadjusted, a reminder that some pipeline pressure has not fully passed through to consumer prices. Status held at Warning (still above the 2% target) with an improving arrow." },
+          { "name": "Financial market stress", "status": "Warning", "arrow": "↑", "note": "The Treasury's $42B 10-year note auction (Aug 12) cleared at 4.683%, the highest yield since the 2007 financial crisis, and the $25B 30-year bond auction (Aug 13) cleared at 5.216%, the highest since 2001, with bid-to-cover slipping modestly to 2.39 from 2.44 — a genuine new stress signal in long-end financing costs even as the VIX eased further to roughly 14.45 (a seven-month low) and broad high-yield spreads held tight near 271bps. A bifurcated picture similar to recent weeks' credit-tier divergence, this time concentrated in sovereign long-end demand rather than corporate credit." },
+          { "name": "Household financial strain", "status": "Escalating", "arrow": "→", "note": "The NY Fed's Q2 2026 Household Debt and Credit Report (Aug 11) showed aggregate household debt edging down $13B (-0.1%) to $18.8T and the aggregate delinquency rate improving slightly to 4.7% from 4.8% — the first sequential improvement in some time — but new delinquency transitions for auto loans and credit cards remain at elevated levels per the report's own framing, and August's Michigan sentiment collapse plus rising 1-year inflation expectations point the other way. Status held at Escalating with a mixed, roughly net-neutral arrow given the offsetting signals." },
+          { "name": "Corporate/banking stress", "status": "Stable", "arrow": "→", "note": "No new bank earnings, supervisory actions, or dated bankruptcy releases within this window (banks last reported mid-July; next earnings season in October); status carried forward unchanged." },
+          { "name": "Fiscal stress", "status": "Escalating", "arrow": "↑", "note": "Gate crossed (Warning to Escalating). The Treasury's 10-year and 30-year auctions this week cleared at their highest yields since 2007 and 2001 respectively, with Bloomberg framing the 30-year result as an investor warning on the growing deficit-financing burden; both auctions still cleared with reasonable, if slightly softer, demand rather than failing outright, but the multi-decade-high borrowing costs are a genuine, market-derived escalation distinct from prior weeks' discussion-stage Treasury Borrowing Advisory Committee item." }
+        ]
+      },
+
+      "fri": {
+        "score": 56,
+        "band": "Mixed",
+        "color": "yellow",
+        "change": 1,
+        "trend_arrow": "↑",
+        "indicators": [
+          { "name": "Monetary policy space", "status": "Mixed", "arrow": "↑", "note": "No FOMC meeting this week (next meeting Sept 16). In-line July CPI (Aug 12) further reduced market-implied odds of a September hike, with CME FedWatch showing roughly 60-69% probability of a hold, up from about 44% before the report — a market-derived continuation of last week's shift rather than a new policy action. Status held at Mixed with a modestly improving arrow; Chair Warsh's 'family fight' framing of the July dissents signals the credibility test is still live ahead of September." },
+          { "name": "Fiscal policy space", "status": "Mixed", "arrow": "↓", "note": "Gate reinforced. The costly 10-year (4.683%, highest since 2007) and 30-year (5.216%, highest since 2001) Treasury auctions this week are a genuine, market-derived deepening of the fiscal-space concern flagged via the Aug 4 Treasury Borrowing Advisory Committee discussion; demand held up reasonably (bid-to-cover only modestly lower), so status remains Mixed rather than crossing to Weak, but the weakening arrow reflects real new evidence of rising debt-service costs." },
+          { "name": "Banking system soundness", "status": "Strong", "arrow": "→", "note": "No new bank earnings or supervisory data within this window; carrying forward last reading unchanged." },
+          { "name": "Labor market safety net capacity", "status": "Mixed", "arrow": "→", "note": "No new developments this week; unchanged." },
+          { "name": "External buffers", "status": "Strong", "arrow": "↓", "note": "The dollar index extended its slide to roughly 99.6 (from about 99.98 two weeks ago), its lowest level in several weeks, as a cluster of soft data (jobs, CPI, PPI, retail sales, consumer sentiment) reinforced expectations the Fed will hold rather than hike in September. Read as a policy-linked, rate-differential move rather than a loss of reserve-currency demand, with no auction-demand stress observed, but flagged with a modestly weakening arrow given the persistence of the move." },
+          { "name": "Corporate balance sheet health", "status": "Strong", "arrow": "→", "note": "Broad high-yield OAS held steady at roughly 271bps (Aug 12), essentially unchanged from last week's reading and still among the tightest levels of the past decade; no fresh CCC-tier-specific data confirmed this week. Status held at Strong with a flat arrow." },
+          { "name": "Household balance sheet health", "status": "Mixed", "arrow": "↑", "note": "The NY Fed's Q2 2026 report (Aug 11) showed aggregate household debt declining slightly to $18.8T and the delinquency rate improving marginally to 4.7% from 4.8%, a genuine if modest positive data point after several quarters of a bifurcated picture. Auto and credit-card delinquency transitions remain elevated, so the underlying bifurcation is not resolved, but the aggregate direction this week supports a modestly improving arrow." }
+        ]
+      },
+
+      "gap": 12,
+      "gap_interpretation": "Resilience exceeds pressure",
+      "relationship_note": "A data-dense week delivered a genuinely mixed picture: continued disinflation and further-receding Fed hike odds improved the policy-space side of the ledger, while weak retail sales, a sharp consumer-sentiment drop, and — most notably — 10-year and 30-year Treasury auctions clearing at their highest yields since 2007 and 2001 respectively pushed Fiscal stress across a gate into Escalating, leaving the Stress-Resilience Gap only modestly narrower than last week as resilience gains in one area were offset by genuine new fiscal-space concerns in another.",
+
+      "esi_gates_crossed": [
+        { "indicator": "Fiscal stress", "from_status": "Warning", "to_status": "Escalating", "why": "The Treasury's 10-year and 30-year note/bond auctions this week (Aug 12-13) cleared at their highest yields since 2007 and 2001 respectively, a genuine, market-derived signal that investors are demanding materially higher compensation to finance the growing federal deficit." }
+      ],
+      "fri_gates_crossed": [],
+      "esi_gates_reinforced": ["Growth momentum", "Financial market stress"],
+      "fri_gates_reinforced": ["Fiscal policy space", "External buffers"],
+      "esi_gates_crossed_count": 1,
+      "fri_gates_crossed_count": 0,
+
+      "event_log": [
+        {
+          "event_id": "2026W33-E001",
+          "event_date": "2026-08-11",
+          "report_date": "2026-08-11",
+          "indicator": "Household financial strain",
+          "event_type": "data release",
+          "description": "NY Fed Q2 2026 Household Debt and Credit Report: total household debt declined $13 billion (-0.1%) to $18.8 trillion; aggregate delinquency rate improved to 4.7% of outstanding debt from 4.8% in Q1; mortgage balances fell $74 billion to $13.1 trillion; new delinquency transitions for auto loans and credit cards remain at elevated levels.",
+          "esi_effect": "negative",
+          "fri_effect": "positive",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.newyorkfed.org/newsevents/news/research/2026/20260811",
+          "source_2": "https://bankingjournal.aba.com/2026/08/new-york-fed-household-debt-dipped-to-18-8-t-in-q2/",
+          "notes": "First sequential improvement in aggregate delinquency rate in some time, but the underlying auto/credit-card bifurcation flagged in prior quarters is not resolved."
+        },
+        {
+          "event_id": "2026W33-E002",
+          "event_date": "2026-07-31",
+          "report_date": "2026-08-12",
+          "indicator": "Inflation pressure",
+          "event_type": "data release",
+          "description": "BLS July 2026 CPI: headline 3.4% y/y (+0.1% m/m), down from 3.5% in June; core CPI 2.5% y/y (+0.2% m/m), down from 2.6%. Both in line with consensus; shelter (+0.1%) and food (+0.1%) rose modestly, offset by a 2.8% drop in lodging-away-from-home costs.",
+          "esi_effect": "negative",
+          "fri_effect": "neutral",
+          "severity": "medium",
+          "novelty": "continuation",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.bls.gov/news.release/cpi.nr0.htm",
+          "source_2": "https://www.cnbc.com/2026/08/12/cpi-inflation-report-july-2026.html",
+          "notes": "Third consecutive month of y/y disinflation across the CPI/PCE readings, though both headline and core remain well above the 2% target."
+        },
+        {
+          "event_id": "2026W33-E003",
+          "event_date": "2026-08-12",
+          "report_date": "2026-08-12",
+          "indicator": "Fiscal stress",
+          "event_type": "market event",
+          "description": "Treasury's $42 billion 10-year note auction cleared at 4.683%, the highest yield since the 2007 global financial crisis and up 10.3bps from the July reopening; demand was reasonable, with the clearing yield only slightly above the pre-auction secondary-market level.",
+          "esi_effect": "positive",
+          "fri_effect": "negative",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "reinforced",
+          "evidence_quality": "high",
+          "source_1": "https://www.bloomberg.com/news/articles/2026-08-12/bond-traders-keep-cointoss-wager-on-september-fed-hike-post-cpi",
+          "source_2": "https://finance.biggo.com/news/8d6ac63e-256a-4dc7-b50d-d08033caba92",
+          "notes": "First of two multi-decade-high Treasury auction results this week; contributes to the Fiscal stress gate crossing driven primarily by Wednesday's 30-year auction."
+        },
+        {
+          "event_id": "2026W33-E004",
+          "event_date": "2026-07-31",
+          "report_date": "2026-08-13",
+          "indicator": "Inflation pressure",
+          "event_type": "data release",
+          "description": "BLS July 2026 PPI: final demand index unchanged m/m (seasonally adjusted); up 4.7% y/y unadjusted for the 12 months ended in July. A 0.2% rise in final-demand services and a 2.2% advance in construction prices offset a 0.7% decline in final-demand goods.",
+          "esi_effect": "neutral",
+          "fri_effect": "neutral",
+          "severity": "low",
+          "novelty": "continuation",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.bls.gov/news.release/archives/ppi_08132026.htm",
+          "source_2": "https://www.bls.gov/news.release/ppi.nr0.htm",
+          "notes": "Flat headline print but a notably higher unadjusted y/y rate than CPI, flagged as a pipeline-pressure watch item rather than a status-changing signal on its own."
+        },
+        {
+          "event_id": "2026W33-E005",
+          "event_date": "2026-08-13",
+          "report_date": "2026-08-13",
+          "indicator": "Fiscal stress",
+          "event_type": "market event",
+          "description": "Treasury's $25 billion 30-year bond auction cleared at 5.216%, the highest yield since 2001; bid-to-cover slipped to 2.39 from 2.44 at the July reopening, though the sale still cleared close to prevailing secondary-market levels, suggesting demand held up despite the higher cost.",
+          "esi_effect": "positive",
+          "fri_effect": "negative",
+          "severity": "high",
+          "novelty": "new",
+          "gate_status": "crossed",
+          "evidence_quality": "high",
+          "source_1": "https://www.bloomberg.com/news/articles/2026-08-13/us-braces-for-30-year-bond-auction-at-highest-yield-since-2001",
+          "source_2": "https://fortune.com/2026/08/13/us-debt-treasury-30-year-highest-25-years/",
+          "notes": "Primary driver of the Fiscal stress gate crossing (Warning to Escalating) and the Fiscal policy space FRI reinforcement; Bloomberg characterized the result as an investor warning on the growing deficit-financing burden."
+        },
+        {
+          "event_id": "2026W33-E006",
+          "event_date": "2026-08-08",
+          "report_date": "2026-08-13",
+          "indicator": "Labor market deterioration",
+          "event_type": "data release",
+          "description": "Initial jobless claims for the week ending Aug 8 rose to 209,000, up 9,000 from a revised prior week and above the 202,000 consensus; the 4-week moving average held steady at 199,000; continued claims fell to 1,777,000.",
+          "esi_effect": "neutral",
+          "fri_effect": "neutral",
+          "severity": "low",
+          "novelty": "continuation",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.dol.gov/ui/data.pdf",
+          "source_2": "https://www.bloomberg.com/news/articles/2026-08-13/us-jobless-applications-edged-up-to-209-000-last-week",
+          "notes": "Modest, noisy uptick within an otherwise still-low range; 4-week average steady suggests stabilization rather than fresh acceleration."
+        },
+        {
+          "event_id": "2026W33-E007",
+          "event_date": "2026-08-14",
+          "report_date": "2026-08-14",
+          "indicator": "Growth momentum",
+          "event_type": "data release",
+          "description": "Census Bureau advance retail sales: July sales fell 0.6% m/m to $763.6 billion, the weakest monthly pace in over a year, though up 5.0% y/y; nonstore retailers fell 2.2% (partly reflecting Prime Day's shift to June) and gasoline stations fell 0.9%, while clothing (+1.9%) and food services (+0.5%) rose.",
+          "esi_effect": "positive",
+          "fri_effect": "neutral",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://www.census.gov/retail/marts/www/marts_current.pdf",
+          "source_2": "https://qz.com/us-retail-sales-july-2026-decline-081426",
+          "notes": "Headline miss partly explained by calendar/technical factors (Prime Day timing, gasoline prices) rather than a pure demand collapse."
+        },
+        {
+          "event_id": "2026W33-E008",
+          "event_date": "2026-08-14",
+          "report_date": "2026-08-14",
+          "indicator": "Growth momentum",
+          "event_type": "data release",
+          "description": "University of Michigan preliminary August Consumer Sentiment Index fell to 51.0 from July's final 55.2, well below the ~54.5 consensus; current conditions fell to 51.8 and expectations to 50.6; 1-year inflation expectations rose to 4.3% and 5-10 year expectations held at 3.3%.",
+          "esi_effect": "positive",
+          "fri_effect": "neutral",
+          "severity": "medium",
+          "novelty": "new",
+          "gate_status": "none",
+          "evidence_quality": "medium",
+          "source_1": "https://www.sca.isr.umich.edu/",
+          "source_2": "https://spectrumlocalnews.com/hi/hawaii/business/2026/08/14/u-mich-consumer-sentiment-august-2026",
+          "notes": "Preliminary, survey-based reading with known month-to-month volatility and reported partisan/demographic divergence in the decline; treated as a genuine but not yet hard-data-confirmed deterioration signal."
+        },
+        {
+          "event_id": "2026W33-E009",
+          "event_date": "2026-08-14",
+          "report_date": "2026-08-14",
+          "indicator": "External buffers",
+          "event_type": "market event",
+          "description": "The US Dollar Index (DXY) extended its slide to roughly 99.6, down from about 101.7 in late July, as a cluster of soft data releases (July jobs, CPI, PPI, retail sales, consumer sentiment) reinforced expectations the Fed will hold rather than hike in September.",
+          "esi_effect": "neutral",
+          "fri_effect": "negative",
+          "severity": "low",
+          "novelty": "continuation",
+          "gate_status": "none",
+          "evidence_quality": "medium",
+          "source_1": "https://www.fxstreet.com/news/the-dollar-index-breaks-on-the-fourth-consecutive-soft-print-202608141823",
+          "source_2": "https://blog.oneuptrader.com/analysis/technical-analysis/u-s-dollar-index-dxy-technical-analysis-14-august-2026/",
+          "notes": "Read as a policy-linked, rate-differential move rather than a loss of reserve-currency demand; no auction-demand stress observed alongside the decline."
+        },
+        {
+          "event_id": "2026W33-E010",
+          "event_date": "2026-08-11",
+          "report_date": "2026-08-11",
+          "indicator": "Growth momentum",
+          "event_type": "policy action",
+          "description": "President Trump announced a further 90-day pause on the scheduled increase of the China reciprocal tariff to 125%, extending the existing tariff truce (20% fentanyl + 10% reciprocal tariffs remain in place).",
+          "esi_effect": "negative",
+          "fri_effect": "neutral",
+          "severity": "low",
+          "novelty": "continuation",
+          "gate_status": "none",
+          "evidence_quality": "high",
+          "source_1": "https://taxfoundation.org/research/all/federal/trump-tariffs-trade-war/",
+          "source_2": "",
+          "notes": "De-escalatory trade-policy signal that partially offsets the 35% Canada tariff already in effect since Aug 1 and the looming Aug 19 deadline for a threatened 50% Canada tariff."
+        }
+      ],
+
+      "trajectory_note": "This week's dominant story was a genuine divergence between the disinflation/policy-space side of the ledger and the fiscal-space side. July CPI (3.4% y/y headline, 2.5% core) extended a three-month cooling trend and, combined with a soft PPI print, pushed market-implied odds of a September Fed hike down further (to roughly a 60-69% hold probability), continuing the shift that began with the prior week's jobs miss. At the same time, the Treasury's 10-year and 30-year auctions this week cleared at their highest yields since 2007 and 2001 respectively — a genuine, market-derived signal that investors are demanding materially higher compensation to keep financing the federal deficit, justifying a Fiscal stress gate crossing from Warning to Escalating and reinforcing the Fiscal policy space FRI indicator's weakening arrow, even though both auctions still cleared with reasonable demand rather than failing outright. Growth-side evidence was mixed: July retail sales fell 0.6% m/m (weakest pace in over a year, though partly technical) and the University of Michigan's preliminary August sentiment reading cratered to 51.0 from 55.2, but a further 90-day pause on the threatened China tariff escalation was a genuine de-escalatory counterweight. The NY Fed's Q2 household debt report was the week's one unambiguously positive household-sector data point — the first sequential improvement in the aggregate delinquency rate in some time — though auto and credit-card delinquency transitions remain elevated, so the underlying bifurcation in household balance sheets is not resolved. No new bank earnings, supervisory, or dated bankruptcy data landed this window, and no material new China, Eurozone, or EM-debt spillover data was released (China's July trade figures had already been published Aug 7, before this window). Net effect: the Stress-Resilience Gap narrowed only modestly (13 to 12) as resilience gains from receding hike odds and improved household delinquencies were largely offset by the new fiscal-space concern and softer growth/sentiment readings — a case of stress and resilience both moving on genuinely new evidence in partially offsetting directions rather than a clean trend in either. Key things to watch next week: FOMC minutes from the July meeting (expected around Aug 19-20), the Aug 19 deadline for the threatened 50% Canada tariff, and whether the Treasury auction tail persists into the next refunding cycle.",
+      "confidence": "Medium",
+
+      "retrospective_revision": null
     }
   ]
 }
